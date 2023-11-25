@@ -2,10 +2,14 @@ body {
     font-family: 'Arial', sans-serif;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    height: 200%;
+    overflow-x: hidden;
     background-image: url('first.png');
+    background-repeat: no-repeat;
     background-size: cover;
-    overflow-y: auto;
+    background-position: center center;
+    /* To block the scroll down effect but still manage to work */
+    background-attachment: fixed;
+    height: 300vh
 }
 
 body::-webkit-scrollbar {
