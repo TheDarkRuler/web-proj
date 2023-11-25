@@ -1,38 +1,14 @@
-const body = document.querySelector("body");
-const modal = document.querySelector(".modal");
-const modalButton = document.querySelector(".modal-button");
-const closeButton = document.querySelector(".close-button");
-const scrollDown = document.querySelector(".scroll-down");
-let isOpened = false;
+console.log("Js connected properly!");
 
-console.log(body)
-console.log(modal)
-console.log(modalButton)
-console.log(closeButton)
-console.log(scrollDown)
+document.addEventListener('DOMContentLoaded', function () {
+    var popupForm = document.getElementById('popupForm');
+    var scrollPositionToShowForm = 10; // Adjust this value as needed
 
-const openModal = () => {
-    modal.classList.add("is-open");
-    body.style.overflow = "hidden";
-};
-
-const closeModal = () => {
-    modal.classList.remove("is-open");
-    body.style.overflow = "initial";
-};
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > window.innerHeight / 3 && !isOpened) {
-        isOpened = true;
-        scrollDown.style.display = "none";
-        openModal();
-    }
+    window.addEventListener('scroll', function () {
+        if (document.body.scrollTop > scrollPositionToShowForm || document.documentElement.scrollTop > scrollPositionToShowForm) {
+            popupForm.style.display = 'block';
+        } else {
+            popupForm.style.display = 'none';
+        }
+    });
 });
-
-modalButton.addEventListener("click", openModal);
-closeButton.addEventListener("click", closeModal);
-
-document.onkeydown = evt => {
-    evt = evt || window.event;
-    evt.keyCode === 27 ? closeModal() : false;
-};
