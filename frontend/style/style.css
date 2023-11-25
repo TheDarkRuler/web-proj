@@ -2,6 +2,10 @@ body {
     font-family: 'Arial', sans-serif;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    height: 200%;
+    background-image: url('first.png');
+    background-size: cover;
+    overflow-y: auto;
 }
 
 body::-webkit-scrollbar {
@@ -13,7 +17,6 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
 }
 
 .popup-form {
