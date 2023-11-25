@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var scrollPositionToShowForm = 10; // Adjust this value as needed
 
     window.addEventListener('scroll', function () {
-        if (document.body.scrollTop > scrollPositionToShowForm || document.documentElement.scrollTop > scrollPositionToShowForm) {
+        if (document.body.scrollTop > scrollPositionToShowForm
+            || document.documentElement.scrollTop > scrollPositionToShowForm) {
             popupForm.style.display = 'block';
         } else {
             popupForm.style.display = 'none';
