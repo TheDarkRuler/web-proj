@@ -1,16 +1,38 @@
-.scroll-container {
-    height: 100%;
-    overflow-y: auto;
+body {
+    background-image: url('../img/first.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
-.scroll-container > form {
+body > img {
+    position: absolute;
+    height: 200%;
+    visibility: hidden;
+}
+
+body > form {
     position: relative;
     text-align: center;
     width: 100%;
-    padding: 10px 0;
-    margin-top: 70%;
-    margin-bottom: 20%;
-    overflow-y: auto;
+    bottom: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+      }
+      to {
+        opacity: 1;
+      }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateY(-20%);
+    }
+    to {
+        opacity: 0;
+    }
 }
