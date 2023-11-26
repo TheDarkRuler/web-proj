@@ -4,12 +4,30 @@ body {
     /* overflow-x: hidden; */
 }
 
-
-body>form {
-    position: relative;
+.scrollDown {
+    position: fixed;
     text-align: center;
-    margin-top: 40%;
-    margin-bottom: 40%;
+}
+
+.scrollDown > p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+}
+
+.scrollDown > img {
+    width: 3em;
+    animation-iteration-count: infinite;
+    animation-duration: 0.4s;
+    animation-direction: alternate;
+    animation-name: scrollArrow;
+}
+
+@keyframes scrollArrow {
+    from {
+        transform: translateY(-8px);
+    }
+    to {
+    }
 }
 
 @keyframes fadeIn {
