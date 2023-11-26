@@ -1,37 +1,40 @@
 body {
-    font-family: 'Arial', sans-serif;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow-x: hidden;
-    background-image: url('first.png');
+    background-image: url('../img/first.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    /* To block the scroll down effect but still manage to work */
-    background-attachment: fixed;
-    height: 300vh
+    overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
-    display: none;
+body>img {
+    position: absolute;
+    height: 200%;
+    visibility: hidden;
 }
 
-.container {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body>form {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
 }
 
-.popup-form {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 999;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateY(-20%);
+    }
+
+    to {
+        opacity: 0;
+    }
 }
