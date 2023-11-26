@@ -238,6 +238,8 @@ input {
     }
 
     .sign-up-container {
+        width: 100%;
         visibility: hidden;
+        transform: translateX(100%);
     }
 }
