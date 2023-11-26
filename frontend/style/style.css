@@ -1,7 +1,6 @@
 body {
-    background-image: url('../img/first.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url('../img/seven.png');
+    background-size: 50%;
     overflow-x: hidden;
 }
 
