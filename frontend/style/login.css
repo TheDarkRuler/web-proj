@@ -8,7 +8,7 @@ body {
     background: #f6f5f7;
     background-image: url('../img/first.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
@@ -99,8 +99,8 @@ input {
         0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 100%;
-    max-width: 100%;
+    width: 768px;
+    max-width: 90%;
     min-height: 480px;
 }
 

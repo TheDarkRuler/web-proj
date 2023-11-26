@@ -1,26 +1,19 @@
 body {
     background-image: url('../img/seven.png');
-    background-size: 50%;
+    /* background-size: 50%; */
     overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-body>img {
-    position: absolute;
-    height: 200%;
-    visibility: hidden;
-=======
-.scrollDown {
+.container {
     width: 100%;
-    height: 100vh;
+    height: 60vh;
     text-align: center;
 }
 
-.scrollDown > p {
+/* .container>p {
     padding-top: 40vh;
     font-size: 3em;
->>>>>>> origin/scrolldown-login-behavior-without-js
-}
+} */
 
 body>form {
     position: relative;
