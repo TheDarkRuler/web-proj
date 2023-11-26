@@ -9,7 +9,7 @@ body {
     background-image: url('../img/first.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,6 +58,7 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    margin-bottom: 10px;
 }
 
 button:active {
@@ -231,6 +232,8 @@ input {
     }
 
     .overlay-container {
+        width: 100%;
+        z-index: 1;
         visibility: hidden;
     }
 
