@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     var popupForm = document.getElementById('container');
+    var scrollDownMess = document.getElementById('scrollDown');
     var scrollPositionToShowForm = 10; // Adjust this value as needed
 
     window.addEventListener("scroll", () => {
         console.log(document.documentElement.scrollTop);
-        document.documentElement.scrollTop > scrollPositionToShowForm ?
-            popupForm.style.animation = 'fadeIn 1s forwards' : popupForm.style.animation = 'fadeOut 1s forwards';
+        if (document.documentElement.scrollTop > scrollPositionToShowForm) {
+            popupForm.style.animation = 'fadeIn 1s forwards'
+            scrollDownMess.style.visibility = 'hidden';
+        } else {
+            popupForm.style.animation = 'fadeOut 1s forwards';
+            scrollDownMess.style.visibility = 'visible';
+        } 
     });
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
