@@ -1,6 +1,5 @@
 body {
-    background-image: url('../img/seven.png');
-    background-size: 50%;
+    background-color: rgb(170, 194, 255);
     overflow-x: hidden;
 }
 
