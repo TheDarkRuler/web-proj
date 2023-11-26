@@ -237,8 +237,13 @@ input {
 
     .sign-up-container {
         width: 100%;
+<<<<<<< HEAD
         left: 0;
         visibility: hidden;
         /* margin-left: -100%; */
+=======
+        visibility: hidden;
+        transform: translateX(100%);
+>>>>>>> 373071f14dab4452a8f7436d9aad374e66f09dc6
     }
 }
