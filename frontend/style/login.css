@@ -263,6 +263,11 @@ footer a {
         background-size: 200% 200%;
     }
 
+    .sign-in-container {
+        width: 100%;
+        z-index: 1;
+    }
+
     .overlay-container {
         visibility: hidden;
     }
