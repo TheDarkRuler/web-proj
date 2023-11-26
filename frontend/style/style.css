@@ -35,6 +35,7 @@ body>form {
 
 @keyframes fadeOut {
     from {
+        opacity: 1;
         transform: translateY(-20%);
     }
 

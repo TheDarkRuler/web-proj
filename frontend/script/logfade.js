@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     var popupForm = document.getElementById('container');
     var scrollPositionToShowForm = 10; // Adjust this value as needed
+    popupForm.style.opacity = 0;
 
     window.addEventListener("scroll", () => {
         console.log(document.documentElement.scrollTop);

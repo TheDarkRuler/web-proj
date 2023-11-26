@@ -1,7 +1,7 @@
 console.log("Js connected properly!");
 
 document.addEventListener('DOMContentLoaded', function () {
-    var popupForm = document.getElementById('container');
+    var popupForm = document.getElementById('popupForm');
     var scrollPositionToShowForm = 10;
 
     window.addEventListener('scroll', function () {
