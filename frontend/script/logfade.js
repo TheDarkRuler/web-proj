@@ -19,14 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
     const linkToSwitchUp = document.getElementById('switchToSignUp');
+    const linkToSwitchIn = document.getElementById('switchToSignIn');
     const singUpPanel = document.querySelector('.sign-up-container');
     const signInPanel = document.querySelector('.sign-in-container');
 
     linkToSwitchUp.addEventListener('click', () => {
-        container.classList.add("right-panel-active");
         if (window.innerWidth <= 600) {
-            singUpPanel.style.visibility = 'visible';
+            container.classList.add("right-panel-active");
             signInPanel.style.visibility = 'hidden';
+            singUpPanel.style.visibility = 'visible';
+            singUpPanel.style.marginLeft = '-100%';
+        }
+    });
+
+    linkToSwitchIn.addEventListener('click', () => {
+        if (window.innerWidth <= 600) {
+            container.classList.remove("right-panel-active");
+            signInPanel.style.visibility = 'visible';
+            singUpPanel.style.visibility = 'hidden';
+            singUpPanel.style.marginLeft = '0';
         }
     });
 

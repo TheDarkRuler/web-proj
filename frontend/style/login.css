@@ -232,12 +232,13 @@ input {
     }
 
     .overlay-container {
-        width: 100%;
-        z-index: 1;
-        visibility: hidden;
+        display: none;
     }
 
     .sign-up-container {
+        width: 100%;
+        left: 0;
         visibility: hidden;
+        /* margin-left: -100%; */
     }
 }
