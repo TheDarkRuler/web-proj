@@ -20,3 +20,35 @@ header > p {
     width: 60%;
     overflow-y: auto;
 }
+
+footer {
+    max-height: 10%;
+    background-color: rgb(188, 188, 188);
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+footer > span > img {
+    width: 10%;
+    padding: 5px;
+}
+
+footer > span:not(:first-child) {
+    margin-left: 10%;
+}
+
+@media screen and (min-width: 600px) {
+    
+    body > header {
+        position: relative;
+        height: 50%;
+    }
+
+    header > img {
+        text-align: center;
+        width: 30%;
+    }
+}
