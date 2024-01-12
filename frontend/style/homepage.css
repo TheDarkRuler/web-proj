@@ -1,0 +1,22 @@
+body > header {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-height: 10%;
+    background-color: rgb(188, 188, 188);
+    transition: top 0.2s ease-in-out;
+}
+
+header > img {
+    width: 20%;
+    margin-right: 5%;
+    padding: 5%;
+}
+
+header > p {
+    text-align: center;
+    width: 60%;
+    overflow-y: auto;
+}
