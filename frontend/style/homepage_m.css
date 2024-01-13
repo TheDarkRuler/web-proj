@@ -39,16 +39,3 @@ footer > span > img {
 footer > span:not(:first-child) {
     margin-left: 10%;
 }
-
-@media screen and (min-width: 600px) {
-    
-    body > header {
-        position: relative;
-        height: 50%;
-    }
-
-    header > img {
-        text-align: center;
-        width: 30%;
-    }
-}

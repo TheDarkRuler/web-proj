@@ -1,0 +1,63 @@
+html,body {
+    height: 100%;
+    width: 100%;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.left-content, main, .right-content {
+    display: inline-block;
+    vertical-align: top;
+    height: 100vh;
+}
+
+.left-content {
+    text-align: center;
+    width: 25%;
+}
+
+.profile-container {
+    height: 90vh;
+}
+
+.profile-section > span > img {
+    margin-top: 20%;
+    width: 30%;
+    border-radius: 100%;
+}
+
+.quote-section {
+    margin-top: 20%;
+}
+
+.quote-section > .quote-day {
+    font-weight: bold;
+    font-size: large;
+}
+
+.left-content > span > img{
+    width: 15%;
+}
+
+main {
+    width: 48%;
+    overflow-y: scroll;
+}
+
+main > header {
+    text-align: center;
+}
+
+main > header > img {
+    width: 30%;
+    padding: 5%;
+}
+
+.right-content {
+    text-align: center;
+    width: 25%;
+}
+
+.messages-container {
+    height: 90vh;
+}
