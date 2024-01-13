@@ -46,6 +46,7 @@ main {
 
 main > header {
     text-align: center;
+    margin-bottom: -25%;
 }
 
 main > header > img {
@@ -58,6 +59,48 @@ main > header > img {
     width: 25%;
 }
 
+.right-content > span > img{
+    width: 15%;
+}
+
 .messages-container {
-    height: 90vh;
+    height: 70vh;
+}
+
+.chat {
+    font-weight: bold;
+    font-size: large;
+    padding-top: 20%;
+}
+
+.direct > img, .direct > p {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.direct > img {
+    margin-right: 5%;
+    border-radius: 100%;
+    width: 15%;
+}
+
+.direct:not(:first-child) {
+    margin-top: 5%;
+}
+
+.button-view-more {
+    height: 20vh;
+}
+
+.button-view-more > button {
+    background-color: #000000; 
+    color: white;
+    padding: 3% 15%;
+    text-align: center;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.button-view-more > button:hover {
+    background-color: #373737;
 }
