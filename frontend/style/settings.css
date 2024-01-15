@@ -15,10 +15,6 @@ body {
     flex-wrap: wrap;
 }
 
-.general-container {
-    /* flex: 50%; */
-}
-
 .text-based-settings {
     order: 1;
     /* width: 50%; */
