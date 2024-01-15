@@ -1,0 +1,52 @@
+html,
+body {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-container {
+    display: flex;
+    flex-direction: row;
+    flex: 50%;
+    background-color: aliceblue;
+}
+
+.general-container {
+    flex: 50%;
+    background-color: blue;
+}
+
+.text-based-settings {
+    order: 1;
+    width: 50%;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-based-settings h3 {
+    margin: 1rem 0 0 1rem;
+}
+
+.text-based-settings form {
+    margin-left: 20%;
+}
+
+.text-based-settings form input {
+    margin: 1% 0;
+    width: 60%;
+    background-color: transparent;
+    border: none;
+}
+
+.image-based-settings {
+    order: 2;
+    width: 50%;
+}
+
+.image-based-settings form {
+    margin: 20% 0 0 20%;
+    width: 60%;
+}
