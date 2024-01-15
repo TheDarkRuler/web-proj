@@ -18,29 +18,29 @@
     </div>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="../backend/subscription.php" method="post" enctype=”multipart/form-data”>
                 <h1>Create Account</h1>
                 <span>or use your email for registration</span>
                 <label for="upname" hidden>name</label>
-                <input id="upname" type="text" placeholder="Name" />
+                <input id="upname" name="username" type="text" placeholder="Name" />
                 <label for="upmail" hidden>mail</label>
-                <input id="upmail" type="email" placeholder="Email" />
+                <input id="upmail" name="mail" type="email" placeholder="Email" />
                 <label for="uppws" hidden>password</label>
-                <input id="uppws" type="password" placeholder="Password" />
-                <button>Sign Up</button>
+                <input id="uppws" name="password" type="password" placeholder="Password" />
+                <button type="submit">Sign Up</button>
                 <span id="switchToSignIn">If you already have an account Sign in</span>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="../backend/subscription.php" method="post" enctype=”multipart/form-data”>
                 <h1>Sign in</h1>
                 <span>or use your account</span>
                 <label for="inmail" hidden>mail</label>
-                <input id="inmail" type="email" placeholder="Email" />
+                <input name="mail" id="inmail" type="email" placeholder="Email" />
                 <label for="inpsw" hidden>password</label>
-                <input id="inpsw" type="password" placeholder="Password" />
+                <input name="password" id="inpsw" type="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <button type="submit">Sign In</button>
                 <span id="switchToSignUp">Otherwise Sign up!</span>
             </form>
         </div>

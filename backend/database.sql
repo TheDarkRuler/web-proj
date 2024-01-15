@@ -9,11 +9,11 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     first_login TIMESTAMP NOT NULL,
     last_login TIMESTAMP DEFAULT NOW(),
-    profile_picture VARCHAR(255),
+    profile_picture LONGBLOB,
     description TEXT,
-    n_follower INT,
-    n_following INT,
-    n_post INT
+    n_follower INT DEFAULT 0,
+    n_following INT DEFAULT 0,
+    n_post INT DEFAULT 0
 );
 
 DROP TABLE IF EXISTS Follows;
