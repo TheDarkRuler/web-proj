@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/settings.css" />
+    <script type="text/javascript" src="../script/settings.js"></script>
 </head>
 
 <body>
     <div class="account-container">
         <div class="text-based-settings">
             <h3>Account</h3>
-            <form action="#" method="post" name="info-form">
+            <form id="text-info-form" action="#" method="post" name="info-form">
                 <label for="username">Username : </label>
                 <input id="username" type="text" name="username" placeholder="username">
                 <br>
@@ -24,13 +25,16 @@
             </form>
         </div>
         <div class="image-based-settings">
-            <form action="#" method="post" name="info-form">
-                <input type="file" name="profile-image">
+            <form id="image-form" action="#" method="post" name="info-form">
+                <input id="upload-image" type="file" name="profile-image" accept=".png,.jpg,.jpeg"
+                    onchange="previewImage()">
+                <img id="preview-image" class="profile-image" src="" alt="Profile image">
             </form>
         </div>
     </div>
-
-    <div class="general-container"></div>
+    <div class="save-container">
+        <button class="save-button" onclick="saveForms()">SAVE</button>
+    </div>
 </body>
 
 </html>
