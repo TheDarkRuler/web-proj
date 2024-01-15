@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Artify Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style/style.css" />
+    <link rel="stylesheet" type="text/css" href="../style/post_creator.css" />
+    <script type="text/javascript" src="../script/settings.js"></script>
+    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header">
+        <img src="../img/logo.png" alt="Logo">
+    </div>
+    <div class="post-box">
+        <div class="image-chooser">
+            <form id="image-form" action="#" method="post" name="post-creator">
+                <input id="upload-image" type="file" name="post-image" accept=".png,.jpg,.jpeg"
+                    onchange="previewImage()">
+                <img id="preview-image" class="image-viewer" src="" alt="Post Image">
+            </form>
+        </div>
+        <div class="text-chooser">
+            <textarea class="description" name="description" cols="30" rows="5"
+                placeholder="Insert the description here..."></textarea>
+        </div>
+        <div class="buttons">
+            <i class="fa-3x fa-solid fa-trash"></i>
+            <i class="fa-3x fa-solid fa-check"></i>
+        </div>
+    </div>
+</body>
+
+</html>
