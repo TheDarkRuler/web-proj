@@ -44,7 +44,9 @@ CREATE TABLE Comments (
     post_id INT,
     FOREIGN KEY (post_id) REFERENCES Posts(id),
     content TEXT,
-    tp TIMESTAMP
+    tp TIMESTAMP, 
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 DROP TABLE IF EXISTS CommentAComment;
