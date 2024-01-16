@@ -17,7 +17,18 @@ class Post {
         return $result;
     }
 
+    function update_post_stats($column_name, $value, $post_id) {
+        global $db;
 
+        $query = 'UPDATE Posts SET ? = ? + ? WHERE post_id LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ssii', $column_name, $column_name, $value, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result;
+    }
 
     function get_all_by_user($user_id) {
         global $db;
