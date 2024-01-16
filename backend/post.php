@@ -17,6 +17,8 @@ class Post {
         return $result;
     }
 
+
+
     function get_all_by_user($user_id) {
         global $db;
 

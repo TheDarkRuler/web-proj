@@ -1,4 +1,8 @@
+DROP DATABASE IF EXISTS artify;
+
 CREATE DATABASE artify;
+
+USE artify;
 
 DROP TABLE IF EXISTS Users;
 
@@ -34,7 +38,9 @@ CREATE TABLE Posts (
     FOREIGN KEY (user_id) REFERENCES Users(id),
     image VARCHAR(255),
     description TEXT,
-    tp TIMESTAMP
+    tp TIMESTAMP DEFAULT NOW(),
+    n_like INT DEFAULT 0,
+    n_dislike INT DEFAULT 0
 );
 
 DROP TABLE IF EXISTS Comments;
@@ -52,11 +58,11 @@ CREATE TABLE Comments (
 DROP TABLE IF EXISTS CommentAComment;
 
 CREATE TABLE CommentAComment (
-    comment1_id INT,
-    comment2_id INT,
-    PRIMARY KEY (comment1_id, comment2_id),
-    FOREIGN KEY (comment1_id) REFERENCES Comments(id),
-    FOREIGN KEY (comment2_id) REFERENCES Comments(id)
+    reference_comment_id INT,
+    comment_id INT,
+    PRIMARY KEY (reference_comment_id, comment_id),
+    FOREIGN KEY (reference_comment_id) REFERENCES Comments(id),
+    FOREIGN KEY (comment_id) REFERENCES Comments(id)
 );
 
 DROP TABLE IF EXISTS Messages;

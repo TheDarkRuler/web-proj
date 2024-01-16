@@ -17,6 +17,19 @@ class Post {
         return $result;
     }
 
+    function comment_comment($reference_comment, $comment_id) {
+        global $db;
+
+        $query = 'INSERT INTO CommentAComment (reference_comment_id, comment_id) VALUES (?, ?)';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $reference_comment, $comment_id);
+        $statement->execute();
+
+        $result = $statement->get_result();
+        return $result;
+    }
+
     function get_all_by_post($post_id) {
         global $db;
 
