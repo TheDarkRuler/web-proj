@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var scrollPositionToShowForm = 10; // Adjust this value as needed
     let switched = false;
 
+    var upsize = document.getElementById('upsize');
+    var insize = document.getElementById('insize');
+
+    upsize.value = screen.width > 600;
+    insize.value = screen.width > 600;
+
+    window.addEventListener("resize", () => {
+        upsize.value = screen.width > 600;
+        insize.value = screen.width > 600;
+    })
+
+
     window.addEventListener("scroll", () => {
         console.log(document.documentElement.scrollTop);
         if (document.documentElement.scrollTop > scrollPositionToShowForm) {
