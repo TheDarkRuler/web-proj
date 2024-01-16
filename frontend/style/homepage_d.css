@@ -1,7 +1,7 @@
 html,body {
     height: 100%;
     width: 100%;
-    margin-top: 0;
+    margin: 0;
     overflow: hidden;
 }
 
@@ -11,9 +11,14 @@ html,body {
     height: 100vh;
 }
 
-.left-content {
+.left-content, .right-content {
+    background-color: #b1b1b1;
     text-align: center;
-    width: 25%;
+    width: 24%;
+}
+
+.right-content {
+    float: right;
 }
 
 .profile-container {
@@ -40,7 +45,8 @@ html,body {
 }
 
 main {
-    width: 48%;
+    width: 49%;
+    padding: 1%;
     overflow-y: scroll;
 }
 
@@ -52,11 +58,6 @@ main > header {
 main > header > img {
     width: 30%;
     padding: 5%;
-}
-
-.right-content {
-    text-align: center;
-    width: 25%;
 }
 
 .right-content > span > img{
