@@ -7,17 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var upsize = document.getElementById('upsize');
     var insize = document.getElementById('insize');
 
-    upsize.value = screen.width > 600;
-    insize.value = screen.width > 600;
+    upsize.value = screen.width;
+    insize.value = screen.width;
 
     window.addEventListener("resize", () => {
-        upsize.value = screen.width > 600;
-        insize.value = screen.width > 600;
+        upsize.value = screen.width;
+        insize.value = screen.width;
     })
 
 
     window.addEventListener("scroll", () => {
-        console.log(document.documentElement.scrollTop);
         if (document.documentElement.scrollTop > scrollPositionToShowForm) {
             popupForm.style.animation = 'fadeIn 1s forwards'
             scrollDownMess.style.visibility = 'hidden';
