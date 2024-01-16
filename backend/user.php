@@ -35,6 +35,52 @@ class User {
 
         $verify = password_verify($password, $user[3]);
 
+        // should update last_login
+        $query = 'UPDATE Users SET last_login = ? WHERE mail LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ss', date('Y-m-d H:i:s'), $mail);
+        $statement->execute();
+
         return $verify == true ? $user : null;
+    }
+
+    function increase_field($field, $mail) {
+        global $db;
+
+        $query = 'UPDATE Users SET ? = ? + 1 WHERE mail LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('sss', $field, $field, $mail);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result;
+    }
+
+    function update_pic($data, $mail) {
+        global $db;
+
+        $query = 'UPDATE Users SET profile_picture = ? WHERE mail LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('bs', $data, $mail);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result;
+    }
+
+    function update_description($description, $mail) {
+        global $db;
+
+        $query = 'UPDATE Users SET description = ? WHERE mail LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ss', $description, $mail);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result;
     }
 }
