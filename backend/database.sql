@@ -63,10 +63,10 @@ DROP TABLE IF EXISTS Messages;
 
 CREATE TABLE Messages (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    user1_id INT,
-    user2_id INT,
-    FOREIGN KEY (user1_id) REFERENCES Users(id),
-    FOREIGN KEY (user2_id) REFERENCES Users(id),
+    sender_id INT,
+    receiver_id INT,
+    FOREIGN KEY (sender_id) REFERENCES Users(id),
+    FOREIGN KEY (receiver_id) REFERENCES Users(id),
     content TEXT,
     tp TIMESTAMP
 );
