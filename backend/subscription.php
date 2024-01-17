@@ -7,12 +7,13 @@ $user = new User();
 session_start();
 
 if (isset($_POST['username'])) {
+    global $db;
 
     $username = $_POST['username'];
     $mail = $_POST['mail'];
     $password = $_POST['password'];
 
-    $result = $user->create_user($username, $mail, $password, NULL, '')[0];
+    $result = $user->create_user($username, $mail, $password, '')[0];
 
     $_SESSION['user_id'] = $result[0];
     $_SESSION['username'] = $result[1];

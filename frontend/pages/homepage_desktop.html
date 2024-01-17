@@ -1,5 +1,7 @@
 <?php
+require_once '../../backend/user.php';
 session_start();
+$user = new User();
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +20,9 @@ session_start();
     <aside class="left-content">
         <div class="profile-container">
             <div class="profile-section">
-                <a href="personal_page.html">
+                <a href="personal_page.html?#<?php echo $_SESSION['user_id']; ?>">
                     <span>
-                        <img src="../images/second.jpg" alt="profile-image">
+                        <?php $profileP = $user->getProfileImg($_SESSION['user_id']);?>
                     </span>
                     <p>
                         <?php echo $_SESSION['username']; ?>
