@@ -13,7 +13,7 @@
     <div class="account-container">
         <div class="text-based-settings">
             <h3>Account</h3>
-            <form id="text-info-form" action="#" method="post" name="info-form">
+            <form id="text-info-form" action="settings.php" method="post" name="info-form">
                 <label for="username">Username : </label>
                 <input id="username" type="text" name="username" placeholder="username">
                 <br>
@@ -25,7 +25,8 @@
             </form>
         </div>
         <div class="image-based-settings">
-            <form id="image-form" action="#" method="post" name="info-form">
+            <form id="image-form" action="../../backend/settings.php" method="post" name="info-form"
+                enctype=”multipart/form-data”>
                 <input id="upload-image" type="file" name="profile-image" accept=".png,.jpg,.jpeg"
                     onchange="previewImage()">
                 <img id="preview-image" class="profile-image" src="" alt="Profile image">
@@ -33,7 +34,7 @@
         </div>
     </div>
     <div class="save-container">
-        <button class="save-button" onclick="saveForms()">SAVE</button>
+        <button class="save-button">SAVE</button>
     </div>
 </body>
 

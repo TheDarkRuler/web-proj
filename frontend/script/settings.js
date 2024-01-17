@@ -7,7 +7,15 @@ function previewImage() {
     }
 }
 
-function saveForms() {
-    // document.getElementById('text-info-form').submit();
-    // document.getElementById('image-form').submit();
-}
+document.addEventListener('DOMContentLoaded', function () {
+    let button = document.querySelector('.save-button');
+
+    console.log(button);
+
+    button.addEventListener('click', () => {
+        console.log('Hello from save forms');
+
+        document.getElementById('text-info-form').submit();
+        document.getElementById('image-form').submit();
+    });
+});
