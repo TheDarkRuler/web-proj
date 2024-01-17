@@ -12,6 +12,11 @@
     margin-top: 2%;
 }
 
+.post > a {
+    text-decoration: none;
+    color: black;
+}
+
 .post:not(:first-child) {
     margin-top: 10%;
 }
@@ -19,6 +24,7 @@
 .post-creator {
     margin: 2px 0 0 2px;
     font-size: medium;
+    font-weight: bold;
 }
 
 .post-image {
@@ -28,6 +34,7 @@
 
 .post-description {
     margin: 0 1% 1% 1%;
+    font-weight: bold;
 }
 
 .icons span {

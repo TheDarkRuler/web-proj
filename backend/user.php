@@ -20,15 +20,17 @@ class User {
         return $result->fetch_all();
     }
 
-    function create_user($user, $email, $password, $pic, $description) {
+    function create_user($user, $email, $password, $description) {
         global $db;
-
         $query = 'INSERT INTO Users (username, mail, password, first_login, profile_picture, description) VALUES (?, ?, ?, ?, ?, ?)';
 
         $crypto_password = password_hash($password, PASSWORD_DEFAULT);
 
+        $path = "../frontend/img/default_profile.jpg";
+        $blobProfile = file_get_contents($path);
+        
         $statement = $db->prepare($query);
-        $statement->bind_param('ssssbs', $user, $email, $crypto_password, date('Y-m-d H:i:s'), $pic, $description);
+        $statement->bind_param('ssssss', $user, $email, $crypto_password, date('Y-m-d H:i:s'), $blobProfile, $description);
         $statement->execute();
         $result = $statement->get_result();
 
@@ -148,5 +150,26 @@ class User {
         $verify = password_verify($check_password, $fetch);
 
         return $verify;
+    }
+
+    function getProfileImg($u_id) {
+        global $db;
+        $query = 'SELECT `profile_picture` FROM Users WHERE id LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $u_id);
+        $statement->execute();
+        $result = $statement->get_result();
+        
+        $blob = mysqli_fetch_array($result)[0];
+        if ($blob != NULL) {
+            $image = imagecreatefromstring($blob); 
+        
+            ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
+            imagejpeg($image, null, 80);
+            $data = ob_get_contents();
+            ob_end_clean();
+            echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
+        }
     }
 }
