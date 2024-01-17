@@ -6,6 +6,20 @@ require_once 'database.php';
 
 class User {
 
+    private function return_info_user($mail) {
+        global $db;
+
+        $query = 'SELECT id, username, mail, profile_picture, description, 
+            n_follower, n_following, n_post FROM Users WHERE mail LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('s', $mail);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all();
+    }
+
     function create_user($user, $email, $password, $pic, $description) {
         global $db;
 
@@ -18,7 +32,7 @@ class User {
         $statement->execute();
         $result = $statement->get_result();
 
-        return $result;
+        return $this->return_info_user($email);
     }
 
     function login_user($email, $password) {
@@ -42,7 +56,7 @@ class User {
         $statement->bind_param('ss', date('Y-m-d H:i:s'), $mail);
         $statement->execute();
 
-        return $verify == true ? $user : null;
+        return $verify == true ? $this->return_info_user($email) : null;
     }
 
     function increase_field($field, $mail) {
