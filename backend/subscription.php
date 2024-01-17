@@ -18,9 +18,14 @@ if (isset($_POST['username'])) {
     $_SESSION['username'] = $result[1];
     $_SESSION['mail'] = $result[2];
 
-
-    $_POST['size'] > 600 ? header('Location: ../frontend/pages/homepage_desktop.html') :
+    if ($_POST['size'] > 600) {
+        $_SESSION['device'] = "homepage_desktop.html";
+        header('Location: ../frontend/pages/homepage_desktop.html');
+    } else {
+        $_SESSION['device'] = "homepage_mobile.html";
         header('Location: ../frontend/pages/homepage_mobile.html');
+    }
+
 } else {
     $mail = $_POST['mail'];
     $password = $_POST['password'];
@@ -33,8 +38,13 @@ if (isset($_POST['username'])) {
         $_SESSION['username'] = $result[1];
         $_SESSION['mail'] = $result[2];
 
-        $_POST['size'] > 600 ? header('Location: ../frontend/pages/homepage_desktop.html') :
+        if ($_POST['size'] > 600) {
+            $_SESSION['device'] = "homepage_desktop.html";
+            header('Location: ../frontend/pages/homepage_desktop.html');
+        } else {
+            $_SESSION['device'] = "homepage_mobile.html";
             header('Location: ../frontend/pages/homepage_mobile.html');
+        }
     } else {
         header('Location: ../frontend/index.html');
     }

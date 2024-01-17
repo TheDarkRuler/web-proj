@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,9 @@
 
 <body>
     <header id="header">
-        <img src="../img/logo.png" alt="logo"/>
+        <a href= "<?php echo $_SESSION['device']; ?>">
+            <img src="../img/logo.png" alt="logo"/>
+        </a>
     </header>
 
     <div class="search-container">
@@ -23,36 +29,60 @@
 
     <div class="users-container">
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
         <div class="user">
-            <img src="../images/img9.jpg" alt="profile-image">
-            <a href="">Username</a>
+            <a href="personal_page.html?#1">
+                <img src="../images/img9.jpg" alt="profile-image">
+                <p>Username</p>
+                <p>#1</p>
+            </a>
         </div>
     </div>
 

@@ -9,10 +9,14 @@ body > header {
     transition: top 0.2s ease-in-out;
 }
 
-header > img {
+header > a {
     width: 20%;
     margin-right: 5%;
     padding: 5%;
+}
+
+header > a > img {
+    width: 100%;
 }
 
 header > p {
@@ -31,7 +35,11 @@ footer {
     left: 0;
 }
 
-footer > span > img {
+footer > span > a {
+   text-decoration: none;
+}
+
+footer > span > a > img {
     width: 10%;
     padding: 5px;
 }
