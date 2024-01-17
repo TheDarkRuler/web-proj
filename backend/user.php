@@ -97,4 +97,33 @@ class User {
 
         return $result;
     }
+
+    function update_personal($column, $value, $user_id) {
+        global $db;
+
+        $query = 'UPDATE Users SET ? = ? WHERE id LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ssi', $column, $value, $user_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result;
+    }
+
+    function validate_password($mail, $check_password) {
+        global $db;
+
+        $query = 'SELECT password FROM Users WHERE mail LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('s', $mail);
+        $statement->execute();
+        $result = $statement->get_result();
+        $fetch = $result->fetch_all()[0];
+
+        $verify = password_verify($check_password, $fetch[0]);
+
+        return $verify;
+    }
 }
