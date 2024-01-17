@@ -12,35 +12,35 @@
 <body>
     <div class="settings-container">
         <div class="form-container">
-            <div class="form-left">
-                <h3>Account Information</h3>
-                <form id="text-info-form" action="../../backend/settings.php" method="post" name="info-form">
+            <!-- <div class="form-left"> -->
+            <h3>Account Information</h3>
+            <form id="update-form" action="../../backend/settings.php" method="post" enctype="multipart/form-data">
+                <fieldset class="text">
                     <label for="username">Change Username:</label>
-                    <input id="username" type="text" name="username" placeholder="New Username">
+                    <input id="username" type="text" name="username" placeholder="New Username" />
 
                     <label for="email">Change Email:</label>
-                    <input id="email" type="text" name="email" placeholder="New Email">
+                    <input id="email" type="text" name="email" placeholder="New Email" />
 
-                    <label for="old_password">Old Password:</label>
-                    <input id="old_password" type="password" name="old_password" placeholder="Enter Old Password">
+                    <label for="password">Old Password:</label>
+                    <input id="password" type="password" name="password" placeholder="Enter Old Password" />
 
                     <label for="new_password">New Password:</label>
-                    <input id="new_password" type="password" name="new_password" placeholder="Enter New Password">
+                    <input id="new_password" type="password" name="new_password" placeholder="Enter New Password" />
 
                     <label for="description">Description:</label>
                     <input id="description" type="text" name="description" placeholder="Write your Description">
-                </form>
-            </div>
-            <div class="form-right">
-                <h3>Profile Image</h3>
-                <form id="image-form" action="../../backend/settings.php" method="post" name="info-form"
-                    enctype="multipart/form-data">
+                </fieldset>
+                <fieldset class="image">
                     <label for="upload-image">Update Profile Image:</label>
                     <input id="upload-image" type="file" name="profile-image" accept=".png,.jpg,.jpeg"
                         onchange="previewImage()">
                     <img id="preview-image" class="profile-image" src="" alt="Profile image">
-                </form>
-            </div>
+
+                    <input type="submit" value="SUB" hidden>
+                </fieldset>
+            </form>
+            <!-- </div> -->
         </div>
         <div class="save-container">
             <button class="save-button">SAVE CHANGES</button>

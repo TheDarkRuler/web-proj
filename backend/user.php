@@ -72,13 +72,13 @@ class User {
         return $result;
     }
 
-    function update_pic($data, $mail) {
+    function update_pic($data, $user_id) {
         global $db;
 
-        $query = 'UPDATE Users SET profile_picture = ? WHERE mail LIKE ?';
+        $query = 'UPDATE Users SET profile_picture = ? WHERE id = 1';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('bs', $data, $mail);
+        $statement->bind_param('s', $data);
         $statement->execute();
         $result = $statement->get_result();
 
@@ -98,17 +98,40 @@ class User {
         return $result;
     }
 
-    function update_personal($column, $value, $user_id) {
+    function update_username($value, $user_id) {
         global $db;
 
-        $query = 'UPDATE Users SET ? = ? WHERE id LIKE ?';
+        $query = "UPDATE Users SET username = ? WHERE id = ?";
 
         $statement = $db->prepare($query);
-        $statement->bind_param('ssi', $column, $value, $user_id);
+        $statement->bind_param('si', $value, $user_id);
         $statement->execute();
-        $result = $statement->get_result();
 
-        return $result;
+        return $statement->error ? false : true;
+    }
+
+    function update_email($value, $user_id) {
+        global $db;
+
+        $query = "UPDATE Users SET mail = ? WHERE id = ?";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('si', $value, $user_id);
+        $statement->execute();
+
+        return $statement->error ? false : true;
+    }
+
+    function update_password($value, $user_id) {
+        global $db;
+
+        $query = "UPDATE Users SET password = ? WHERE id = ?";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('si', $value, $user_id);
+        $statement->execute();
+
+        return $statement->error ? false : true;
     }
 
     function validate_password($mail, $check_password) {
@@ -122,7 +145,7 @@ class User {
         $result = $statement->get_result();
         $fetch = $result->fetch_all()[0];
 
-        $verify = password_verify($check_password, $fetch[0]);
+        $verify = password_verify($check_password, $fetch);
 
         return $verify;
     }

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', () => {
         console.log('Hello from save forms');
 
-        document.getElementById('text-info-form').submit();
-        document.getElementById('image-form').submit();
+        document.getElementById('update-form').submit();
+        // document.getElementById('image-form').submit();
     });
 });
