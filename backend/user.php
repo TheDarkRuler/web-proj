@@ -28,7 +28,7 @@ class User {
 
         $path = "../frontend/img/default_profile.jpg";
         $blobProfile = file_get_contents($path);
-        
+
         $statement = $db->prepare($query);
         $statement->bind_param('ssssss', $user, $email, $crypto_password, date('Y-m-d H:i:s'), $blobProfile, $description);
         $statement->execute();
@@ -160,16 +160,29 @@ class User {
         $statement->bind_param('i', $u_id);
         $statement->execute();
         $result = $statement->get_result();
-        
+
         $blob = mysqli_fetch_array($result)[0];
         if ($blob != NULL) {
-            $image = imagecreatefromstring($blob); 
-        
+            $image = imagecreatefromstring($blob);
+
             ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
             imagejpeg($image, null, 80);
             $data = ob_get_contents();
             ob_end_clean();
             echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
         }
+    }
+
+    function get_user_stats($user_id) {
+        global $db;
+
+        $query = 'SELECT n_follower, n_following, n_post FROM `Users` WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $user_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all()[0];
     }
 }

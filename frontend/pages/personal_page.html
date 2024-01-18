@@ -1,7 +1,11 @@
 <?php
-    session_start();
-    $_SESSION['ref_user'] = $_GET['ref_username'];
-    $_SESSION['ref_userid'] = $_GET['ref_id'];
+session_start();
+$_SESSION['ref_user'] = $_GET['ref_username'];
+$_SESSION['ref_userid'] = $_GET['ref_id'];
+
+require_once '../../backend/user.php';
+$user = new User();
+$stat = $user->get_user_stats($_SESSION['ref_userid']);
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +27,15 @@
             </h2>
         </div>
         <div class="counter-container">
-            <h3 class="follower-counter">1234 followers</h3>
-            <h3 class="following-counter">399 following</h3>
-            <h3 class="post-counter">121 posts</h3>
+            <h3 class="follower-counter">
+                <?php echo $stat[0]; ?> followers
+            </h3>
+            <h3 class="following-counter">
+                <?php echo $stat[1]; ?> following
+            </h3>
+            <h3 class="post-counter">
+                <?php echo $stat[2]; ?> posts
+            </h3>
         </div>
         <div class="description-container">
             <h4 class="description">

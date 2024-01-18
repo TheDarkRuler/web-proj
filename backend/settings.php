@@ -35,3 +35,5 @@ if (isset($_POST['new_password']) && isset($_POST['password']) && !empty($_POST[
         $user->update_password('password', password_hash($new_password, PASSWORD_DEFAULT), $_SESSION['user_id']);
     }
 }
+
+header('Location: ../frontend/pages/settings.html');
