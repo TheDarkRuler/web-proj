@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', function () {
         if (scrollDown > scrollPositionToShow + 10) {
-            header.style.top='-10%';
+            header.style.top = '-10%';
         } else {
-            header.style.top='0';
+            header.style.top = '0';
         }
-        
+
         if (scrollDown > this.document.documentElement.scrollTop) {
             if (!scrollDirection) {
                 scrollDirection = true;

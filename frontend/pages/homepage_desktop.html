@@ -5,6 +5,7 @@ require_once '../../backend/post.php';
 session_start();
 $user = new User();
 $q = new Quote();
+$p = new Post();
 ?>
 
 <!DOCTYPE html>
@@ -16,20 +17,23 @@ $q = new Quote();
     <link rel="stylesheet" type="text/css" href="../style/homepage_d.css" />
     <link rel="stylesheet" type="text/css" href="../style/post.css" />
     <link rel="stylesheet" type="text/css" href="../style/scrollbar_set.css" />
-    <script src="../script/hp-header-up.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <script src="../script/hp-header-up.js"></script>
     <aside class="left-content">
         <div class="profile-container">
             <div class="profile-section">
-                <a href="personal_page.html?#<?php echo $_SESSION['user_id']; ?>">
+                <a
+                    href="personal_page.html?ref_username=<?php echo $_SESSION['username']; ?>&ref_id=<?php echo $_SESSION['user_id']; ?>">
                     <span>
                         <?php $profileP = $user->getProfileImg($_SESSION['user_id']);?>
                     </span>
-                    <p>
+                    <p id="my_username">
                         <?php echo $_SESSION['username']; ?>
                     </p>
+                    <p id="my_id"></p>
                 </a>
             </div>
             <div class="quote-section">
@@ -55,6 +59,7 @@ $q = new Quote();
             </a>
         </header>
         <div class="post-container">
+            <?php $posts = $p->get_3_post_format($_SESSION['user_id']); ?>
             <div class="post">
                 <a href="personal_page.html?#1">
                     <p class="post-creator">Username#1</p>

@@ -57,4 +57,11 @@ class Post {
         $posts = $result->fetch_all();
         return $posts;
     }
+
+    function get_3_post_format($user_id) {
+        $posts = $this->get_all_following($user_id, 3);
+
+        // print_r($posts);
+        // die();
+    }
 }

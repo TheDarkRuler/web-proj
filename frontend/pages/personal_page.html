@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    $_SESSION['ref_user'] = $_GET['ref_username'];
+    $_SESSION['ref_userid'] = $_GET['ref_id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +18,9 @@
     <div class="container">
         <div class="logo-container">
             <span class="dot"></span>
-            <h2 class="username">Username</h2>
+            <h2 class="username">
+                <?php echo $_SESSION['ref_user'] ?>
+            </h2>
         </div>
         <div class="counter-container">
             <h3 class="follower-counter">1234 followers</h3>
