@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // switching the active chatbox
             let oldActiveChat = this.querySelector('.active');
-            oldActiveChat.classList.remove('active');
+            if (oldActiveChat != null) {
+                oldActiveChat.classList.remove('active');
+            }
             chats[i].classList.add('active');
 
             // for the mobile version, clicking the chat should remove the chatlist
@@ -17,6 +19,60 @@ document.addEventListener("DOMContentLoaded", function () {
                 leftContainer.classList.add('invisible');
                 rightContainer.classList.remove('invisible');
             }
+
+            let user_id = document.getElementById('user_id');
+            let rec_id = chats[i].children[1].children[0].children[0].innerHTML.split('#')[1];
+
+            $.ajax({
+                url: '../../backend/chat_switch.php',
+                type: 'POST',
+                data: { sender: user_id.innerHTML, receiver: rec_id },
+                success: function (result) {
+                    let container = document.querySelector('.chat-container');
+                    container.innerHTML = "";
+                    for (let i = 0; i < result.length; i++) {
+                        // console.log(result[i]);
+                        container.innerHTML += `<div class='message-box ` + ((result[i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
+                            <p>
+                            ` + result[i][3] + `<br><span>07:43</span>
+                            </p>
+                            </div >`;
+                    }
+                },
+                error: function () {
+                    console.log('error');
+                },
+                dataType: 'json'
+            });
+
+            $.ajax({
+                url: '../../backend/load_head.php',
+                type: 'post',
+                data: { user_id: rec_id },
+                success: function (result) {
+                    let container = document.querySelector('.user-img');
+                    container.innerHTML = '';
+                    container.innerHTML += result;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus + " - Error: " + errorThrown);
+                }
+            });
+
+            $.ajax({
+                url: '../../backend/load_user.php',
+                type: 'post',
+                data: { user_id: rec_id },
+                success: function (result) {
+                    let container = document.getElementById('receiver_username');
+                    container.innerHTML = '';
+                    container.innerHTML += result;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus + " - Error: " + errorThrown);
+                },
+                dataType: 'json'
+            });
 
         });
     }
