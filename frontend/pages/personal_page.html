@@ -4,9 +4,12 @@ $_SESSION['ref_user'] = $_GET['ref_username'];
 $_SESSION['ref_userid'] = $_GET['ref_id'];
 
 require_once '../../backend/user.php';
+require_once '../../backend/post.php';
 $user = new User();
+$post = new Post();
 $stat = $user->get_user_stats($_SESSION['ref_userid']);
 $description = $user->get_user_description($_SESSION['ref_userid']);
+$posts = $post->get_by_user($_SESSION['ref_userid'], 4);
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +20,7 @@ $description = $user->get_user_description($_SESSION['ref_userid']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/personal_page.css" />
+    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -44,13 +48,18 @@ $description = $user->get_user_description($_SESSION['ref_userid']);
             </h4>
         </div>
         <div class="button-container">
-            <span class="little-dot"></span>
+            <span class="little-dot">
+                <i class="fa-solid fa-user-plus"></i>
+            </span>
             <span class="little-dot"></span>
         </div>
     </div>
     <div class="post-container">
+        <?php foreach($posts as $p): ?>
         <div class="post">
-            <h3 class="post-creator">Username</h3>
+            <h3 class="post-creator">
+                <?php echo $_SESSION['ref_user']; ?>
+            </h3>
             <img class="post-image" src="../images/second.jpg" alt="post">
             <div class="icons">
                 <span><img src="../icons/like.png" alt="like"></span>
@@ -58,8 +67,11 @@ $description = $user->get_user_description($_SESSION['ref_userid']);
                 <span><img src="../icons/comment.png" alt="comment"></span>
                 <span><img src="../icons/save.png" alt="save"></span>
             </div>
-            <h4 class="post-description">Hello Jzr here</h4>
+            <h4 class="post-description">
+                <?php echo $p[3]; ?>
+            </h4>
         </div>
+        <?php endforeach; ?>
         <div class="post">
             <h3 class="post-creator">Username</h3>
             <img class="post-image" src="../images/second.jpg" alt="post">

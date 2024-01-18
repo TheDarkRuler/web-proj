@@ -11,7 +11,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: white;
+    color: black;
 }
 
 .container {
@@ -23,7 +23,7 @@ h4 {
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 1%;
-    background-color: rgb(30, 31, 48);
+    background-color: aliceblue;
 }
 
 
