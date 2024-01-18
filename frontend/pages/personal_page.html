@@ -6,6 +6,7 @@ $_SESSION['ref_userid'] = $_GET['ref_id'];
 require_once '../../backend/user.php';
 $user = new User();
 $stat = $user->get_user_stats($_SESSION['ref_userid']);
+$description = $user->get_user_description($_SESSION['ref_userid']);
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@ $stat = $user->get_user_stats($_SESSION['ref_userid']);
         </div>
         <div class="description-container">
             <h4 class="description">
-                Hello my name is Thomas and i am 22 rn i have lot of stuff
+                <?php $description ?>
             </h4>
         </div>
         <div class="button-container">

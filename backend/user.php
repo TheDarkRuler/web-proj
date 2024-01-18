@@ -185,4 +185,17 @@ class User {
 
         return $result->fetch_all()[0];
     }
+
+    function get_user_description($user_id) {
+        global $db;
+
+        $query = 'SELECT description FROM `Users` WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $user_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all()[0];
+    }
 }
