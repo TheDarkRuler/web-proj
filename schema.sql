@@ -13,7 +13,7 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     first_login TIMESTAMP NOT NULL,
     last_login TIMESTAMP DEFAULT NOW(),
-    profile_picture MEDIUMBLOB,
+    profile_picture LONGBLOB,
     description TEXT,
     n_follower INT DEFAULT 0,
     n_following INT DEFAULT 0,
