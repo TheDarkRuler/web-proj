@@ -198,4 +198,27 @@ class User {
 
         return $result->fetch_all()[0];
     }
+
+    function add_follow($user_id, $follow_id, $user) {
+        global $db;
+
+        $query = 'UPDATE `Users`
+            SET n_following = n_following + 1
+            WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $user_id);
+        $statement->execute();
+        
+        $query = 'UPDATE `Users`
+            SET n_follower = n_follower + 1
+            WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $follow_id);
+        $statement->execute();
+        
+
+        echo "personal_page.html?ref_username=$user&ref_id=$follow_id";
+    }
 }

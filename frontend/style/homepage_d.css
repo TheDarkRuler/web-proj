@@ -31,7 +31,8 @@ main,
 
 .profile-section>a>span>img {
     margin-top: 20%;
-    width: 30%;
+    width: 116px;
+    height: 116px;
     border-radius: 100%;
 }
 
