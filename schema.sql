@@ -82,7 +82,8 @@ DROP TABLE IF EXISTS Quotes;
 CREATE TABLE Quotes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     content TEXT,
-    quote_day DATETIME
+    quote_day DATETIME DEFAULT CURDATE(),
+    author VARCHAR(30)
 );
 
 

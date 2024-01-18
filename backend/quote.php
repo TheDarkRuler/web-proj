@@ -4,13 +4,13 @@ require_once 'database.php';
 
 class Quote {
 
-    function create_quote($content, $day) {
+    function create_quote($content, $day, $author) {
         global $db;
 
-        $query = 'INSERT Quotes (content, quote_day) VALUES (?, ?)';
+        $query = 'INSERT Quotes (content, quote_day, author) VALUES (?, ?, ?)';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('ss', $content, $day);
+        $statement->bind_param('sss', $content, $day, $author);
         $statement->execute();
         $result = $statement->get_result();
 
@@ -30,5 +30,17 @@ class Quote {
         $posts = $result->fetch_all();
 
         return $posts;
+    }
+
+    function get_random_quote() {
+        global $db;
+
+        $query = 'SELECT * FROM Quotes ORDER BY RAND() LIMIT 1';
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all()[0];
     }
 }

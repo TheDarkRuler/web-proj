@@ -44,13 +44,13 @@ class Post {
         return $posts;
     }
 
-    function get_all_following($user_id) {
+    function get_all_following($user_id, $limit) {
         global $db;
 
-        $query = 'SELECT * FROM Posts WHERE user_id IN (SELECT id2 FROM Follows WHERE id1 = ?) ORDER BY RAND()';
+        $query = 'SELECT * FROM Posts WHERE user_id IN (SELECT id2 FROM Follows WHERE id1 = ?) ORDER BY RAND() LIMIT ?';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('i', $user_id);
+        $statement->bind_param('ii', $user_id, $limit);
         $statement->execute();
         $result = $statement->get_result();
 
