@@ -1,7 +1,38 @@
+function update_messages(user_id) {
+    if (document.querySelector('.active') != null) {
+        let rec_id = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
+
+        $.ajax({
+            url: '../../backend/chat_switch.php',
+            type: 'POST',
+            data: { sender: user_id.innerHTML, receiver: rec_id },
+            success: function (result) {
+                let container = document.querySelector('.chat-container');
+                container.innerHTML = "";
+                for (let i = 0; i < result.length; i++) {
+                    container.innerHTML += `<div class='message-box ` + ((result[result.length - 1 - i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
+                    <p>
+                    ` + result[result.length - 1 - i][3] + `<br><span>07:43</span>
+                    </p>
+                    </div >`;
+                }
+                container.scrollTop = container.scrollHeight;
+            },
+            error: function () {
+                console.log('error');
+            },
+            dataType: 'json'
+        });
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     let chats = this.querySelectorAll('.chat-box');
     let leftContainer = document.querySelector('.left-container');
     let rightContainer = document.querySelector('.right-container');
+    let user_id = document.getElementById('user_id');
+
+    setInterval(update_messages(user_id), 5000);
 
     for (let i = 0; i < chats.length; i++) {
         chats[i].addEventListener('click', () => {
@@ -20,30 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 rightContainer.classList.remove('invisible');
             }
 
-            let user_id = document.getElementById('user_id');
             let rec_id = chats[i].children[1].children[0].children[0].innerHTML.split('#')[1];
 
-            $.ajax({
-                url: '../../backend/chat_switch.php',
-                type: 'POST',
-                data: { sender: user_id.innerHTML, receiver: rec_id },
-                success: function (result) {
-                    let container = document.querySelector('.chat-container');
-                    container.innerHTML = "";
-                    for (let i = 0; i < result.length; i++) {
-                        // console.log(result[i]);
-                        container.innerHTML += `<div class='message-box ` + ((result[i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
-                            <p>
-                            ` + result[i][3] + `<br><span>07:43</span>
-                            </p>
-                            </div >`;
-                    }
-                },
-                error: function () {
-                    console.log('error');
-                },
-                dataType: 'json'
-            });
+            update_messages(user_id);
 
             $.ajax({
                 url: '../../backend/load_head.php',
@@ -74,6 +84,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataType: 'json'
             });
 
+            let chatForm = document.querySelector('.chatbox-input');
+
+            if (chatForm.classList.contains('hidden')) {
+                chatForm.classList.remove('hidden');
+            }
+
+            let sendBtn = document.getElementById('send-icon');
+
+            sendBtn.addEventListener('click', function (event) {
+                let message = document.getElementById('message-i');
+                let current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
+
+                if ((!event.detail || event.detail == 1) && message.value != '' && rec_id == current_rec) {
+                    last_message = message.value;
+                    $.ajax({
+                        url: '../../backend/send_message.php',
+                        type: 'post',
+                        data: { receiver: rec_id, message: message.value },
+                        success: function () {
+                            message.value = '';
+                            update_messages(user_id);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus + " - Error: " + errorThrown);
+                        }
+                    });
+                }
+            });
         });
     }
 

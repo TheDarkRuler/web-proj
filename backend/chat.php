@@ -7,7 +7,7 @@ class Chat {
     function get_messages_between($sender, $receiver) {
         global $db;
 
-        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?)';
+        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY tp DESC';
 
         $statement = $db->prepare($query);
         $statement->bind_param('iiii', $sender, $receiver, $receiver, $sender);
@@ -30,6 +30,19 @@ class Chat {
         return $result->fetch_all();
     }
 
+    function get_chat_list_limited($user_id, $limit) {
+        global $db;
+
+        $query = 'SELECT id, username FROM Users INNER JOIN Follows ON Users.id = Follows.id2 WHERE Follows.id1 = ? LIMIT ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $limit);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all();
+    }
+
     function get_last_message($sender, $receiver) {
         global $db;
 
@@ -40,6 +53,19 @@ class Chat {
         $statement->execute();
         $result = $statement->get_result();
 
-        return $result->fetch_all()[0];
+        return $result->fetch_all();
+    }
+
+    function get_last_messages($sender, $receiver, $limit) {
+        global $db;
+
+        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY tp DESC LIMIT ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('iiiii', $sender, $receiver, $receiver, $sender, $limit);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all();
     }
 }

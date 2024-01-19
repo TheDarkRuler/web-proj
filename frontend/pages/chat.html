@@ -4,7 +4,7 @@ require_once '../../backend/chat.php';
 require_once '../../backend/user.php';
 $user = new User();
 $c = new Chat();
-$chats = $c->get_chat_list($_SESSION['user_id']);
+$chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
 ?>
 
 <!DOCTYPE html>
@@ -46,16 +46,17 @@ $chats = $c->get_chat_list($_SESSION['user_id']);
                 </div>
             </div>
 
-
             <!--chats -->
             <div class="chat-list">
                 <?php foreach($chats as $chat): ?>
                 <div class="chat-box">
+                    <!-- add profile image -->
                     <span class="img-box">
                         <?php $profileP = $user->getProfileImg($chat[0]);?>
                     </span>
                     <div class="chat-details">
                         <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id']); ?>
+                        <?php $prev = $prev == null ? array('','') : $prev ?>
                         <div class="text-head">
                             <h4 id="chat-user">
                                 <?php echo $chat[1] . ' #' . $chat[0]; ?>
@@ -93,17 +94,18 @@ $chats = $c->get_chat_list($_SESSION['user_id']);
             </div>
 
             <!--chat-container -->
-            <div class=" chat-container">
+            <div class="chat-container">
             </div>
 
             <!--input-bottom -->
             <div class="chatbox-input hidden">
-                <form class="chatbox-form" action="#">
-                    <input type="text" placeholder="Type a message" name="message" class="input-message">
-                    <button type="submit" class="message-button" value="">
-                        <i class="fa-lg fa-regular fa-paper-plane"></i>
-                    </button>
-                </form>
+                <!-- <form class="chatbox-form" action="#"> -->
+                <input id="message-i" type="text" placeholder="Type a message" name="message" class="input-message"
+                    value="">
+                <button class="message-button" value="">
+                    <i id="send-icon" class="fa-lg fa-regular fa-paper-plane"></i>
+                </button>
+                <!-- </form> -->
             </div>
         </div>
 
