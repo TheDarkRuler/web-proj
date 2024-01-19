@@ -6,5 +6,4 @@ $u = new User();
 
 $first =  $u->getProfileImg($_POST['user_id']);
 
-
 echo $first;

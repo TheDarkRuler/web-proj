@@ -68,4 +68,22 @@ class Chat {
 
         return $result->fetch_all();
     }
+
+    function get_n_most_recent_user($user_id, $n) {
+        global $db;
+
+        $query = 'SELECT Users.id, Users.username
+        FROM Users
+        INNER JOIN Messages ON Messages.receiver_id = Users.id
+        WHERE Messages.sender_id = ?
+        GROUP BY Users.id
+        ORDER BY Messages.tp DESC LIMIT ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $n);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all();
+    }
 }

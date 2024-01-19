@@ -33,7 +33,9 @@ $p = new Post();
                     <p id="my_username">
                         <?php echo $_SESSION['username']; ?>
                     </p>
-                    <p id="my_id"></p>
+                    <p id="my_id">
+                        <?php echo $_SESSION['user_id']; ?>
+                    </p>
                 </a>
             </div>
             <div class="quote-section">
@@ -88,7 +90,7 @@ $p = new Post();
                 </p>
             </div>
             <div class="direct-container">
-                <div class="direct">
+                <!-- <div class="direct">
                     <img src="../images/first.png" alt="img-direct">
                     <p>
                         Ferriforty4
@@ -99,7 +101,7 @@ $p = new Post();
                     <p>
                         Ferriforty4
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="button-view-more">
