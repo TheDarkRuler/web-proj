@@ -212,12 +212,23 @@ class User {
         return $result->fetch_all()[0];
     }
 
-    function add_follow($user_id, $follow_id, $user) {
+    function new_follow($user_id, $follow_id) {
         global $db;
+
+        $query = 'INSERT INTO Follows (id1, id2) 
+                VALUES (?, ?)';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $follow_id);
+        $statement->execute();
 
         $query = 'UPDATE `Users`
             SET n_following = n_following + 1
             WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $user_id);
+        $statement->execute();
 
         $query = 'UPDATE `Users`
             SET n_follower = n_follower + 1
@@ -226,8 +237,46 @@ class User {
         $statement = $db->prepare($query);
         $statement->bind_param('i', $follow_id);
         $statement->execute();
+    }
 
+    function remove_follow($user_id, $follow_id) {
+        global $db;
 
-        echo "personal_page.html?ref_username=$user&ref_id=$follow_id";
+        $query = 'DELETE FROM Follows
+                WHERE id1 = ? AND id2 = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $follow_id);
+        $statement->execute();
+
+        $query = 'UPDATE `Users`
+            SET n_following = n_following - 1
+            WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $user_id);
+        $statement->execute();
+
+        $query = 'UPDATE `Users`
+            SET n_follower = n_follower - 1
+            WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $follow_id);
+        $statement->execute();
+    }
+
+    function is_following($user_id, $follow_id) {
+        global $db;
+
+        $query = 'SELECT id1, id2 FROM `Follows` WHERE id1 = ? AND id2 = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $follow_id);
+        $statement->execute();
+        
+        $result = $statement->get_result();
+
+        return  isset($result->fetch_all()[0][0]);
     }
 }

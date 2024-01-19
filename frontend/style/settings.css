@@ -6,6 +6,15 @@ body {
     overflow-x: hidden;
 }
 
+body > header {
+    text-align: center;
+}
+
+body>header>a>img {
+    width: 20%;
+    padding-top: 1%;
+}
+
 .settings-container {
     width: 100%;
     max-width: 1200px;

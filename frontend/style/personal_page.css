@@ -12,6 +12,15 @@ p {
     color: black;
 }
 
+.post-container > header {
+    text-align: center;
+}
+
+.post-container>header>a>img {
+    width: 30%;
+    padding: 5%;
+}
+
 .container {
     order: 1;
     width: 40%;

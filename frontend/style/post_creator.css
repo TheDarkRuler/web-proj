@@ -3,12 +3,12 @@ body {
     height: 98vh;
 }
 
-.header {
+header {
     height: 10vh;
     text-align: center;
 }
 
-.header img {
+header img {
     height: 10vh;
 }
 

@@ -20,11 +20,18 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/personal_page.css" />
-    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
-    <script src="../script/personal_page_icon.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../script/follow.js"></script>
 </head>
 
 <body>
+    <p id="user_id" hidden>
+        <?php echo $_SESSION['user_id']; ?>
+    </p>
+    <p id="ref_userid" hidden>
+        <?php echo $_SESSION['ref_userid']; ?>
+    </p>
+
     <div class="container">
         <div class="logo-container">
             <span class="dot">
@@ -66,7 +73,17 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
                 </span>
             <?php else: ?>
                 <span class="little-dot">
-                    <a href="<?php $user->add_follow($_SESSION['user_id'], $_SESSION['ref_userid'], $_SESSION['ref_user']); ?>">
+                    <a href="" id="unfollow-button"
+                        <?php if (!$user->is_following($_SESSION['user_id'], $_SESSION['ref_userid'])): ?>
+                            hidden 
+                        <?php endif; ?>>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEeElEQVR4nO2ba6hVVRDHf17tpmLlIx+ZPawkFRFRxNRPlWmQdPsgaCmaiZUGil9MSdBMP2gSZI8PBSHiI4sIlRKNjFKMoiS8amTINQgqzefV7vWRRxbMhd06s8/Zr3PO7Lh/+H85nDXMzF5r9qyZ2dCOdlQK/YGFwCfAcaAZKACngEbgPWAa0Jn/GR4APgKuiMHl6ByyEuhKztEBWAq0RDTc5wngEXKKLsC2hIYH6XbNXHKGOjnnmkGNsitGAX2BemAA8DjwNnBaWXMdmEmOsCrkXM8Q55RCD+ANMTq4/jIwlhxguBLsjgL3xZQzRYkdbvfchHHs9pT+E7g7oawZyk6aj2EMVrbu5JQyNyi7yb1dTGK1p+zXGcgcoByFMRjFAU/RrCL3Dk/uYgyiTiJ1UNHeGcl+0ZP7MQbRy1PyXIayJ3qyv8EgBnpKNmUoe6Qn+ycMooenpLvpZYVJnuyvMBoDWjxF+2Qke74n90OMYp+n6OyM5H7uyV2EUaz0FHUOSYt7gFZProsJJnG/kgk2pJS5KQ8BMIidyi3QvSGSYLZyF8jqWFUMDyoJ0S/AoJhynlG2/g8RrtMm8LLy5M4Ac4COZdbeDryrHKVLwAhyhI0hFaGfgRXAOKkSd5Oi6WSpCp9X1vwr9YFcoSPwTogT4rBVSuW5wy0SsM6ldMB3wKN5OfsO/YC1wIUMnn6Qx4DnpIhqEp2BVwLdnkrROeIJjGEUcKTChheU+0B3DGCe8t6vFn+rZVpcB7xVI8ODvAg8WQvjNxgwvo1Xqp0nvGnAaJ9XpXBSlTNfMEqXcwytdLRvNWBoKR6WznTmuFmEF3LAbZI0NchD65SFA5YZMCwpm6WXMCFpW61fFTK8atH1FIbFdcDrBhTPki6OzYpq/K0hd3SLvAZ8D2wGPgA+Bf4o8f8FURwwx4Bh5dgsMeqOEBvGKrXKtkLLU+UcsNeAgaV4ELgr4m6eKaW14PqTUoZTcVuM2b5a8Ec5onEwSbLGoBxXuVLRYMDIMF5IUW5f6slyu6Jn1GmvghG6aZQ0xZsTnrwXokxmFIzQlczvJB1eVbLHIhwyYKzGxsCTdCX2XcAXEejmlR+WtWOU5k0R/jZgrMbtIU8xCv+R12XvKPMMLQaM1egapqSYRX5Idk/wN1fWK4LVq++Xot+EBA9pv0yb3qs0cYvQZMBYjX8Feoz9xRFROC4wajvFk/mt5oD3DRgbxrTfEWzx5K0Py6GvGzBWo0vRk2KIkg22vR2KkEWDs1J0F7W4qFdmmX4tVSjpJg3KgkFejtkmq1dGbhynllvYXZnUslQDWB6hEDpEefKOe6KWyeqAl4CzBozW+DvwmsSttk9xBkq036qc+YLcB0KvwmFwwtdk0PevNY8n+IrlP3D38OclGl8zYFAc7ipRPUoENxL7tMz4HK2gQ9yg1WfAEmC8JEHrJL+Pst7pNp0qoAswWiqvy6WRukcqOE1iSDCWtMpvZ2Rr7pfP7tbLWOxjYmypytWzctaPiJwWKYgeECflasymHdQQNwC9GOXvQvKiGAAAAABJRU5ErkJggg=="
+                        alt="unfollow" >
+                    </a>
+                    <a href="" id="follow-button" 
+                        <?php if ($user->is_following($_SESSION['user_id'], $_SESSION['ref_userid'])): ?>
+                            hidden 
+                        <?php endif; ?>>
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACY0lEQVR4nO2YTWsUQRCGHxMSJwdBvZmEHIMnT55kRcGAN02C7DUfPyAnEU1AvRnjX9CDGvVkNuRfhGBIDppEzcUPvJmNKwoirjRUwzDs7vTO1KR7YR+oy05NUW9vdXVNQ5fOox8oAy+BXeCn2K78VhafIJkE9oF6in0EJgiIHmDJIfGkPZR3vfMoQ/LWFkMom3pOG/eVfL/Uc14B+742dlkheWs3fAh4pShg2YeA94oCzDlx5NQUBdQ6XcChDwF7igJ2fAh4oSjgmQ8B5U5vo33Ah04+yJCpMk/y/4BreGYph4AHBECPjMbtrvxiKOO0ZdxxT5gT/DqB0icdZVl6e03sHfBcnhmfLl0K5jQwC6w2uN2oADPAKQJkAFiQ4a6eYlVgXt5xoleCf1UcIf4AlyX+MPAmQ4wNYMhFwGPFxK3NxZL/0sLvAlBq8fxzmojzcvhoJr8OHJMSSFt5S9o/EdGEmwWs/pjEXnDwtaT53aYJ95WTfxvrNoeKAqrNutNdZQH2Rm7W0d/i4jtNA+aUBVyRuKsFCFhpJGBMWcBom9/VlsxXNJHUl5aAExL3R6JVZqUUi2Niqn+4JC1qIMAkkZWLLgJOAp+UBJw56hKKH2g1xU1cKUDAa1I4p3AbcU9izRQgYAoHTDk9Bf5mFLAdO8iqigIOJDdnzgJPgO8ZRFySGPOKAm6REXMxdVVGjopspG/Ab+CXTItbwBpwR7qG7USRDGJ5Bay3GuaKZkhENkuulGiVSTPdcRDPDMoqtluKm8AIgRDJSOyysQ+k5o8TIGYknpb9FL9f2pFhbardbtMFD/wHKqqWpvNqQ8oAAAAASUVORK5CYII="
                         alt="follow" >
                     </a>
@@ -81,6 +98,11 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
         </div>
     </div>
     <div class="post-container">
+        <header>
+            <a href="<?php echo $_SESSION['device']; ?>">
+                <img src="../img/logo.png" alt="logo" />
+            </a>
+        </header>
         <?php foreach($posts as $p): ?>
         <div class="post">
             <p class="post-creator">
@@ -143,6 +165,7 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
             <h4 class="post-description">Hello Jzr here</h4>
         </div>
     </div>
+
 </body>
 
 </html>

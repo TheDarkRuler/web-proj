@@ -57,7 +57,7 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
                     <div class="chat-details">
                         <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id']); ?>
                         <?php $prev = $prev == null ? array('','') : $prev ?>
-                        <div class="text-head">
+                        <div class="text-head">message
                             <h4 id="chat-user">
                                 <?php echo $chat[1] . ' #' . $chat[0]; ?>
                             </h4>
