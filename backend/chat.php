@@ -7,7 +7,7 @@ class Chat {
     function get_messages_between($sender, $receiver) {
         global $db;
 
-        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?)';
+        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY tp DESC';
 
         $statement = $db->prepare($query);
         $statement->bind_param('iiii', $sender, $receiver, $receiver, $sender);
@@ -59,7 +59,7 @@ class Chat {
     function get_last_messages($sender, $receiver, $limit) {
         global $db;
 
-        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) LIMIT ?';
+        $query = 'SELECT * FROM Messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY tp DESC LIMIT ?';
 
         $statement = $db->prepare($query);
         $statement->bind_param('iiiii', $sender, $receiver, $receiver, $sender, $limit);
