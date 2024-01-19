@@ -176,7 +176,6 @@ body {
 .chat-list .chat-box .chat-details .text-message p {
     color: #aaa;
     font-size: 0.9em;
-    overlay: hidden;
 }
 
 img {

@@ -20,7 +20,6 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/personal_page.css" />
-    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../script/follow.js"></script>
 </head>
@@ -99,6 +98,11 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
         </div>
     </div>
     <div class="post-container">
+        <header>
+            <a href="<?php echo $_SESSION['device']; ?>">
+                <img src="../img/logo.png" alt="logo" />
+            </a>
+        </header>
         <?php foreach($posts as $p): ?>
         <div class="post">
             <p class="post-creator">
