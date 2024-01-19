@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let chats = this.querySelectorAll('.chat-box');
     let leftContainer = document.querySelector('.left-container');
     let rightContainer = document.querySelector('.right-container');
+    let receivers = [];
 
     for (let i = 0; i < chats.length; i++) {
         chats[i].addEventListener('click', () => {
@@ -74,6 +75,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataType: 'json'
             });
 
+            let chatForm = document.querySelector('.chatbox-input');
+
+            if (chatForm.classList.contains('hidden')) {
+                chatForm.classList.remove('hidden');
+            }
+
+            let sendBtn = document.getElementById('send-icon');
+
+            sendBtn.addEventListener('click', function () {
+                let message = document.getElementById('message-i');
+
+                let current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
+
+                if (message.value != '' && rec_id == current_rec) {
+                    $.ajax({
+                        url: '../../backend/send_message.php',
+                        type: 'post',
+                        data: { receiver: rec_id, message: message.value },
+                        success: function () {
+                            message.value = '';
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus + " - Error: " + errorThrown);
+                        }
+                    });
+                }
+            });
         });
     }
 

@@ -320,6 +320,9 @@ img {
     width: 100%;
     height: 60px;
     background: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .chatbox-form {
@@ -332,7 +335,7 @@ img {
 .chatbox-input .input-message {
     position: relative;
     width: 90%;
-    margin: 5px 10px 0;
+    margin: 0 10px 0;
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 1em;
@@ -341,7 +344,7 @@ img {
 }
 
 .message-button {
-    margin: 10px 2% 0 0;
+    margin: 0 2% 0 0;
     height: 40px;
     width: 6%;
     border: none;
@@ -350,6 +353,10 @@ img {
 }
 
 .return-button {
+    visibility: hidden;
+}
+
+.hidden {
     visibility: hidden;
 }
 
