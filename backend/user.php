@@ -85,10 +85,10 @@ class User {
     function update_pic($data, $user_id) {
         global $db;
 
-        $query = 'UPDATE Users SET profile_picture = ? WHERE id = 1';
+        $query = 'UPDATE Users SET profile_picture = ? WHERE id = ?';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('s', $data);
+        $statement->bind_param('si', $data, $user_id);
         $statement->execute();
         $result = $statement->get_result();
 
