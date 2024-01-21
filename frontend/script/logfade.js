@@ -59,4 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
+
+    let alertBtn = document.querySelector('.closebtn');
+
+    alertBtn.addEventListener('click', () => {
+        let alert = document.querySelector('.alert');
+        alert.style.display = 'none';
+    })
 });

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +13,13 @@
 </head>
 
 <body>
+    <?php if(isset($_SESSION['error'])): ?>
+    <div class="alert">
+        <span class="closebtn">&times;</span>
+        <?php echo $_SESSION['error']; ?>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
     <div class="scrollDown" id="scrollDown">
         <p>Scroll down</p>
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEg0lEQVR4nO2WW0wcVRjHF69PNfqgVn3xxfigL2r7oiZNDMsuc9nWREQbi5ek1WJfsPigSd2YsLAzZxYqNKWLvaSUhFuFWoQ+ARbYnfkOF90tZSFLVUiLQWgD7swC22WPOVt2YVv2Ipfa2P0nJzOZ+eb7/jPnfOc3Ol1aaaX1P9FbFvlpRgTZWOJ45b/yYLDCS4yg9GQKPc/G3DCbyQMcwnL+meGbHAJ/NpIP6gjJuGvOCMnIFuUvOBHUz6s9Qd6GFeopep9Byjd5drfa6l0k9e458sExl4+zgcNQ1PfMZnszWrqe5ETc/n7lr75al5+0eUPko6pLKvUUDWIlpfLtsj7tJP6btI2GyE/eRfJ18x8LrAQ3sqyyfrPMZVllPa1Ba9GatDb1QL1QTzHBBkE2sUiZOXRuLNC6FFwlz5BdZVhjERzLMQ8+slHGdpg7H+JEKOZLsb/ScSNcq3U0RIraJgIsAl+2IOfGbRTehrvzqty+xkvz4QebhgJk78nLfhMCT6Ygv7Bec4YS+XlOwq6PT1zWzg4uhGvQ4yfHB1VOwr1skfO5xBkIyWBEXMgi7D/cORWiCeiQ2ieDnKSoBqvy6VrNMVbnuyyCWUvbtWDrUt4j3dcJb8NzjAiWnIaGB1NOZix2bOcQ/vNAzcj8+eFgOFnNgEZyKwZ8rA237CjrfDzVXCahZwuHoOGd8n71dL8vnOv8SJAUNlxZYEWYMlrlN9f0xkaz8hiP4GxOeb+vul9dTtx4xc+KMJlldbyeLEemANs4BFcP1Iz4fxxZftH3Kn7x8RK0siXdT6zJXIxRq/NDRlRUy4WJYGTKyy9Oh3gJ++nUxOxZERGSwQpwkJVAK+v4K2apMEjRjIJSoNtIGYSeFzkEw/tOeVTaOLRYvXue5NndGi8BrNz99cjxFG/DF3dXutRa91w4ttlzk+RXezROwr/pLY6X14w6g+B8NV7Ma/a+h3mES3aW9qrfKzO3tgfvIvm25WqAk2AmS3BwhhJnJovg+ldNvwdaVu5th3tVTgK78bu2R+Plp8ZZFAd1vARK/pmRMOoYQfkyEer0Vjn79j3zuDJLdpX2aXTQ84h5GkNj6TNxvw4hGUarUkhRl189HDRJALGokxRzDOrsyVHHiLCVR+DYY3f56iPTOBQIj1vTP0f22N2ayYadNDYh6hB07D56G+pExRwN4hA+SvFyAmZXoG4sOerIikZon4w2QsXP0yEOYT+LlKJVG+gO1I1FUUc9UC/UU0ywvljJosGHzo3/a9RlCrCNRXCtoM6rFdR55zgEE/RaItTRtbwa6jgEs4yo7EyKuoYl1DV7AmT/adp9MJwIdSahZwsvQSMd9DwJ6tx7Tw2pPywthwjqTBLg9aNOgM90G4m6rnsNdX3qHajTW5xvrB11Em7KKe/XNhp1uUcGNJOEL2wa6iq6pqNTkxB1CPvLOqbuA9SlooSoQzC7XtRtmJZRN54C6saTo24zlBrqXElRt7kiq//zRVAXt4HutozFju1h1NWOagV1o2HU0Wu6e0mmFFGXVlpp3W/6B+aL+x83TOEKAAAAAElFTkSuQmCC"

@@ -15,18 +15,23 @@ if (isset($_POST['username'])) {
 
     $result = $user->create_user($username, $mail, $password, '')[0];
 
-    $_SESSION['user_id'] = $result[0];
-    $_SESSION['username'] = $result[1];
-    $_SESSION['mail'] = $result[2];
-
-    if ($_POST['size'] > 600) {
-        $_SESSION['device'] = "homepage_desktop.html";
-        header('Location: ../frontend/pages/homepage_desktop.html');
+    if ($result == false) {
+        $_SESSION['error'] = 'User already exists!';
+        header('Location: ../frontend/index.html');
     } else {
-        $_SESSION['device'] = "homepage_mobile.html";
-        header('Location: ../frontend/pages/homepage_mobile.html');
-    }
 
+        $_SESSION['user_id'] = $result[0];
+        $_SESSION['username'] = $result[1];
+        $_SESSION['mail'] = $result[2];
+
+        if ($_POST['size'] > 600) {
+            $_SESSION['device'] = "homepage_desktop.html";
+            header('Location: ../frontend/pages/homepage_desktop.html');
+        } else {
+            $_SESSION['device'] = "homepage_mobile.html";
+            header('Location: ../frontend/pages/homepage_mobile.html');
+        }
+    }
 } else {
     $mail = $_POST['mail'];
     $password = $_POST['password'];
@@ -47,6 +52,7 @@ if (isset($_POST['username'])) {
             header('Location: ../frontend/pages/homepage_mobile.html');
         }
     } else {
+        $_SESSION['error'] = 'Uncorrect credentials';
         header('Location: ../frontend/index.html');
     }
 }
