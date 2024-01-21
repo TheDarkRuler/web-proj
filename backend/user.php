@@ -29,12 +29,20 @@ class User {
         $path = "../frontend/img/default_profile.jpg";
         $blobProfile = file_get_contents($path);
 
-        $statement = $db->prepare($query);
-        $statement->bind_param('ssssss', $user, $email, $crypto_password, date('Y-m-d H:i:s'), $blobProfile, $description);
-        $statement->execute();
-        $result = $statement->get_result();
+        if (count($this->return_info_user($email)) <= 0) {
+            return false;
+        }
 
-        return $this->return_info_user($email);
+        try {
+            $statement = $db->prepare($query);
+            $statement->bind_param('ssssss', $user, $email, $crypto_password, date('Y-m-d H:i:s'), $blobProfile, $description);
+            $statement->execute();
+            $result = $statement->get_result();
+
+            return $this->return_info_user($email);
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     function login_user($email, $password) {
@@ -274,7 +282,7 @@ class User {
         $statement = $db->prepare($query);
         $statement->bind_param('ii', $user_id, $follow_id);
         $statement->execute();
-        
+
         $result = $statement->get_result();
 
         return  isset($result->fetch_all()[0][0]);
