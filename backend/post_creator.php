@@ -6,13 +6,14 @@ session_start();
 $p = new Post();
 
 if (
-    isset($_FILES['profile-image']) && $_FILES['profile-image']['size'] != 0
+    isset($_FILES['post-image']) && $_FILES['post-image']['size'] != 0
     && isset($_POST['description'])
 ) {
-
+    
+    $data = file_get_contents($_FILES['post-image']['tmp_name']);
     $result = $p->craete_post(
         $_SESSION['user_id'],
-        file_get_contents($_FILES['profile-image']['tmp_name']),
+        $data,
         $_POST['description']
     );
 

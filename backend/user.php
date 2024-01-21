@@ -136,16 +136,16 @@ class User {
         return $statement->error ? false : true;
     }
 
-    function validate_password($mail, $check_password) {
+    function validate_password($user_id, $check_password) {
         global $db;
 
-        $query = 'SELECT password FROM Users WHERE mail LIKE ?';
+        $query = 'SELECT password FROM Users WHERE id = ?';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('s', $mail);
+        $statement->bind_param('i', $user_id);
         $statement->execute();
         $result = $statement->get_result();
-        $fetch = $result->fetch_all()[0];
+        $fetch = $result->fetch_all()[0][0];
 
         $verify = password_verify($check_password, $fetch);
 
@@ -169,7 +169,7 @@ class User {
             imagejpeg($image, null, 80);
             $data = ob_get_contents();
             ob_end_clean();
-            echo '<img src="data:image/jpg;base64,' .  base64_encode($data)  . '" />';
+            echo '<img src="data:image/jpeg;base64,'.base64_encode($data).'"/>';
         }
     }
 
