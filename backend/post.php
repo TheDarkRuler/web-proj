@@ -10,7 +10,7 @@ class Post {
         $query = 'INSERT INTO Posts (user_id, image, description, tp) VALUES (?, ?, ?, ?)';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('ibss', $user_id, $content, $description, date('Y-m-d H:i:s'));
+        $statement->bind_param('isss', $user_id, $content, $description, date('Y-m-d H:i:s'));
         $statement->execute();
         $result = $statement->get_result();
 
