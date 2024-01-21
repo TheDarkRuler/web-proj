@@ -11,7 +11,6 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/post_creator.css" />
     <script type="text/javascript" src="../script/settings.js"></script>
-    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,21 +20,17 @@ session_start();
         </a>
     </header>
     <div class="post-box">
-        <div class="image-chooser">
-            <form id="image-form" action="#" method="post" name="post-creator">
-                <input id="upload-image" type="file" name="post-image" accept=".png,.jpg,.jpeg"
-                    onchange="previewImage()">
-                <img id="preview-image" class="image-viewer" src="" alt="Post Image">
-            </form>
-        </div>
-        <div class="text-chooser">
-            <textarea class="description" name="description" cols="30" rows="5"
-                placeholder="Insert the description here..."></textarea>
-        </div>
-        <div class="buttons">
-            <i class="fa-3x fa-solid fa-trash"></i>
-            <i class="fa-3x fa-solid fa-check"></i>
-        </div>
+        <form action="../../backend/post_creator.php" method="post" enctype="multipart/form-data" class="post-form">
+            <input id="upload-image" type="file" name="profile-image" accept=".png,.jpg,.jpeg"
+                onchange="previewImage()">
+            <img id="preview-image" class="profile-image" src="" alt="Profile image">
+            <textarea name="description" class="description" placeholder="Write your description here..."
+                rows="3"></textarea>
+        </form>
+    </div>
+    <div class="buttons">
+        <button class="send-form">Send</button>
+        <button class="reset-button">Reset</button>
     </div>
 </body>
 

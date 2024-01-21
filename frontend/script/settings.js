@@ -8,14 +8,19 @@ function previewImage() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    let button = document.querySelector('.save-button');
 
-    console.log(button);
+    let sendButton = this.querySelector('.send-form');
+    let resetButton = this.querySelector('.reset-button');
 
-    button.addEventListener('click', () => {
-        console.log('Hello from save forms');
+    sendButton.addEventListener('click', () => {
+        let form = this.querySelector('.post-form');
 
-        document.getElementById('update-form').submit();
-        // document.getElementById('image-form').submit();
+        form.submit();
+    });
+
+    resetButton.addEventListener('click', () => {
+        let form = this.querySelector('.post-form');
+
+        form.reset();
     });
 });
