@@ -111,12 +111,12 @@ body {
     margin: 10px
 }
 
-.search-container .input i {
+.search-container .input img {
     position: absolute;
-    left: 26px;
-    top: 14px;
+    left: 20px;
+    top: 12px;
     color: #bbb;
-    font-size: 0.8em;
+    width: 18px;
 }
 
 .chat-list {
@@ -156,7 +156,7 @@ body {
     margin-bottom: 2px;
 }
 
-.chat-list .chat-box .chat-details .text-head h4 {
+.chat-list .chat-box .chat-details .text-head p {
     font-size: 1.1em;
     font-weight: 600;
     color: #000;
@@ -233,13 +233,13 @@ img {
     cursor: pointer;
 }
 
-.right-container .header .img-text h4 {
+.right-container .header .img-text p {
     font-weight: 500;
     line-height: 1.2em;
     margin-left: 15px;
 }
 
-.right-container .header .img-text h4 span {
+.right-container .header .img-text p span {
     font-size: 0.8em;
     color: #555;
 }
@@ -300,10 +300,6 @@ img {
     justify-content: flex-start;
 }
 
-.chat-container .my-message i {
-    color: yellow;
-}
-
 .message-box.friend-message::before {
     content: '';
     position: absolute;
@@ -351,6 +347,15 @@ img {
     border-radius: 50%;
 }
 
+.message-button span{
+    cursor: pointer;
+}
+
+.message-button span img{
+    width: 25px;
+    padding-top: 10%;
+}
+
 .return-button {
     visibility: hidden;
 }
@@ -388,7 +393,7 @@ img {
         width: 90%;
     }
 
-    .search-container .input i {
+    .search-container .input img {
         margin-top: 2%;
     }
 
@@ -415,6 +420,17 @@ img {
 
     .return-button {
         visibility: visible;
+    }
+
+    .return-button img {
+        width: 35px;
+        padding-top: 10px;
+        cursor: pointer;
+    }
+
+    .message-button span img{
+        width: 20px;
+        padding-top: 10px;
     }
 
     .invisible {

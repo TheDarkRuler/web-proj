@@ -23,6 +23,7 @@ header > p {
     text-align: center;
     width: 60%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 footer {

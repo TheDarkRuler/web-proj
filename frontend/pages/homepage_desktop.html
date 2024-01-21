@@ -18,10 +18,10 @@ $p = new Post();
     <link rel="stylesheet" type="text/css" href="../style/post.css" />
     <link rel="stylesheet" type="text/css" href="../style/scrollbar_set.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../script/hp-header-up.js"></script>
 </head>
 
 <body>
-    <script src="../script/hp-header-up.js"></script>
     <aside class="left-content">
         <div class="profile-container">
             <div class="profile-section">
@@ -32,9 +32,6 @@ $p = new Post();
                     </span>
                     <p id="my_username">
                         <?php echo $_SESSION['username'], " #", $_SESSION['user_id']; ?>
-                    </p>
-                    <p id="my_id">
-                        <?php echo $_SESSION['user_id']; ?>
                     </p>
                 </a>
             </div>

@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 chatForm.classList.remove('hidden');
             }
 
-            let sendBtn = document.getElementById('send-icon');
+            let sendBtn = document.getElementById('send-button');
 
             sendBtn.addEventListener('click', function (event) {
                 let message = document.getElementById('message-i');
