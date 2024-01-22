@@ -41,6 +41,6 @@ class Quote {
         $statement->execute();
         $result = $statement->get_result();
 
-        return $result->fetch_all()[0];
+        return $result->fetch_all();
     }
 }

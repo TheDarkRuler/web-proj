@@ -40,9 +40,11 @@ $p = new Post();
                     Quote of the day:
                 </p>
                 <?php $quote = $q->get_random_quote(); ?>
+                <?php if(count($quote) > 0): ?>
                 <p>
-                    <?php echo $quote[1] . ' - ' . $quote[3]; ?>
+                    <?php echo $quote[0][1] . ' - ' . $quote[0][3]; ?>
                 </p>
+                <?php endif; ?>
             </div>
         </div>
         <span>
