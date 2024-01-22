@@ -44,10 +44,31 @@ class Post {
         return $posts;
     }
 
+    function get_post_image($post_id) {
+        global $db;
+        $query = 'SELECT `image` FROM Posts WHERE id LIKE ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $blob = mysqli_fetch_array($result)[0];
+        if ($blob != NULL) {
+            $image = imagecreatefromstring($blob);
+
+            ob_start(); //You could also just output the $image via header() and bypass this buffer capture.
+            imagejpeg($image, null, 80);
+            $data = ob_get_contents();
+            ob_end_clean();
+            echo '<img alt="post image" class="post-image" src="data:image/jpeg;base64,' . base64_encode($data) . '"/>';
+        }
+    }
+
     function get_by_user($user_id, $limit) {
         global $db;
 
-        $query = 'SELECT * FROM Posts WHERE user_id = ?
+        $query = 'SELECT id, user_id, description, tp, n_like, n_dislike FROM Posts WHERE user_id = ?
                 ORDER BY tp DESC LIMIT ?';
 
         $statement = $db->prepare($query);
@@ -55,7 +76,7 @@ class Post {
         $statement->execute();
         $result = $statement->get_result();
         $posts = $result->fetch_all();
-
+        
         return $posts;
     }
 
