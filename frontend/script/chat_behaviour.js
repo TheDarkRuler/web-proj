@@ -10,9 +10,10 @@ function update_messages() {
                 let container = document.querySelector('.chat-container');
                 container.innerHTML = "";
                 for (let i = 0; i < result.length; i++) {
+                    let date = new Date(result[result.length - 1 - i][4]);
                     container.innerHTML += `<div class='message-box ` + ((result[result.length - 1 - i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
                     <p>
-                    ` + result[result.length - 1 - i][3] + `<br><span>07:43</span>
+                    ` + result[result.length - 1 - i][3] + `<br><span>` + date.getHours() + `:` + date.getMinutes() + `</span>
                     </p>
                     </div >`;
                 }

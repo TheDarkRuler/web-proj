@@ -63,16 +63,15 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
                             <?php if(count($prev) > 0): ?>
                             <?php $x = date_parse($prev[1]); ?>
                             <p class="time">
-                                "
-                                <?php echo $x['hour'] . ':' . $x['minute']; ?>"
+                                <?php echo $x['hour'] . ':' . $x['minute']; ?>
                             </p>
                             <?php endif; ?>
                             <!-- <b class="unread"></b> -->
                         </div>
                         <?php if(count($prev) > 0): ?>
                         <div class="text-message">
-                            <p>“
-                                <?php echo substr($prev[0], 0, 22); ?>”
+                            <p>
+                                <?php echo substr($prev[0], 0, 22); ?>
                             </p>
                             <!-- <b></b> -->
                         </div>
