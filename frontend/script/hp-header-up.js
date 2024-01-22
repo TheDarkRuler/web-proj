@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         image = new_res;
                     },
                 }).done(() => {
-                    container.innerHTML += `<div class="direct">` + image + `<p>` + result[i][1] + `</p></div>`;
+                    container.innerHTML += `<div class="direct" onclick="chatClick()">` + image + `<p class='direct-user'>` + result[i][1] + `#` + result[i][0] + `</p></div>`;
                 });
             }
         },

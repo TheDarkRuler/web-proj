@@ -35,6 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(update_messages(user_id), 5000);
 
     for (let i = 0; i < chats.length; i++) {
+        let userStr = chats[i].children[1].children[0].children[0].innerHTML;
+        let userId = userStr.split('#')[1];
+
+
+
         chats[i].addEventListener('click', () => {
 
             // switching the active chatbox
@@ -125,4 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+
+
 });
