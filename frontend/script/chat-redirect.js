@@ -7,9 +7,13 @@ function chatClick() {
         $.ajax({
             url: '../../backend/chat_redirect.php',
             type: 'POST',
-            data: { chat_id: chatId },
+            data: {
+                chat_id: chatId
+            },
             success: function () {
             },
+        }).done(() => {
+            window.location.assign('../pages/chat.html');
         });
     }
 }
