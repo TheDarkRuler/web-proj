@@ -50,8 +50,8 @@ main,
     font-size: large;
 }
 
-.left-content > span > a > img,
-.right-content > span > a > img {
+.left-content>span>a>img,
+.right-content>span>a>img {
     width: 15%;
 }
 
@@ -85,6 +85,7 @@ main>header>a>img {
 .direct>p {
     display: inline-block;
     vertical-align: top;
+    cursor: pointer;
 }
 
 .direct>img {
