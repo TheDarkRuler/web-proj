@@ -100,4 +100,30 @@ class Post {
         // print_r($posts);
         // die();
     }
+
+    function check_like($user_id, $post_id) {
+        global $db;
+
+        $query = "SELECT * FROM Interactions WHERE user_id = ? AND post_id = ? AND interaction LIKE 'like'";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return count($result->fetch_all()) > 0;
+    }
+
+    function check_dislike($user_id, $post_id) {
+        global $db;
+
+        $query = "SELECT * FROM Interactions WHERE user_id = ? AND post_id = ? AND interaction LIKE 'dislike'";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return count($result->fetch_all()) > 0;
+    }
 }

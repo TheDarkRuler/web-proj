@@ -1,18 +1,19 @@
-function update_messages(user_id) {
+function update_messages() {
     if (document.querySelector('.active') != null) {
         let rec_id = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
 
         $.ajax({
             url: '../../backend/chat_switch.php',
             type: 'POST',
-            data: { sender: user_id.innerHTML, receiver: rec_id },
+            data: { receiver: rec_id },
             success: function (result) {
                 let container = document.querySelector('.chat-container');
                 container.innerHTML = "";
                 for (let i = 0; i < result.length; i++) {
+                    let date = new Date(result[result.length - 1 - i][4]);
                     container.innerHTML += `<div class='message-box ` + ((result[result.length - 1 - i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
                     <p>
-                    ` + result[result.length - 1 - i][3] + `<br><span>07:43</span>
+                    ` + result[result.length - 1 - i][3] + `<br><span>` + date.getHours() + `:` + date.getMinutes() + `</span>
                     </p>
                     </div >`;
                 }
@@ -26,19 +27,69 @@ function update_messages(user_id) {
     }
 }
 
+function loadHeader(rec_id) {
+    $.ajax({
+        url: '../../backend/load_head.php',
+        type: 'post',
+        data: { user_id: rec_id },
+        success: function (result) {
+            let container = document.querySelector('.user-img');
+            container.innerHTML = '';
+            container.innerHTML += result;
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus + " - Error: " + errorThrown);
+        }
+    });
+
+    $.ajax({
+        url: '../../backend/load_user.php',
+        type: 'post',
+        data: { user_id: rec_id },
+        success: function (result) {
+            let container = document.getElementById('receiver_username');
+            container.innerHTML = '';
+            container.innerHTML += result;
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus + " - Error: " + errorThrown);
+        },
+        dataType: 'json'
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     let chats = this.querySelectorAll('.chat-box');
     let leftContainer = document.querySelector('.left-container');
     let rightContainer = document.querySelector('.right-container');
     let user_id = document.getElementById('user_id');
 
-    setInterval(update_messages(user_id), 5000);
+    setInterval(update_messages(), 5000);
 
     for (let i = 0; i < chats.length; i++) {
         let userStr = chats[i].children[1].children[0].children[0].innerHTML;
         let userId = userStr.split('#')[1];
+        let activeId = -1;
 
+        $.ajax({
+            url: '../../backend/chat_redirect.php',
+            type: 'POST',
+            data: {},
+            success: function (result) {
+                activeId = result;
+            },
+        }).done(() => {
+            if (parseInt(userId) == parseInt(activeId)) {
+                chats[i].classList.add('active');
+                let chatForm = document.querySelector('.chatbox-input');
 
+                if (chatForm.classList.contains('hidden')) {
+                    chatForm.classList.remove('hidden');
+                }
+                update_messages();
+                loadHeader(activeId);
+            }
+        });
 
         chats[i].addEventListener('click', () => {
 
@@ -58,36 +109,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let rec_id = chats[i].children[1].children[0].children[0].innerHTML.split('#')[1];
 
-            update_messages(user_id);
+            update_messages();
 
-            $.ajax({
-                url: '../../backend/load_head.php',
-                type: 'post',
-                data: { user_id: rec_id },
-                success: function (result) {
-                    let container = document.querySelector('.user-img');
-                    container.innerHTML = '';
-                    container.innerHTML += result;
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Status: " + textStatus + " - Error: " + errorThrown);
-                }
-            });
+            // $.ajax({
+            //     url: '../../backend/load_head.php',
+            //     type: 'post',
+            //     data: { user_id: rec_id },
+            //     success: function (result) {
+            //         let container = document.querySelector('.user-img');
+            //         container.innerHTML = '';
+            //         container.innerHTML += result;
+            //     },
+            //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //         alert("Status: " + textStatus + " - Error: " + errorThrown);
+            //     }
+            // });
 
-            $.ajax({
-                url: '../../backend/load_user.php',
-                type: 'post',
-                data: { user_id: rec_id },
-                success: function (result) {
-                    let container = document.getElementById('receiver_username');
-                    container.innerHTML = '';
-                    container.innerHTML += result;
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Status: " + textStatus + " - Error: " + errorThrown);
-                },
-                dataType: 'json'
-            });
+            // $.ajax({
+            //     url: '../../backend/load_user.php',
+            //     type: 'post',
+            //     data: { user_id: rec_id },
+            //     success: function (result) {
+            //         let container = document.getElementById('receiver_username');
+            //         container.innerHTML = '';
+            //         container.innerHTML += result;
+            //     },
+            //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //         alert("Status: " + textStatus + " - Error: " + errorThrown);
+            //     },
+            //     dataType: 'json'
+            // });
+
+            loadHeader(rec_id);
 
             let chatForm = document.querySelector('.chatbox-input');
 
@@ -109,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         data: { receiver: rec_id, message: message.value },
                         success: function () {
                             message.value = '';
-                            update_messages(user_id);
+                            update_messages();
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
                             alert("Status: " + textStatus + " - Error: " + errorThrown);

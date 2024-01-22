@@ -86,4 +86,13 @@ CREATE TABLE Quotes (
     author VARCHAR(30)
 );
 
+DROP TABLE IF EXISTS Interactions;
 
+CREATE TABLE Interactions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (post_id) REFERENCES Posts(id),
+    interaction VARCHAR(10) NOT NULL
+);
