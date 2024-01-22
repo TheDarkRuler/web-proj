@@ -20,6 +20,7 @@ $p = new Post();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../script/hp-header-up.js"></script>
     <script src="../script/chat-redirect.js"></script>
+    <script src="../script/homepage-feed.js"></script>
 </head>
 
 <body>
@@ -61,7 +62,6 @@ $p = new Post();
             </a>
         </header>
         <div class="post-container">
-            <?php $posts = $p->get_3_post_format($_SESSION['user_id']); ?>
             <div class="post">
                 <a href="personal_page.html?#1">
                     <p class="post-creator">Username#1</p>
