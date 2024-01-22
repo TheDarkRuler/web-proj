@@ -59,41 +59,41 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
         </div>
         <div class="button-container">
             <?php if ($_SESSION['ref_userid'] == $_SESSION['user_id']): ?>
-                <span class="little-dot">
-                    <a href="settings.html">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE00lEQVR4nO2aWWhdVRSGP6xJixm01qoYW4fYwRSxILGtig8VfFD0QWlFELHUJ/tisaDUAaR1qm2ijU8OLxWHN4cHp6JWwfqirVAFFa1DakUQ1CQ114yy4D+wPDl373PPPTdytT9ccnPX2sPaZ++1/rX2geP4f+AxYBKYTn3GgS00EQYzjEg+B2gSdAJTwCgwx/3eod8rwIk0AVZr5Q9myL6XbDn/Is4BNgMLI3obNNkXM2SvS7Yu0sdC4E5gESVjCXBEk/gFuDag+7j07suQPSzZg4H2a4GfpPcj0E1JuMAZ8bv+2l7vA+amdFuA96RzQ0ZfN0v2Zur8GFqBHc7b/VGmMd6IfTqw9wBj+u0zoAc4H3gK+NV5J2ubxnIn/1lP7yxgKfCJc9Fb5TQ+LMOYs1NGtDlZL/C1ZKMa3L5PAO8Dtwb6vR34WE91Wl5sRN+/AVY53faUMV1FDEkO7Z/AqRlyG+Q56QwDjwJn1Og8BmSI9bFHTyGNBZqD6dxWxBB7Al+pg50BvYs1WFF0pZ5CGrs0hy9Tu6ImXKLzMClvMtu4UmOPR4zNhQe0IkeqbLFG4RTgh4ArrxlGJ/arwxeYPbykMT/KcNV1BcTkwK2k8bjCOZHSAiLy8xMKUvNz6K8A+oHP5VpH9L1fshgW62za4p1OiXhGK7QtotcqlzoRoPEm2y3dEJ6W/vayjJinJ2ErdFrEiL0uSD4BXCqX2Sav86SLG3sjxiyVnh34E4pM/GRgjSLwLhdZ3460G3AR+KJI3EkSL3syIRyQ3jviYRu0OFmB8x/pabXMbipCvVdoy4xGjPDGVNTGuFo13BHYorZgj2Q1SljnMRG4PSKI1+vwhdCvtvY3L3arjbHomMe8EbhXOc5BLdi05jwDiaVF9uMXamtkMi9Wqc2hAuPNcfOdgaqCHBhWWyOSedGuNkMFx5xuhCFDBQzpdAlUQwzpqGNrmUeptUhRZGt1hAwZdx7qW+AVBcB1OWhCctgtTuRF4q7NxYewDLgJeAh4DTjskjKb8wxskd+u1OF+K3KtMRhf+yuH+91UxfVWNNe7Ymy3x63Cu2r8Vk53OhgxZqVLoS365wmIb2h3rAcuLFrgm6fqyVgkE2xxFKUiw1bLAbSLLQzoSSQUxdo0jKLUQ+BaZUCINI7rSbTkHHMbJWKJJjdUA43vk0ca1ueQDnboTCRY1Cga3+NoQR4uVS8u01gj2mKlYK74jXX8LLOH5zXmpzlyl1zod8WzIsGyKNpdEdAofF24WjGklHJMAfTqrNgcrinaiZX2j2pF7o4MFsoc8xTo7ExUw1bN4WiOK41MbFYHv1XJyOa7ks2IErMza+j/XBW+EybxchWP2OluAezOpGYsdhnjB6ly5VplaEki5ovYVvC+JdDvxowidpIGDAJXOd02jZ1khIUvfrqdMfsU2Xe6bHK/dM5TIEyuFaZUpM6KR/5aYYeuFbpdEXBS8WaBxqz7WiHLmKRIN6YyZroC2OIGvy6jr/WumJBua//f7+5ekrEGyyzS2ep+p46N4l8e0O0LOIjtOWhHryrviRFZF0Z1oUv3EydF9Da6+440XpXMmHUIbSr9FLrYKQtrNFmrxKRxWDKj4k3zwsCxFP1uuhcGcIlTU7/Cge4Tq71UE0xPj4P/CP4GdM3Fkxh1C08AAAAASUVORK5CYII="
-                        alt="settings" >
-                    </a>
-                </span>
-                <span class="little-dot">
-                    <a href="post_creator.html">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADWElEQVR4nO2ay08UQRDGf0Zk12BEFhCPcjQY9Z9QQVGBG4o3DV5Egl59nNGTCQl/hwYJJGoQ3w/Ui4LISeVgxJsLBM2ait8knbiz7M727s4SvmSyj66prpqurq7+emATGxcpoAu4CYwBs8BPYFWXff+oNpM5BTQQEySBs8Ak8AfIFHj9BiaAPiBRCQe2A5eBRceoFeABcFUjs09PfJuuBv1nbdeAh7onuP8bMKSHUxYcBxYcA14B54D6CLp2AeeB146+z0AHJYQ9qVGnwzfAEY/624G3jv6RUozOHhluHfwCLgJbfXfCP52XgLQz2i2+lLdquDPKOvspPQ4Ac+pzXjYUhWZH4UugifKhAXisvhcUFZGQdMLpKVBH+VEHPHfCLNKcGXXCyRa7SqHRiQpLAAWn2GBil2NO5DNn0rLJslvei12wTlh2igsGncmfV4hdcdaJUqTYqKgB3sk2cyonEioVTPgw8cMx2ba43qj0ORkijtjiZNLTuQQnJWS1ky+8AJ551NcvG8fDBFIqq1ciFoBhCGonnwvlKrAWZme3OryPX/h2xDAlnSfIgltqtP1E3B25IZ3D2RrH1HiyChzpls472Ro/qdF2cXF3pE06jRf4D0tqTFWBI03S+T1b46oaayMono5APASX3VsoEg5PEBtHHvl2ZKmKQqs5V2htmMk+pkZjAOPuSE+u9BssiEaeVfWC2KVGYwurpUTpDCvGgqLRGMC4OpJyisadYUIT6tRoTF+Yjphiw3BBNt4LlQDOSMi42LhurGZkY+96C81XCR4lfuiUbV/yOYYYkvBMDMmH97JtIJ8bkg7Xa4RyXDAkm+YKORTq0E1pkWOVxiFgWTYVfJQx4jwBoy0rhWaRcmbL7SgKkqKFMiKSK0Fi7xALk9FnopinMescK9jvciEFPHGO44o+8Gl1htbC7CDlmRPz6tOq8r2+FLc4YZYW92rp0DdqlJ2WnXDa7buTpJMAMiKUOzyu2HaUEawTwcQu6dl7uzPsAWvfH/EthpRqp6DsyCiUfJ4Wrzs6g045k1FFauX1dfFObUrbtboadWjUI5kphycIyo6BSr0BkRArPq4tQKHEw5p2pr2VciAb6sXF2q7trs4efzgv1dj3D9qeDks2dD+xCaocfwGfzEwBMfegNQAAAABJRU5ErkJggg=="
-                        alt="post" >
-                    </a>
-                </span>
+            <span class="little-dot">
+                <a href="settings.html">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE00lEQVR4nO2aWWhdVRSGP6xJixm01qoYW4fYwRSxILGtig8VfFD0QWlFELHUJ/tisaDUAaR1qm2ijU8OLxWHN4cHp6JWwfqirVAFFa1DakUQ1CQ114yy4D+wPDl373PPPTdytT9ccnPX2sPaZ++1/rX2geP4f+AxYBKYTn3GgS00EQYzjEg+B2gSdAJTwCgwx/3eod8rwIk0AVZr5Q9myL6XbDn/Is4BNgMLI3obNNkXM2SvS7Yu0sdC4E5gESVjCXBEk/gFuDag+7j07suQPSzZg4H2a4GfpPcj0E1JuMAZ8bv+2l7vA+amdFuA96RzQ0ZfN0v2Zur8GFqBHc7b/VGmMd6IfTqw9wBj+u0zoAc4H3gK+NV5J2ubxnIn/1lP7yxgKfCJc9Fb5TQ+LMOYs1NGtDlZL/C1ZKMa3L5PAO8Dtwb6vR34WE91Wl5sRN+/AVY53faUMV1FDEkO7Z/AqRlyG+Q56QwDjwJn1Og8BmSI9bFHTyGNBZqD6dxWxBB7Al+pg50BvYs1WFF0pZ5CGrs0hy9Tu6ImXKLzMClvMtu4UmOPR4zNhQe0IkeqbLFG4RTgh4ArrxlGJ/arwxeYPbykMT/KcNV1BcTkwK2k8bjCOZHSAiLy8xMKUvNz6K8A+oHP5VpH9L1fshgW62za4p1OiXhGK7QtotcqlzoRoPEm2y3dEJ6W/vayjJinJ2ErdFrEiL0uSD4BXCqX2Sav86SLG3sjxiyVnh34E4pM/GRgjSLwLhdZ3460G3AR+KJI3EkSL3syIRyQ3jviYRu0OFmB8x/pabXMbipCvVdoy4xGjPDGVNTGuFo13BHYorZgj2Q1SljnMRG4PSKI1+vwhdCvtvY3L3arjbHomMe8EbhXOc5BLdi05jwDiaVF9uMXamtkMi9Wqc2hAuPNcfOdgaqCHBhWWyOSedGuNkMFx5xuhCFDBQzpdAlUQwzpqGNrmUeptUhRZGt1hAwZdx7qW+AVBcB1OWhCctgtTuRF4q7NxYewDLgJeAh4DTjskjKb8wxskd+u1OF+K3KtMRhf+yuH+91UxfVWNNe7Ymy3x63Cu2r8Vk53OhgxZqVLoS365wmIb2h3rAcuLFrgm6fqyVgkE2xxFKUiw1bLAbSLLQzoSSQUxdo0jKLUQ+BaZUCINI7rSbTkHHMbJWKJJjdUA43vk0ca1ueQDnboTCRY1Cga3+NoQR4uVS8u01gj2mKlYK74jXX8LLOH5zXmpzlyl1zod8WzIsGyKNpdEdAofF24WjGklHJMAfTqrNgcrinaiZX2j2pF7o4MFsoc8xTo7ExUw1bN4WiOK41MbFYHv1XJyOa7ks2IErMza+j/XBW+EybxchWP2OluAezOpGYsdhnjB6ly5VplaEki5ovYVvC+JdDvxowidpIGDAJXOd02jZ1khIUvfrqdMfsU2Xe6bHK/dM5TIEyuFaZUpM6KR/5aYYeuFbpdEXBS8WaBxqz7WiHLmKRIN6YyZroC2OIGvy6jr/WumJBua//f7+5ekrEGyyzS2ep+p46N4l8e0O0LOIjtOWhHryrviRFZF0Z1oUv3EydF9Da6+440XpXMmHUIbSr9FLrYKQtrNFmrxKRxWDKj4k3zwsCxFP1uuhcGcIlTU7/Cge4Tq71UE0xPj4P/CP4GdM3Fkxh1C08AAAAASUVORK5CYII="
+                        alt="settings">
+                </a>
+            </span>
+            <span class="little-dot">
+                <a href="post_creator.html">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADWElEQVR4nO2ay08UQRDGf0Zk12BEFhCPcjQY9Z9QQVGBG4o3DV5Egl59nNGTCQl/hwYJJGoQ3w/Ui4LISeVgxJsLBM2ait8knbiz7M727s4SvmSyj66prpqurq7+emATGxcpoAu4CYwBs8BPYFWXff+oNpM5BTQQEySBs8Ak8AfIFHj9BiaAPiBRCQe2A5eBRceoFeABcFUjs09PfJuuBv1nbdeAh7onuP8bMKSHUxYcBxYcA14B54D6CLp2AeeB146+z0AHJYQ9qVGnwzfAEY/624G3jv6RUozOHhluHfwCLgJbfXfCP52XgLQz2i2+lLdquDPKOvspPQ4Ac+pzXjYUhWZH4UugifKhAXisvhcUFZGQdMLpKVBH+VEHPHfCLNKcGXXCyRa7SqHRiQpLAAWn2GBil2NO5DNn0rLJslvei12wTlh2igsGncmfV4hdcdaJUqTYqKgB3sk2cyonEioVTPgw8cMx2ba43qj0ORkijtjiZNLTuQQnJWS1ky+8AJ551NcvG8fDBFIqq1ciFoBhCGonnwvlKrAWZme3OryPX/h2xDAlnSfIgltqtP1E3B25IZ3D2RrH1HiyChzpls472Ro/qdF2cXF3pE06jRf4D0tqTFWBI03S+T1b46oaayMono5APASX3VsoEg5PEBtHHvl2ZKmKQqs5V2htmMk+pkZjAOPuSE+u9BssiEaeVfWC2KVGYwurpUTpDCvGgqLRGMC4OpJyisadYUIT6tRoTF+Yjphiw3BBNt4LlQDOSMi42LhurGZkY+96C81XCR4lfuiUbV/yOYYYkvBMDMmH97JtIJ8bkg7Xa4RyXDAkm+YKORTq0E1pkWOVxiFgWTYVfJQx4jwBoy0rhWaRcmbL7SgKkqKFMiKSK0Fi7xALk9FnopinMescK9jvciEFPHGO44o+8Gl1htbC7CDlmRPz6tOq8r2+FLc4YZYW92rp0DdqlJ2WnXDa7buTpJMAMiKUOzyu2HaUEawTwcQu6dl7uzPsAWvfH/EthpRqp6DsyCiUfJ4Wrzs6g045k1FFauX1dfFObUrbtboadWjUI5kphycIyo6BSr0BkRArPq4tQKHEw5p2pr2VciAb6sXF2q7trs4efzgv1dj3D9qeDks2dD+xCaocfwGfzEwBMfegNQAAAABJRU5ErkJggg=="
+                        alt="post">
+                </a>
+            </span>
             <?php else: ?>
-                <span class="little-dot">
-                    <a href="" id="unfollow-button"
-                        <?php if (!$user->is_following($_SESSION['user_id'], $_SESSION['ref_userid'])): ?>
-                            hidden 
-                        <?php endif; ?>>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEeElEQVR4nO2ba6hVVRDHf17tpmLlIx+ZPawkFRFRxNRPlWmQdPsgaCmaiZUGil9MSdBMP2gSZI8PBSHiI4sIlRKNjFKMoiS8amTINQgqzefV7vWRRxbMhd06s8/Zr3PO7Lh/+H85nDXMzF5r9qyZ2dCOdlQK/YGFwCfAcaAZKACngEbgPWAa0Jn/GR4APgKuiMHl6ByyEuhKztEBWAq0RDTc5wngEXKKLsC2hIYH6XbNXHKGOjnnmkGNsitGAX2BemAA8DjwNnBaWXMdmEmOsCrkXM8Q55RCD+ANMTq4/jIwlhxguBLsjgL3xZQzRYkdbvfchHHs9pT+E7g7oawZyk6aj2EMVrbu5JQyNyi7yb1dTGK1p+zXGcgcoByFMRjFAU/RrCL3Dk/uYgyiTiJ1UNHeGcl+0ZP7MQbRy1PyXIayJ3qyv8EgBnpKNmUoe6Qn+ycMooenpLvpZYVJnuyvMBoDWjxF+2Qke74n90OMYp+n6OyM5H7uyV2EUaz0FHUOSYt7gFZProsJJnG/kgk2pJS5KQ8BMIidyi3QvSGSYLZyF8jqWFUMDyoJ0S/AoJhynlG2/g8RrtMm8LLy5M4Ac4COZdbeDryrHKVLwAhyhI0hFaGfgRXAOKkSd5Oi6WSpCp9X1vwr9YFcoSPwTogT4rBVSuW5wy0SsM6ldMB3wKN5OfsO/YC1wIUMnn6Qx4DnpIhqEp2BVwLdnkrROeIJjGEUcKTChheU+0B3DGCe8t6vFn+rZVpcB7xVI8ODvAg8WQvjNxgwvo1Xqp0nvGnAaJ9XpXBSlTNfMEqXcwytdLRvNWBoKR6WznTmuFmEF3LAbZI0NchD65SFA5YZMCwpm6WXMCFpW61fFTK8atH1FIbFdcDrBhTPki6OzYpq/K0hd3SLvAZ8D2wGPgA+Bf4o8f8FURwwx4Bh5dgsMeqOEBvGKrXKtkLLU+UcsNeAgaV4ELgr4m6eKaW14PqTUoZTcVuM2b5a8Ec5onEwSbLGoBxXuVLRYMDIMF5IUW5f6slyu6Jn1GmvghG6aZQ0xZsTnrwXokxmFIzQlczvJB1eVbLHIhwyYKzGxsCTdCX2XcAXEejmlR+WtWOU5k0R/jZgrMbtIU8xCv+R12XvKPMMLQaM1egapqSYRX5Idk/wN1fWK4LVq++Xot+EBA9pv0yb3qs0cYvQZMBYjX8Feoz9xRFROC4wajvFk/mt5oD3DRgbxrTfEWzx5K0Py6GvGzBWo0vRk2KIkg22vR2KkEWDs1J0F7W4qFdmmX4tVSjpJg3KgkFejtkmq1dGbhynllvYXZnUslQDWB6hEDpEefKOe6KWyeqAl4CzBozW+DvwmsSttk9xBkq036qc+YLcB0KvwmFwwtdk0PevNY8n+IrlP3D38OclGl8zYFAc7ipRPUoENxL7tMz4HK2gQ9yg1WfAEmC8JEHrJL+Pst7pNp0qoAswWiqvy6WRukcqOE1iSDCWtMpvZ2Rr7pfP7tbLWOxjYmypytWzctaPiJwWKYgeECflasymHdQQNwC9GOXvQvKiGAAAAABJRU5ErkJggg=="
-                        alt="unfollow" >
-                    </a>
-                    <a href="" id="follow-button" 
-                        <?php if ($user->is_following($_SESSION['user_id'], $_SESSION['ref_userid'])): ?>
-                            hidden 
-                        <?php endif; ?>>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACY0lEQVR4nO2YTWsUQRCGHxMSJwdBvZmEHIMnT55kRcGAN02C7DUfPyAnEU1AvRnjX9CDGvVkNuRfhGBIDppEzcUPvJmNKwoirjRUwzDs7vTO1KR7YR+oy05NUW9vdXVNQ5fOox8oAy+BXeCn2K78VhafIJkE9oF6in0EJgiIHmDJIfGkPZR3vfMoQ/LWFkMom3pOG/eVfL/Uc14B+742dlkheWs3fAh4pShg2YeA94oCzDlx5NQUBdQ6XcChDwF7igJ2fAh4oSjgmQ8B5U5vo33Ah04+yJCpMk/y/4BreGYph4AHBECPjMbtrvxiKOO0ZdxxT5gT/DqB0icdZVl6e03sHfBcnhmfLl0K5jQwC6w2uN2oADPAKQJkAFiQ4a6eYlVgXt5xoleCf1UcIf4AlyX+MPAmQ4wNYMhFwGPFxK3NxZL/0sLvAlBq8fxzmojzcvhoJr8OHJMSSFt5S9o/EdGEmwWs/pjEXnDwtaT53aYJ95WTfxvrNoeKAqrNutNdZQH2Rm7W0d/i4jtNA+aUBVyRuKsFCFhpJGBMWcBom9/VlsxXNJHUl5aAExL3R6JVZqUUi2Niqn+4JC1qIMAkkZWLLgJOAp+UBJw56hKKH2g1xU1cKUDAa1I4p3AbcU9izRQgYAoHTDk9Bf5mFLAdO8iqigIOJDdnzgJPgO8ZRFySGPOKAm6REXMxdVVGjopspG/Ab+CXTItbwBpwR7qG7USRDGJ5Bay3GuaKZkhENkuulGiVSTPdcRDPDMoqtluKm8AIgRDJSOyysQ+k5o8TIGYknpb9FL9f2pFhbardbtMFD/wHKqqWpvNqQ8oAAAAASUVORK5CYII="
-                        alt="follow" >
-                    </a>
-                </span>
-                <span class="little-dot">
-                    <a href="chat.html">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKElEQVR4nO2Za4hVVRTHf45pYs1omqnooOKDfI6PhMxSdAghEMkPIlJmFoQoGmoIQqYQpGkKlg+kD6GlaSqIEvjuiyKZoeSD0lTG8EE+SvNtc2XB/8TiMHrPOXOOc6X7hwP37rPW2mvvvdZejwNFFFFEEf9XdAbeBpYBu4DfgcvAPT2XNbYTWCraThQIyoHZwFEgl/A5AnwEtK2LBXQFVmunA4UuAWuBacCrOqFngPp67HcXvTOadeIJ+E3W18Dzj2IBTwMLgbua/JYmHypl4+IJoBL4RrJykr0AeIqM0Ac47iZbArRJ2UyXu1P+FehNyngduKEJfgYqyA59gYOay+YckZbgN9wurQAakT0aAV863xldW4HmmHckcBaPHnM09235YSKY/f8pQfOoOyyQDheA1kkEbJKArUAJdYcSYId02RiXuVKMV5PuQspoC1yTTkPiMG4X00wKBx86C4mEjmKwHWhK4aAZ8A9QDXSIwjBVC7FoW2j4Vrq9H4V4o4gtfhQaxkq39VGIT4i4G4WHHtLttyjEf4u4LGUlLPsdpXzqJ+CMEkVLQ84DuxUzKpVM1oQm0u2vKBMGkbxBSgswx/xcjhq1RqkCpteQDjVwSWteXBBxi1ouoB4wCbguedW61k3BF5U5PAmU6qZ8DfhUWW+woJPAK05mK41btZkXv4jY0vaksJ37zim0KkbBVAIMBw653X9P7/pp7HAUQV+JeGLCRViBtcFVjaZUEjQE5rrTfAeYov9WnebFeBFvTqjAB+K/WMtTDce1WzoJ+/0uEfCsmO6paovr2De0g8NIDyucmdpl1DIq4yoxLY454dyMsoIydwlZgyMyusvJ7OkZ45b6Q5MNILu6ZHFcxkViPBSxo9FS9FaMhTFDV+n3wHMaK1cj70ToYpmosZ0h0x4s+RZMY6FUzbOcelD52j39Rbu/htP1wc6Co2FlaNxqjjahMWs1BSjX2DkSoIvSAROw5iGpg+GlByykIqSctVTRFerH2+nxY5bthk/c0plEGOAWs+MhN0Z7d+2avwSw358AV4A9zlys73tAscYXcDMl44C6lQFeTmpaHv10pMHRjnwA3VnRDCR9fBwyzcRo5ZoAOTmq9YA9FjozTBOlMqmcTLjWsDxogmsTWfLWPGReN/XOksC0sEQyfyBlNNW3jpxrnPVRd7DKLfKFFOaa7NqnUWNarEqtWk7ZRJPdrqGuuKK+cdIMer7m+RcYQwZY5+LLHqf4F2oM2BX7oxtfG3M3K1yCaBv0VhaLCJp3/jEzejNEV091RFAZVsvG7XodpJjRWI7cXj41TgXdXvEcUxGWCYKWf7Bby/NkoxY3PlPXMkqZe9N9SLJrPzNsVxdjTsw0v0z+YnFgH3BKZbA1O04D24At8odgUZabPbbopa++VcrHiiiiiCL4D/cBfdhyKCJsbUoAAAAASUVORK5CYII="
-                        alt="message" >
-                    </a>
-                </span>
+            <span class="little-dot">
+                <a href="" id="unfollow-button" <?php if (!$user->is_following($_SESSION['user_id'],
+                    $_SESSION['ref_userid'])): ?>
+                    hidden
+                    <?php endif; ?>>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEeElEQVR4nO2ba6hVVRDHf17tpmLlIx+ZPawkFRFRxNRPlWmQdPsgaCmaiZUGil9MSdBMP2gSZI8PBSHiI4sIlRKNjFKMoiS8amTINQgqzefV7vWRRxbMhd06s8/Zr3PO7Lh/+H85nDXMzF5r9qyZ2dCOdlQK/YGFwCfAcaAZKACngEbgPWAa0Jn/GR4APgKuiMHl6ByyEuhKztEBWAq0RDTc5wngEXKKLsC2hIYH6XbNXHKGOjnnmkGNsitGAX2BemAA8DjwNnBaWXMdmEmOsCrkXM8Q55RCD+ANMTq4/jIwlhxguBLsjgL3xZQzRYkdbvfchHHs9pT+E7g7oawZyk6aj2EMVrbu5JQyNyi7yb1dTGK1p+zXGcgcoByFMRjFAU/RrCL3Dk/uYgyiTiJ1UNHeGcl+0ZP7MQbRy1PyXIayJ3qyv8EgBnpKNmUoe6Qn+ycMooenpLvpZYVJnuyvMBoDWjxF+2Qke74n90OMYp+n6OyM5H7uyV2EUaz0FHUOSYt7gFZProsJJnG/kgk2pJS5KQ8BMIidyi3QvSGSYLZyF8jqWFUMDyoJ0S/AoJhynlG2/g8RrtMm8LLy5M4Ac4COZdbeDryrHKVLwAhyhI0hFaGfgRXAOKkSd5Oi6WSpCp9X1vwr9YFcoSPwTogT4rBVSuW5wy0SsM6ldMB3wKN5OfsO/YC1wIUMnn6Qx4DnpIhqEp2BVwLdnkrROeIJjGEUcKTChheU+0B3DGCe8t6vFn+rZVpcB7xVI8ODvAg8WQvjNxgwvo1Xqp0nvGnAaJ9XpXBSlTNfMEqXcwytdLRvNWBoKR6WznTmuFmEF3LAbZI0NchD65SFA5YZMCwpm6WXMCFpW61fFTK8atH1FIbFdcDrBhTPki6OzYpq/K0hd3SLvAZ8D2wGPgA+Bf4o8f8FURwwx4Bh5dgsMeqOEBvGKrXKtkLLU+UcsNeAgaV4ELgr4m6eKaW14PqTUoZTcVuM2b5a8Ec5onEwSbLGoBxXuVLRYMDIMF5IUW5f6slyu6Jn1GmvghG6aZQ0xZsTnrwXokxmFIzQlczvJB1eVbLHIhwyYKzGxsCTdCX2XcAXEejmlR+WtWOU5k0R/jZgrMbtIU8xCv+R12XvKPMMLQaM1egapqSYRX5Idk/wN1fWK4LVq++Xot+EBA9pv0yb3qs0cYvQZMBYjX8Feoz9xRFROC4wajvFk/mt5oD3DRgbxrTfEWzx5K0Py6GvGzBWo0vRk2KIkg22vR2KkEWDs1J0F7W4qFdmmX4tVSjpJg3KgkFejtkmq1dGbhynllvYXZnUslQDWB6hEDpEefKOe6KWyeqAl4CzBozW+DvwmsSttk9xBkq036qc+YLcB0KvwmFwwtdk0PevNY8n+IrlP3D38OclGl8zYFAc7ipRPUoENxL7tMz4HK2gQ9yg1WfAEmC8JEHrJL+Pst7pNp0qoAswWiqvy6WRukcqOE1iSDCWtMpvZ2Rr7pfP7tbLWOxjYmypytWzctaPiJwWKYgeECflasymHdQQNwC9GOXvQvKiGAAAAABJRU5ErkJggg=="
+                        alt="unfollow">
+                </a>
+                <a href="" id="follow-button" <?php if ($user->is_following($_SESSION['user_id'],
+                    $_SESSION['ref_userid'])): ?>
+                    hidden
+                    <?php endif; ?>>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACY0lEQVR4nO2YTWsUQRCGHxMSJwdBvZmEHIMnT55kRcGAN02C7DUfPyAnEU1AvRnjX9CDGvVkNuRfhGBIDppEzcUPvJmNKwoirjRUwzDs7vTO1KR7YR+oy05NUW9vdXVNQ5fOox8oAy+BXeCn2K78VhafIJkE9oF6in0EJgiIHmDJIfGkPZR3vfMoQ/LWFkMom3pOG/eVfL/Uc14B+742dlkheWs3fAh4pShg2YeA94oCzDlx5NQUBdQ6XcChDwF7igJ2fAh4oSjgmQ8B5U5vo33Ah04+yJCpMk/y/4BreGYph4AHBECPjMbtrvxiKOO0ZdxxT5gT/DqB0icdZVl6e03sHfBcnhmfLl0K5jQwC6w2uN2oADPAKQJkAFiQ4a6eYlVgXt5xoleCf1UcIf4AlyX+MPAmQ4wNYMhFwGPFxK3NxZL/0sLvAlBq8fxzmojzcvhoJr8OHJMSSFt5S9o/EdGEmwWs/pjEXnDwtaT53aYJ95WTfxvrNoeKAqrNutNdZQH2Rm7W0d/i4jtNA+aUBVyRuKsFCFhpJGBMWcBom9/VlsxXNJHUl5aAExL3R6JVZqUUi2Niqn+4JC1qIMAkkZWLLgJOAp+UBJw56hKKH2g1xU1cKUDAa1I4p3AbcU9izRQgYAoHTDk9Bf5mFLAdO8iqigIOJDdnzgJPgO8ZRFySGPOKAm6REXMxdVVGjopspG/Ab+CXTItbwBpwR7qG7USRDGJ5Bay3GuaKZkhENkuulGiVSTPdcRDPDMoqtluKm8AIgRDJSOyysQ+k5o8TIGYknpb9FL9f2pFhbardbtMFD/wHKqqWpvNqQ8oAAAAASUVORK5CYII="
+                        alt="follow">
+                </a>
+            </span>
+            <span class="little-dot">
+                <a href="chat.html">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEKElEQVR4nO2Za4hVVRTHf45pYs1omqnooOKDfI6PhMxSdAghEMkPIlJmFoQoGmoIQqYQpGkKlg+kD6GlaSqIEvjuiyKZoeSD0lTG8EE+SvNtc2XB/8TiMHrPOXOOc6X7hwP37rPW2mvvvdZejwNFFFFEEf9XdAbeBpYBu4DfgcvAPT2XNbYTWCraThQIyoHZwFEgl/A5AnwEtK2LBXQFVmunA4UuAWuBacCrOqFngPp67HcXvTOadeIJ+E3W18Dzj2IBTwMLgbua/JYmHypl4+IJoBL4RrJykr0AeIqM0Ac47iZbArRJ2UyXu1P+FehNyngduKEJfgYqyA59gYOay+YckZbgN9wurQAakT0aAV863xldW4HmmHckcBaPHnM09235YSKY/f8pQfOoOyyQDheA1kkEbJKArUAJdYcSYId02RiXuVKMV5PuQspoC1yTTkPiMG4X00wKBx86C4mEjmKwHWhK4aAZ8A9QDXSIwjBVC7FoW2j4Vrq9H4V4o4gtfhQaxkq39VGIT4i4G4WHHtLttyjEf4u4LGUlLPsdpXzqJ+CMEkVLQ84DuxUzKpVM1oQm0u2vKBMGkbxBSgswx/xcjhq1RqkCpteQDjVwSWteXBBxi1ouoB4wCbguedW61k3BF5U5PAmU6qZ8DfhUWW+woJPAK05mK41btZkXv4jY0vaksJ37zim0KkbBVAIMBw653X9P7/pp7HAUQV+JeGLCRViBtcFVjaZUEjQE5rrTfAeYov9WnebFeBFvTqjAB+K/WMtTDce1WzoJ+/0uEfCsmO6paovr2De0g8NIDyucmdpl1DIq4yoxLY454dyMsoIydwlZgyMyusvJ7OkZ45b6Q5MNILu6ZHFcxkViPBSxo9FS9FaMhTFDV+n3wHMaK1cj70ToYpmosZ0h0x4s+RZMY6FUzbOcelD52j39Rbu/htP1wc6Co2FlaNxqjjahMWs1BSjX2DkSoIvSAROw5iGpg+GlByykIqSctVTRFerH2+nxY5bthk/c0plEGOAWs+MhN0Z7d+2avwSw358AV4A9zlys73tAscYXcDMl44C6lQFeTmpaHv10pMHRjnwA3VnRDCR9fBwyzcRo5ZoAOTmq9YA9FjozTBOlMqmcTLjWsDxogmsTWfLWPGReN/XOksC0sEQyfyBlNNW3jpxrnPVRd7DKLfKFFOaa7NqnUWNarEqtWk7ZRJPdrqGuuKK+cdIMer7m+RcYQwZY5+LLHqf4F2oM2BX7oxtfG3M3K1yCaBv0VhaLCJp3/jEzejNEV091RFAZVsvG7XodpJjRWI7cXj41TgXdXvEcUxGWCYKWf7Bby/NkoxY3PlPXMkqZe9N9SLJrPzNsVxdjTsw0v0z+YnFgH3BKZbA1O04D24At8odgUZabPbbopa++VcrHiiiiiCL4D/cBfdhyKCJsbUoAAAAASUVORK5CYII="
+                        alt="message">
+                </a>
+            </span>
             <?php endif; ?>
         </div>
     </div>
@@ -104,71 +104,31 @@ $posts = $post->get_by_user($_SESSION['ref_userid'], 4);
             </a>
         </header>
         <?php foreach($posts as $p): ?>
-            <div class="post">
-                <p class="post-creator">
-                    <?php echo $_SESSION['ref_user']; ?>
-                </p>
-                <img class="post-image" src="../images/second.jpg" alt="post">
-                <div class="icons">
-                    <span>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADtElEQVR4nO2aWYhOYRjHf8iSMdkztrGOZSxRskwSqWlEQors3NjiSuSCiAt3bpTliiwJxYUbucCFCYVkKWMZy+CzlSzZjd56Tz09zvm+8505Z3znzPnVqVPf877P+3/O877nfM/7QkpKSkpKSkNoBfQCugHNiJ5m1lcv67vRGQRsAC4Cb4B6cf0EXgCngKVA1xD8dQQWAMeB58AP5fMdcAnYCJQTISOAE8p5rssMdj/QI4C/zsAu4GuePi8Dk8MUXgwcBf54OPwOPANeZxnUF5s1fqfIeuCjR19OltXZey+fZ2wQG8QA4I7LUz0JLAJKlH1LmymbgRsugzoCtMniz/x2yKXdeWCNHY8MornvD6wGzrk8pMfAqKDiy4H3ojPT+TE7CL/MAu6pQVUD7V1s29vfpK1ZZybk4W8ccMEl+yoIsPA8EJ18tU88CK2Bw2pQ14FOSvwVFWwz/5sH8GeyYhPwW/SXAXrn08E50fgDMCbAQHSfO1UQrgId7HVVTbF5NJyFKgjXgBZ+07beXr+AKsJjm0sQtPg5IfrbovytyNWgBXBXNNhO+OggRCXeybzzwsezHIsws9W8aUc0bGsE8Q6j1VRYls34oDA0X1ZRslV8R0Ql3uG00GXuPdP/rTAcSPSMtO/xqFkkdH32mgaDhNF9kkUnNQ3GuxlNEgZnSR4Zoc+8Iv9hvjA4QPK4KfStzTVP9pI85PfGKjeDqeqfVNKoE/pmuhkMEwYmXZJEG1VIGetl9NkamBWzO8lhmhD/zdY4XJEfDCtJDvuELvNHz5PlwrDGFjjiTg9bE3B0rctmXAS8FMam0hJ39gs9n1QdwpXVooGpyw0nvsxRZbIdfhq1BG6LRo9CKm83NqPFou5M6bZ+G/dVNf97LgXQQmYI8EplsnnN58UU9e68BXSh8BmuHp6pas0I2tl0+96MSyYMVou4Eb8kjIXkh+j0xv/ak/NRxs8o8UEr2TmDUEZhMVTN+VDFO8ywu0R7KLwF72XU4guVMrtPGOqcj5P4uqYqfmBTFt8HqE3F0/SefKnd72+SaV8aJ/EV9rhMdcCzQX7mfEG/5w+oHaaeIT/5ghZvmKhOdtXYM3350tvWImIl3qFSBaHW1hj8YgL2UIlfTMyoVEF4AvTzKf5B3MUHDUKJOlUWa/FeQXjqcSagWxLFO1SpIGTsSbBie811+baPzYIXNAjOFpw8uJBY8bLQ+k4JrlfVW3NQK9GUALtVymdspSnI90KsKcq2U5uSkpKSkpKSQoT8BbZdy8lHIqGOAAAAAElFTkSuQmCC" 
+        <div class="post">
+            <p class="post-creator">
+                <?php echo $_SESSION['ref_user']; ?>
+            </p>
+            <img class="post-image" src="../images/second.jpg" alt="post">
+            <div class="icons">
+                <span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADtElEQVR4nO2aWYhOYRjHf8iSMdkztrGOZSxRskwSqWlEQors3NjiSuSCiAt3bpTliiwJxYUbucCFCYVkKWMZy+CzlSzZjd56Tz09zvm+8505Z3znzPnVqVPf877P+3/O877nfM/7QkpKSkpKSkNoBfQCugHNiJ5m1lcv67vRGQRsAC4Cb4B6cf0EXgCngKVA1xD8dQQWAMeB58AP5fMdcAnYCJQTISOAE8p5rssMdj/QI4C/zsAu4GuePi8Dk8MUXgwcBf54OPwOPANeZxnUF5s1fqfIeuCjR19OltXZey+fZ2wQG8QA4I7LUz0JLAJKlH1LmymbgRsugzoCtMniz/x2yKXdeWCNHY8MornvD6wGzrk8pMfAqKDiy4H3ojPT+TE7CL/MAu6pQVUD7V1s29vfpK1ZZybk4W8ccMEl+yoIsPA8EJ18tU88CK2Bw2pQ14FOSvwVFWwz/5sH8GeyYhPwW/SXAXrn08E50fgDMCbAQHSfO1UQrgId7HVVTbF5NJyFKgjXgBZ+07beXr+AKsJjm0sQtPg5IfrbovytyNWgBXBXNNhO+OggRCXeybzzwsezHIsws9W8aUc0bGsE8Q6j1VRYls34oDA0X1ZRslV8R0Ql3uG00GXuPdP/rTAcSPSMtO/xqFkkdH32mgaDhNF9kkUnNQ3GuxlNEgZnSR4Zoc+8Iv9hvjA4QPK4KfStzTVP9pI85PfGKjeDqeqfVNKoE/pmuhkMEwYmXZJEG1VIGetl9NkamBWzO8lhmhD/zdY4XJEfDCtJDvuELvNHz5PlwrDGFjjiTg9bE3B0rctmXAS8FMam0hJ39gs9n1QdwpXVooGpyw0nvsxRZbIdfhq1BG6LRo9CKm83NqPFou5M6bZ+G/dVNf97LgXQQmYI8EplsnnN58UU9e68BXSh8BmuHp6pas0I2tl0+96MSyYMVou4Eb8kjIXkh+j0xv/ak/NRxs8o8UEr2TmDUEZhMVTN+VDFO8ywu0R7KLwF72XU4guVMrtPGOqcj5P4uqYqfmBTFt8HqE3F0/SefKnd72+SaV8aJ/EV9rhMdcCzQX7mfEG/5w+oHaaeIT/5ghZvmKhOdtXYM3350tvWImIl3qFSBaHW1hj8YgL2UIlfTMyoVEF4AvTzKf5B3MUHDUKJOlUWa/FeQXjqcSagWxLFO1SpIGTsSbBie811+baPzYIXNAjOFpw8uJBY8bLQ+k4JrlfVW3NQK9GUALtVymdspSnI90KsKcq2U5uSkpKSkpKSQoT8BbZdy8lHIqGOAAAAAElFTkSuQmCC"
                         alt="like">
-                    </span>
-                    <span>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADs0lEQVR4nO2aSWgUQRSGv5jENa6QEdEguEUlalCDCEYEET14iBpEET14c0MkUS+K6EEEL0ZwAVEJURBz0INe3A6uQQUlMehBI7hF4ooaY0zMSME/UMSe6emeng38oaCn36v3+u/qelXv1QDcBB4CIbIc94Ew0JTtZAqBRpF5Cowii1H4n0yGovD/yGQoQopidjQbC1QD14F3QKdaK3AD2AvM8OCjFNinvq2y9UMB5yqwA5gUNJnPQI+u3dotYH4MuwuA23HaCgPXgFlBkjHtIlAJTAAGAf2BImApcFSEwyJ9HBhg2TLXJyxbn4Aj6lskW4OAYqACONXL3mEgzysBY7DcgcwTl0WzANgNdEj/LjAcGAE06N5PYJd03TAU2K8+kdEZFi8Jw/qyHmaRDzIG04EW6d8RIXP9AijBO2YDbywycY3MIXV4D4y37nslMwZ4aX1KLbrnF2MsMjVuyibqdCuCOE0wr2RKNbIdHiNaNJTJ1h9gZlQthVbzkAdj6HglU6UWFA7ItwnRjhgnha/AEBdjXsjkqgWFYVY0m+iksFPC2izYzpyW3+1OwhsSmhgeL7x+ZkFhmXxecRK2SjjFo9F0kCmWv2dOwk4JB/swnOrPrEC+vsci0s+n8VSSGSg/7U7CDxKaB/KLVH1mRfLx2kkYeZtm0SHDyZTJ/iMn4TkJ1wfgKNlkNsZaKqokrAvIWTLJnJFdQ+gflEj4EeibwWQGaPdhbE6OptQshVUEh6DJrJGtB7GUtkrJVB9zyDwyfYDHsrPJbaFpk+IKgkUQZFar/9teabQjtkn5lc9VPllkhluJleMk7408xWcvO+FUkDmrPg1e0oJpqjGFA06K/JLZbBUuokaqaFipMoxJfZeQPjKLgS7prU00rfzmUnRLFpkF2hi6pd+uyLVW0XarPJQKMgu1TQ8rIzShNyEYAydl8BewnOST2WClFXVB5vyGzDGrfLkn4AXTqTwbVv0q4ZFwQrUmv3FyIY5qSyJk2pKdNpsI9sWqHs4LwOacKOXZpmSTmWidBner0Jzvw06+zlW6NP/K00EmT7Ww33LYqOJ1vBhnnZP0aD70S2fdbC7w3Fp5t7gEghyt1JGjgpcx1qhQKkcmUtWosaKNqcuOdtAbCVyy9M5rM5hxFc0KHUdEMk1zuhVBpe5Fjiz8VjSbUlXRNG+w3nrrtWqR3/U+S06hdJAxWGftoMO6NvcSQShdZKaqDtCs6yAQSheZIUneATRl+7+aQhYZszhnNQwZ86e5e38BPMqCTuwGZHAAAAAASUVORK5CYII="
+                </span>
+                <span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADs0lEQVR4nO2aSWgUQRSGv5jENa6QEdEguEUlalCDCEYEET14iBpEET14c0MkUS+K6EEEL0ZwAVEJURBz0INe3A6uQQUlMehBI7hF4ooaY0zMSME/UMSe6emeng38oaCn36v3+u/qelXv1QDcBB4CIbIc94Ew0JTtZAqBRpF5Cowii1H4n0yGovD/yGQoQopidjQbC1QD14F3QKdaK3AD2AvM8OCjFNinvq2y9UMB5yqwA5gUNJnPQI+u3dotYH4MuwuA23HaCgPXgFlBkjHtIlAJTAAGAf2BImApcFSEwyJ9HBhg2TLXJyxbn4Aj6lskW4OAYqACONXL3mEgzysBY7DcgcwTl0WzANgNdEj/LjAcGAE06N5PYJd03TAU2K8+kdEZFi8Jw/qyHmaRDzIG04EW6d8RIXP9AijBO2YDbywycY3MIXV4D4y37nslMwZ4aX1KLbrnF2MsMjVuyibqdCuCOE0wr2RKNbIdHiNaNJTJ1h9gZlQthVbzkAdj6HglU6UWFA7ItwnRjhgnha/AEBdjXsjkqgWFYVY0m+iksFPC2izYzpyW3+1OwhsSmhgeL7x+ZkFhmXxecRK2SjjFo9F0kCmWv2dOwk4JB/swnOrPrEC+vsci0s+n8VSSGSg/7U7CDxKaB/KLVH1mRfLx2kkYeZtm0SHDyZTJ/iMn4TkJ1wfgKNlkNsZaKqokrAvIWTLJnJFdQ+gflEj4EeibwWQGaPdhbE6OptQshVUEh6DJrJGtB7GUtkrJVB9zyDwyfYDHsrPJbaFpk+IKgkUQZFar/9teabQjtkn5lc9VPllkhluJleMk7408xWcvO+FUkDmrPg1e0oJpqjGFA06K/JLZbBUuokaqaFipMoxJfZeQPjKLgS7prU00rfzmUnRLFpkF2hi6pd+uyLVW0XarPJQKMgu1TQ8rIzShNyEYAydl8BewnOST2WClFXVB5vyGzDGrfLkn4AXTqTwbVv0q4ZFwQrUmv3FyIY5qSyJk2pKdNpsI9sWqHs4LwOacKOXZpmSTmWidBner0Jzvw06+zlW6NP/K00EmT7Ww33LYqOJ1vBhnnZP0aD70S2fdbC7w3Fp5t7gEghyt1JGjgpcx1qhQKkcmUtWosaKNqcuOdtAbCVyy9M5rM5hxFc0KHUdEMk1zuhVBpe5Fjiz8VjSbUlXRNG+w3nrrtWqR3/U+S06hdJAxWGftoMO6NvcSQShdZKaqDtCs6yAQSheZIUneATRl+7+aQhYZszhnNQwZ86e5e38BPMqCTuwGZHAAAAAASUVORK5CYII="
                         alt="dislike">
-                    </span>
-                    <span>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADTUlEQVR4nO2a/WtOYRjHP4wxw2aSKMS8DaGIElLKH4DGzOYn5SWNyMuI+E2iRfwkWVqIhkXyMpGXKHkfm9cotlh+MbaRTXd9T53WeR7P9jznOfep51OnVtd9rvt7P+d+ue7rGqRIkSJZDAeWAPuAc8BT4B3QqMf8/QSoVJt8YBiWMBrYA7wA2iM8P/REsj8DdgO5QQxgDnAZ+OsSZH7tg0AhMB3I8XgvR7blwCF9Ned94+sSMCsZA8hVZ07n74FtwMg4fI4CSoEPLr9VcfqMSDdgPfBTHdVpPXRPYB/GVwHwWn00AesS6J++wBk5b9YX6IF/9AS2Ay3q8xSQGa9TM6fvy6H5pSaRPCYDb9T3PSC7q476AY/k6CaQRfLJBm5Jw0PNjk6Rpl3JOLgKZBAcfYBqabkobTGzQy+a7bE/wZMFPJemrbG+NAX4rUNsDPYwTrtma6xr9bpGvgb7KJG2K/9rOE8Na3zeYuPZml9J49xoDSvVyIQZtlIsjaejbXVmbXwF0rGXXoqmWyNtRPka6THs57i0LvYylsm4FPtZJq0HvIzOoZOH/UyU1mtexjoZbV4fDr2ltRYPGoBfhIdmoN7LUK/QOSy0AF+8DDX6XCZIC/XUqpbRxDShXux7ZSzCfgqjbb8LZTyK/ZRL6yIvY6Yu/N8VBti8Phq12M0t1pOKEASNK6TxZLRG04A2HY62hvG1Gsjs/zU+r4bmEmMbG6TN5BNiyvw16ZQfjz3kSVOLtt+YWKuRm+T0AIIn23Vgb+5sirTcldMK8rTPlAaj5UJX0rTprtPeZPoGEsyXuC0ND+JJnWYoKeakTE1JIFlMBd6q7zuJyHSaLe+wHJo7/Rb8JR3Y6UpiVyQiie2mQI5NcsIPzLlVpBKdU+la5VeRx5mriS7fmRTtJ/lvUw1yBD5HnEci2EtVTlsJzAAGe8Rsg2Qr1nSt6VB6qwJm4jNOyW2Bx5RwMjBeT7MO2Ej2x8Auv0ptHRkC/AE+dkjrjwVuSFCDynHmwDoB3AVe6gr9TXPf1FvO6u5jQvChJJkyiV3tmiL7le1rVz7WpnDGkwkSbKbHRgWVzgCccDrivcAW0nQYec1tUxKbT0go0Y3xs/5DwcQ6m0KSjUxBkPwDzwIGrMKmHgUAAAAASUVORK5CYII="
+                </span>
+                <span>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADTUlEQVR4nO2a/WtOYRjHP4wxw2aSKMS8DaGIElLKH4DGzOYn5SWNyMuI+E2iRfwkWVqIhkXyMpGXKHkfm9cotlh+MbaRTXd9T53WeR7P9jznOfep51OnVtd9rvt7P+d+ue7rGqRIkSJZDAeWAPuAc8BT4B3QqMf8/QSoVJt8YBiWMBrYA7wA2iM8P/REsj8DdgO5QQxgDnAZ+OsSZH7tg0AhMB3I8XgvR7blwCF9Ned94+sSMCsZA8hVZ07n74FtwMg4fI4CSoEPLr9VcfqMSDdgPfBTHdVpPXRPYB/GVwHwWn00AesS6J++wBk5b9YX6IF/9AS2Ay3q8xSQGa9TM6fvy6H5pSaRPCYDb9T3PSC7q476AY/k6CaQRfLJBm5Jw0PNjk6Rpl3JOLgKZBAcfYBqabkobTGzQy+a7bE/wZMFPJemrbG+NAX4rUNsDPYwTrtma6xr9bpGvgb7KJG2K/9rOE8Na3zeYuPZml9J49xoDSvVyIQZtlIsjaejbXVmbXwF0rGXXoqmWyNtRPka6THs57i0LvYylsm4FPtZJq0HvIzOoZOH/UyU1mtexjoZbV4fDr2ltRYPGoBfhIdmoN7LUK/QOSy0AF+8DDX6XCZIC/XUqpbRxDShXux7ZSzCfgqjbb8LZTyK/ZRL6yIvY6Yu/N8VBti8Phq12M0t1pOKEASNK6TxZLRG04A2HY62hvG1Gsjs/zU+r4bmEmMbG6TN5BNiyvw16ZQfjz3kSVOLtt+YWKuRm+T0AIIn23Vgb+5sirTcldMK8rTPlAaj5UJX0rTprtPeZPoGEsyXuC0ND+JJnWYoKeakTE1JIFlMBd6q7zuJyHSaLe+wHJo7/Rb8JR3Y6UpiVyQiie2mQI5NcsIPzLlVpBKdU+la5VeRx5mriS7fmRTtJ/lvUw1yBD5HnEci2EtVTlsJzAAGe8Rsg2Qr1nSt6VB6qwJm4jNOyW2Bx5RwMjBeT7MO2Ej2x8Auv0ptHRkC/AE+dkjrjwVuSFCDynHmwDoB3AVe6gr9TXPf1FvO6u5jQvChJJkyiV3tmiL7le1rVz7WpnDGkwkSbKbHRgWVzgCccDrivcAW0nQYec1tUxKbT0go0Y3xs/5DwcQ6m0KSjUxBkPwDzwIGrMKmHgUAAAAASUVORK5CYII="
                         alt="comment">
-                    </span>
-                </div>
-                <p class="post-description">
-                    <?php echo $p[3]; ?>
-                </p>
+                </span>
             </div>
+            <p class="post-description">
+                <?php echo $p[3]; ?>
+            </p>
+        </div>
         <?php endforeach; ?>
-        <!-- <div class="post">
-            <h3 class="post-creator"><?php echo $_SESSION['ref_user']; ?></h3>
-            <img class="post-image" src="../images/second.jpg" alt="post">
-            <div class="icons">
-                <span><img src="../icons/like.png" alt="like"></span>
-                <span><img src="../icons/dislike.png" alt="dislike"></span>
-                <span><img src="../icons/comment.png" alt="comment"></span>
-            </div>
-            <h4 class="post-description">Hello Jzr here</h4>
-        </div>
-        <div class="post">
-            <h3 class="post-creator">Username</h3>
-            <img class="post-image" src="../images/second.jpg" alt="post">
-            <div class="icons">
-                <span><img src="../icons/like.png" alt="like"></span>
-                <span><img src="../icons/dislike.png" alt="dislike"></span>
-                <span><img src="../icons/comment.png" alt="comment"></span>
-            </div>
-            <h4 class="post-description">Hello Jzr here</h4>
-        </div>
-        <div class="post">
-            <h3 class="post-creator">Username</h3>
-            <img class="post-image" src="../images/second.jpg" alt="post">
-            <div class="icons">
-                <span><img src="../icons/like.png" alt="like"></span>
-                <span><img src="../icons/dislike.png" alt="dislike"></span>
-                <span><img src="../icons/comment.png" alt="comment"></span>
-            </div>
-            <h4 class="post-description">Hello Jzr here</h4>
-        </div>
-        <div class="post">
-            <h3 class="post-creator">Username</h3>
-            <img class="post-image" src="../images/second.jpg" alt="post">
-            <div class="icons">
-                <span><img src="../icons/like.png" alt="like"></span>
-                <span><img src="../icons/dislike.png" alt="dislike"></span>
-                <span><img src="../icons/comment.png" alt="comment"></span>
-            </div>
-            <h4 class="post-description">Hello Jzr here</h4>
-        </div> -->
-    </div> 
+    </div>
 
 </body>
 
