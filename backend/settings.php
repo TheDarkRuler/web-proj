@@ -31,7 +31,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 if (isset($_POST['new_password']) && isset($_POST['password']) && !empty($_POST['new_password']) && !empty($_POST['password'])) {
     $password = $_POST['password'];
     $new_password = $_POST['new_password'];
-    if ($user->validate_password($_SESSION['mail'], $password)) {
+    if ($user->validate_password($_SESSION['user_id'], $password)) {
         $user->update_password(password_hash($new_password, PASSWORD_DEFAULT), $_SESSION['user_id']);
     }
 }

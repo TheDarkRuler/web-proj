@@ -15,7 +15,7 @@ if (isset($_POST['username'])) {
 
     $result = $user->create_user($username, $mail, $password, '')[0];
 
-    if ($result == false) {
+    if (count($result) <= 0) {
         $_SESSION['error'] = 'User already exists!';
         header('Location: ../frontend/index.html');
     } else {
@@ -38,7 +38,7 @@ if (isset($_POST['username'])) {
 
     $result = $user->login_user($mail, $password)[0];
 
-    if ($result != null) {
+    if (count($result) > 0) {
 
         $_SESSION['user_id'] = $result[0];
         $_SESSION['username'] = $result[1];

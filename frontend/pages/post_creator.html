@@ -10,7 +10,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/post_creator.css" />
-    <script type="text/javascript" src="../script/settings.js"></script>
+    <script type="text/javascript" src="../script/post_creator.js"></script>
+    <script type="text/javascript" src="../script/image_preview.js"></script>
 </head>
 
 <body>
@@ -21,9 +22,9 @@ session_start();
     </header>
     <div class="post-box">
         <form action="../../backend/post_creator.php" method="post" enctype="multipart/form-data" class="post-form">
-            <input id="upload-image" type="file" name="profile-image" accept=".png,.jpg,.jpeg"
+            <input id="upload-image" type="file" name="post-image" accept=".png,.jpg,.jpeg"
                 onchange="previewImage()">
-            <img id="preview-image" class="profile-image" src="" alt="Profile image">
+            <img id="preview-image" class="post-image" src="" alt="post image">
             <textarea name="description" class="description" placeholder="Write your description here..."
                 rows="3"></textarea>
         </form>
