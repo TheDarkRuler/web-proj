@@ -38,7 +38,7 @@ if (isset($_POST['username'])) {
 
     $result = $user->login_user($mail, $password)[0];
 
-    if (count($result) > 0) {
+    if ($result != null && count($result) > 0) {
 
         $_SESSION['user_id'] = $result[0];
         $_SESSION['username'] = $result[1];
