@@ -2,7 +2,7 @@
 
 require_once 'database.php';
 
-class Post {
+class Comment {
 
     function post_comment($post_id, $user_id, $content) {
         global $db;

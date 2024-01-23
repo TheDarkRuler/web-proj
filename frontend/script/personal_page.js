@@ -44,7 +44,7 @@ function update_posts(user_id, n_posts, loadM) {
                                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADs0lEQVR4nO2aSWgUQRSGv5jENa6QEdEguEUlalCDCEYEET14iBpEET14c0MkUS+K6EEEL0ZwAVEJURBz0INe3A6uQQUlMehBI7hF4ooaY0zMSME/UMSe6emeng38oaCn36v3+u/qelXv1QDcBB4CIbIc94Ew0JTtZAqBRpF5Cowii1H4n0yGovD/yGQoQopidjQbC1QD14F3QKdaK3AD2AvM8OCjFNinvq2y9UMB5yqwA5gUNJnPQI+u3dotYH4MuwuA23HaCgPXgFlBkjHtIlAJTAAGAf2BImApcFSEwyJ9HBhg2TLXJyxbn4Aj6lskW4OAYqACONXL3mEgzysBY7DcgcwTl0WzANgNdEj/LjAcGAE06N5PYJd03TAU2K8+kdEZFi8Jw/qyHmaRDzIG04EW6d8RIXP9AijBO2YDbywycY3MIXV4D4y37nslMwZ4aX1KLbrnF2MsMjVuyibqdCuCOE0wr2RKNbIdHiNaNJTJ1h9gZlQthVbzkAdj6HglU6UWFA7ItwnRjhgnha/AEBdjXsjkqgWFYVY0m+iksFPC2izYzpyW3+1OwhsSmhgeL7x+ZkFhmXxecRK2SjjFo9F0kCmWv2dOwk4JB/swnOrPrEC+vsci0s+n8VSSGSg/7U7CDxKaB/KLVH1mRfLx2kkYeZtm0SHDyZTJ/iMn4TkJ1wfgKNlkNsZaKqokrAvIWTLJnJFdQ+gflEj4EeibwWQGaPdhbE6OptQshVUEh6DJrJGtB7GUtkrJVB9zyDwyfYDHsrPJbaFpk+IKgkUQZFar/9teabQjtkn5lc9VPllkhluJleMk7408xWcvO+FUkDmrPg1e0oJpqjGFA06K/JLZbBUuokaqaFipMoxJfZeQPjKLgS7prU00rfzmUnRLFpkF2hi6pd+uyLVW0XarPJQKMgu1TQ8rIzShNyEYAydl8BewnOST2WClFXVB5vyGzDGrfLkn4AXTqTwbVv0q4ZFwQrUmv3FyIY5qSyJk2pKdNpsI9sWqHs4LwOacKOXZpmSTmWidBner0Jzvw06+zlW6NP/K00EmT7Ww33LYqOJ1vBhnnZP0aD70S2fdbC7w3Fp5t7gEghyt1JGjgpcx1qhQKkcmUtWosaKNqcuOdtAbCVyy9M5rM5hxFc0KHUdEMk1zuhVBpe5Fjiz8VjSbUlXRNG+w3nrrtWqR3/U+S06hdJAxWGftoMO6NvcSQShdZKaqDtCs6yAQSheZIUneATRl+7+aQhYZszhnNQwZ86e5e38BPMqCTuwGZHAAAAAASUVORK5CYII="
                                                 alt="dislike">
                                         </span>
-                                        <span>
+                                        <span class='comment-icon'>
                                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADTUlEQVR4nO2a/WtOYRjHP4wxw2aSKMS8DaGIElLKH4DGzOYn5SWNyMuI+E2iRfwkWVqIhkXyMpGXKHkfm9cotlh+MbaRTXd9T53WeR7P9jznOfep51OnVtd9rvt7P+d+ue7rGqRIkSJZDAeWAPuAc8BT4B3QqMf8/QSoVJt8YBiWMBrYA7wA2iM8P/REsj8DdgO5QQxgDnAZ+OsSZH7tg0AhMB3I8XgvR7blwCF9Ned94+sSMCsZA8hVZ07n74FtwMg4fI4CSoEPLr9VcfqMSDdgPfBTHdVpPXRPYB/GVwHwWn00AesS6J++wBk5b9YX6IF/9AS2Ay3q8xSQGa9TM6fvy6H5pSaRPCYDb9T3PSC7q476AY/k6CaQRfLJBm5Jw0PNjk6Rpl3JOLgKZBAcfYBqabkobTGzQy+a7bE/wZMFPJemrbG+NAX4rUNsDPYwTrtma6xr9bpGvgb7KJG2K/9rOE8Na3zeYuPZml9J49xoDSvVyIQZtlIsjaejbXVmbXwF0rGXXoqmWyNtRPka6THs57i0LvYylsm4FPtZJq0HvIzOoZOH/UyU1mtexjoZbV4fDr2ltRYPGoBfhIdmoN7LUK/QOSy0AF+8DDX6XCZIC/XUqpbRxDShXux7ZSzCfgqjbb8LZTyK/ZRL6yIvY6Yu/N8VBti8Phq12M0t1pOKEASNK6TxZLRG04A2HY62hvG1Gsjs/zU+r4bmEmMbG6TN5BNiyvw16ZQfjz3kSVOLtt+YWKuRm+T0AIIn23Vgb+5sirTcldMK8rTPlAaj5UJX0rTprtPeZPoGEsyXuC0ND+JJnWYoKeakTE1JIFlMBd6q7zuJyHSaLe+wHJo7/Rb8JR3Y6UpiVyQiie2mQI5NcsIPzLlVpBKdU+la5VeRx5mriS7fmRTtJ/lvUw1yBD5HnEci2EtVTlsJzAAGe8Rsg2Qr1nSt6VB6qwJm4jNOyW2Bx5RwMjBeT7MO2Ej2x8Auv0ptHRkC/AE+dkjrjwVuSFCDynHmwDoB3AVe6gr9TXPf1FvO6u5jQvChJJkyiV3tmiL7le1rVz7WpnDGkwkSbKbHRgWVzgCccDrivcAW0nQYec1tUxKbT0go0Y3xs/5DwcQ6m0KSjUxBkPwDzwIGrMKmHgUAAAAASUVORK5CYII="
                                                 alt="comment">
                                         </span>
@@ -60,12 +60,16 @@ function update_posts(user_id, n_posts, loadM) {
                 }).done(() => {
                     let likeButtons = document.querySelectorAll('.like-icon');
                     let dislikeButtons = document.querySelectorAll('.dislike-icon');
+                    let commentButtons = document.querySelectorAll('.comment-icon');
 
                     likeButtons.forEach(btn => {
                         btn.addEventListener('click', function () { like(btn); });
                     });
                     dislikeButtons.forEach(btn => {
                         btn.addEventListener('click', function () { dislike(btn); });
+                    });
+                    commentButtons.forEach(btn => {
+                        btn.addEventListener('click', function () { });
                     });
                 });
             }
