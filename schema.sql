@@ -74,7 +74,7 @@ CREATE TABLE Messages (
     FOREIGN KEY (sender_id) REFERENCES Users(id),
     FOREIGN KEY (receiver_id) REFERENCES Users(id),
     content TEXT,
-    tp TIMESTAMP
+    tp TIMESTAMP DEFAULT NOW()
 );
 
 DROP TABLE IF EXISTS Quotes;
@@ -94,5 +94,6 @@ CREATE TABLE Interactions (
     post_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (post_id) REFERENCES Posts(id),
-    interaction VARCHAR(10) NOT NULL
+    interaction VARCHAR(10) NOT NULL,
+    tp TIMESTAMP DEFAULT NOW()
 );

@@ -17,13 +17,48 @@ class Post {
         return $result;
     }
 
-    function update_post_stats($column_name, $value, $post_id) {
+    function like_post($post_id, $user_id, $value) {
         global $db;
 
-        $query = 'UPDATE Posts SET ? = ? + ? WHERE post_id LIKE ?';
+        $query = 'UPDATE Posts SET n_like = n_like + ? WHERE id = ?';
 
         $statement = $db->prepare($query);
-        $statement->bind_param('ssii', $column_name, $column_name, $value, $post_id);
+        $statement->bind_param('ii', $value, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($value > 0) {
+            $query = "INSERT INTO Interactions(user_id, post_id, interaction) VALUES (?, ?, 'like')";
+        } else {
+            $query = "DELETE FROM Interactions WHERE user_id = ? AND post_id = ? AND interaction LIKE 'like'";
+        }
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result;
+    }
+
+    function dislike_post($post_id, $user_id, $value) {
+        global $db;
+
+        $query = 'UPDATE Posts SET n_dislike = n_dislike + ? WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $value, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        if ($value > 0) {
+            $query = "INSERT INTO Interactions(user_id, post_id, interaction) VALUES (?, ?, 'dislike')";
+        } else {
+            $query = "DELETE FROM Interactions WHERE user_id = ? AND post_id = ? AND interaction LIKE 'dislike'";
+        }
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $post_id);
         $statement->execute();
         $result = $statement->get_result();
 
@@ -76,7 +111,7 @@ class Post {
         $statement->execute();
         $result = $statement->get_result();
         $posts = $result->fetch_all();
-        
+
         return $posts;
     }
 
