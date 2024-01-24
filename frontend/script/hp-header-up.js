@@ -3,27 +3,29 @@ document.addEventListener('DOMContentLoaded', function () {
     var scrollDown = 0;
     var scrollDirection = false; // true == down | false == top
     var scrollPositionToShow = 10;
+    const posts = document.getElementsByTagName("main")[0];
 
-    window.addEventListener('scroll', function () {
+
+    posts.addEventListener('scroll', function () {
         if (scrollDown > scrollPositionToShow + 10) {
             header.style.top = '-10%';
         } else {
             header.style.top = '0';
         }
 
-        if (scrollDown > this.document.documentElement.scrollTop) {
+        if (scrollDown > posts.scrollTop) {
             if (!scrollDirection) {
                 scrollDirection = true;
-                scrollPositionToShow = this.document.documentElement.scrollTop;
+                scrollPositionToShow = posts.scrollTop;
             } else {
-                scrollDown = this.document.documentElement.scrollTop;
+                scrollDown = posts.scrollTop;
             }
         } else {
             if (!scrollDirection) {
-                scrollDown = this.document.documentElement.scrollTop;
+                scrollDown = posts.scrollTop;
             } else {
                 scrollDirection = false;
-                scrollPositionToShow = this.document.documentElement.scrollTop;
+                scrollPositionToShow = posts.scrollTop;
             }
         }
     });

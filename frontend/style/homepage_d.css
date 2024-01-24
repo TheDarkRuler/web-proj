@@ -57,7 +57,7 @@ main,
 
 main {
     width: 49%;
-    padding: 1%;
+    padding: 0 1%;
     overflow-y: scroll;
 }
 
@@ -69,6 +69,14 @@ main>header {
 main>header>a>img {
     width: 30%;
     padding: 5%;
+}
+
+.loadMoreText {
+    text-align: center;
+}
+
+.loadMoreText>p {
+    color: #6c6c6c;
 }
 
 .messages-container {
