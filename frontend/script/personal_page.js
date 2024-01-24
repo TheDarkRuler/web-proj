@@ -1,5 +1,7 @@
 import { like } from './interaction-manager.js';
 import { dislike } from './interaction-manager.js';
+import { showComment } from './interaction-manager.js';
+import { addComment } from './interaction-manager.js';
 
 function update_posts(user_id, n_posts, loadM) {
     const username = document.getElementById('username').innerHTML;
@@ -69,7 +71,18 @@ function update_posts(user_id, n_posts, loadM) {
                         btn.addEventListener('click', function () { dislike(btn); });
                     });
                     commentButtons.forEach(btn => {
-                        btn.addEventListener('click', function () { });
+                        btn.addEventListener('click', function () {
+                            const commentSection = document.getElementById('comment-section');
+                            commentSection.style.display = 'block';
+
+                            let commentButton = document.querySelector('.comment-send');
+                            commentButton.addEventListener('click', () => {
+                                let text = document.querySelector('.comment-text').value;
+                                addComment(text, btn);
+                            });
+
+                            showComment(btn);
+                        });
                     });
                 });
             }

@@ -7,7 +7,7 @@ class Comment {
     function post_comment($post_id, $user_id, $content) {
         global $db;
 
-        $query = 'INSERT INTO Comment (post_id, content, tp, user_id) VALUES (?, ?, ?, ?)';
+        $query = 'INSERT INTO Comments (post_id, content, tp, user_id) VALUES (?, ?, ?, ?)';
 
         $statement = $db->prepare($query);
         $statement->bind_param('issi', $post_id, $content, date('Y-m-d H:i:s'), $user_id);

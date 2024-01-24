@@ -20,6 +20,7 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
     <link rel="stylesheet" type="text/css" href="../style/scrollbar_set.css" />
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/personal_page.css" />
+    <link rel="stylesheet" type="text/css" href="../style/comment.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../script/follow.js"></script>
     <script src="../script/chat-redirect.js"></script>
@@ -112,6 +113,14 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
             <button>
                 load more
             </button>
+        </div>
+        <div id="comment-section" class="comment-section">
+            <div id="comment-list" class="comment-list"></div>
+            <!-- Comment form and comments go here -->
+            <div id="comment-input" class="comment-input">
+                <input type="text" class="comment-text" placeholder="Write your comment" />
+                <button class="comment-send">Send</button>
+            </div>
         </div>
     </div>
 </body>

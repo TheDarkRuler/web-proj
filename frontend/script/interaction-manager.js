@@ -51,5 +51,40 @@ export function dislike(button) {
             dataType: 'json'
         });
     });
+}
 
+export function showComment(button) {
+    let postId = button.parentElement.children[0].innerHTML;
+    let commentList;
+
+    $.ajax({
+        url: '../../backend/comment_manager.php',
+        type: 'POST',
+        data: { type: 'show', postId: postId },
+        success: function (result) {
+            commentList = '';
+            for (let i = 0; i < result.length; i++) {
+                // TODO
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus + " - Error: " + errorThrown);
+        },
+        dataType: json
+    });
+}
+
+export function addComment(content, button) {
+    let postId = button.parentElement.children[0].innerHTML;
+
+    $.ajax({
+        url: '../../backend/comment_manager.php',
+        type: 'POST',
+        data: { type: 'insert', postId: postId, content: content },
+        success: function (result) {
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus + " - Error: " + errorThrown);
+        }
+    });
 }
