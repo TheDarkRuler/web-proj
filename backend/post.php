@@ -118,7 +118,10 @@ class Post {
     function get_all_following($user_id, $limit) {
         global $db;
 
-        $query = 'SELECT * FROM Posts WHERE user_id IN (SELECT id2 FROM Follows WHERE id1 = ?) ORDER BY RAND() LIMIT ?';
+        $query = 'SELECT id, user_id, description, tp, n_like, n_dislike 
+                    FROM Posts 
+                    WHERE user_id IN (SELECT id2 FROM Follows WHERE id1 = ?) 
+                    ORDER BY tp DESC LIMIT ?';
 
         $statement = $db->prepare($query);
         $statement->bind_param('ii', $user_id, $limit);
