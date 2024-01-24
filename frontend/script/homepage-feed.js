@@ -23,7 +23,7 @@ function update_posts(n_posts, loadMore) {
                     success: function (image) {
                         container.innerHTML += `
                             <div class="post">
-                                <a href="personal_page.html?#1">
+                                <a href="personal_page.html?ref_username=`+ result[i][6] + `&ref_id=` + result[i][1] +`"
                                     <p class="post-creator">`+ result[i][6] + ` #` + result[i][1] +`</p>
                                 </a>
                                 ` + image +`
