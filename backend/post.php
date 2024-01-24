@@ -65,6 +65,13 @@ class Post {
         return $result;
     }
 
+    private function update_opposite($type, $user_id, $post_id) {
+        if ($type == 'like' && $this->check_like($user_id, $post_id)) {
+        }
+        if ($type == 'dislike') {
+        }
+    }
+
     function get_all_by_user($user_id) {
         global $db;
 
@@ -118,8 +125,9 @@ class Post {
     function get_all_following($user_id, $limit) {
         global $db;
 
-        $query = 'SELECT id, user_id, description, tp, n_like, n_dislike 
+        $query = 'SELECT Posts.id, Posts.user_id, Posts.description, Posts.tp, Posts.n_like, Posts.n_dislike, Users.username 
                     FROM Posts 
+                    INNER JOIN Users ON Users.id = Posts.user_id
                     WHERE user_id IN (SELECT id2 FROM Follows WHERE id1 = ?) 
                     ORDER BY tp DESC LIMIT ?';
 
