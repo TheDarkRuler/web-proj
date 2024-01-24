@@ -24,7 +24,7 @@ function update_posts(user_id, n_posts, loadM) {
                 let resultImage;
                 $.ajax({
                     url: '../../backend/post-get-limit.php',
-                    // async: false,
+                    async: false,
                     type: 'POST',
                     data: { id: result[i][0], func: 'get-image' },
                     success: function (image) {
