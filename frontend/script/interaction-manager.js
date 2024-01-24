@@ -55,22 +55,22 @@ export function dislike(button) {
 
 export function showComment(button) {
     let postId = button.parentElement.children[0].innerHTML;
-    let commentList;
+    let commentList = document.getElementById('comment-list');
 
     $.ajax({
         url: '../../backend/comment_manager.php',
         type: 'POST',
         data: { type: 'show', postId: postId },
         success: function (result) {
-            commentList = '';
+            commentList.innerHTML = '';
             for (let i = 0; i < result.length; i++) {
-                // TODO
+                commentList.innerHTML += `<div class='comment'><p class='comment-content'>` + result[i][2] + `</p></div>`;
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);
         },
-        dataType: json
+        dataType: 'json'
     });
 }
 

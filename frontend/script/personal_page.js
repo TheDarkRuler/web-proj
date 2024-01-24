@@ -79,6 +79,7 @@ function update_posts(user_id, n_posts, loadM) {
                             commentButton.addEventListener('click', () => {
                                 let text = document.querySelector('.comment-text').value;
                                 addComment(text, btn);
+                                showComment(btn);
                             });
 
                             showComment(btn);
