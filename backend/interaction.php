@@ -10,10 +10,10 @@ class Interaction {
             FROM Interactions 
             INNER JOIN Posts ON Posts.id = Interactions.post_id 
             INNER JOIN Users ON Users.id = Interactions.user_id 
-            WHERE Posts.user_id = ? ";
+            WHERE Posts.user_id = ?";
 
         $statement = $db->prepare($query);
-        $statement->prepare('i', $user_id);
+        $statement->bind_param('i', $user_id);
         $statement->execute();
         $result = $statement->get_result();
 
