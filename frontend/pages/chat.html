@@ -55,13 +55,13 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
                         <?php $profileP = $user->getProfileImg($chat[0]);?>
                     </span>
                     <div class="chat-details">
-                        <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id'])[0]; ?>
+                        <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id']); ?>
                         <div class="text-head">
                             <p id="chat-user">
                                 <?php echo $chat[1] . ' #' . $chat[0]; ?>
                             </p>
                             <?php if(count($prev) > 0): ?>
-                            <?php $x = date_parse($prev[1]); ?>
+                            <?php $x = date_parse($prev[0][1]); ?>
                             <p class="time">
                                 <?php echo $x['hour'] . ':' . $x['minute']; ?>
                             </p>
@@ -71,7 +71,7 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
                         <?php if(count($prev) > 0): ?>
                         <div class="text-message">
                             <p>
-                                <?php echo substr($prev[0], 0, 22); ?>
+                                <?php echo substr($prev[0][0], 0, 22); ?>
                             </p>
                             <!-- <b></b> -->
                         </div>

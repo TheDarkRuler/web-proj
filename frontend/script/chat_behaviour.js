@@ -11,9 +11,10 @@ function update_messages() {
                 container.innerHTML = "";
                 for (let i = 0; i < result.length; i++) {
                     let date = new Date(result[result.length - 1 - i][4]);
+                    let minutes = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
                     container.innerHTML += `<div class='message-box ` + ((result[result.length - 1 - i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
                     <p>
-                    ` + result[result.length - 1 - i][3] + `<br><span>` + date.getHours() + `:` + date.getMinutes() + `</span>
+                    ` + result[result.length - 1 - i][3] + `<br><span>` + date.getHours() + `:` + minutes + `</span>
                     </p>
                     </div >`;
                 }
