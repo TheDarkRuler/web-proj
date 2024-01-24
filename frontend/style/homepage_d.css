@@ -80,7 +80,32 @@ main>header>a>img {
 }
 
 .messages-container {
-    height: 70vh;
+    height: 60vh;
+}
+
+.notification-popup {
+    display: none;
+    position: fixed;
+    width: 20%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin: 0 2%;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+
+.notification {
+    display: inline-block;
+    margin: 0 15px 2px 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+.notification-icon {
+    height: 5vh;
+    margin-top: 25px;
+    display: inline-block;
 }
 
 .chat {
