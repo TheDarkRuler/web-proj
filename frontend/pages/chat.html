@@ -55,7 +55,7 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
                         <?php $profileP = $user->getProfileImg($chat[0]);?>
                     </span>
                     <div class="chat-details">
-                        <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id']); ?>
+                        <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id'])[0]; ?>
                         <div class="text-head">
                             <p id="chat-user">
                                 <?php echo $chat[1] . ' #' . $chat[0]; ?>
