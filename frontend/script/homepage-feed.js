@@ -1,4 +1,4 @@
-function update_posts(n_posts, loadM) {
+function update_posts(n_posts, loadMore) {
 
     $.ajax({
         url: '../../backend/post_load.php',
@@ -6,13 +6,13 @@ function update_posts(n_posts, loadM) {
         datatype: 'json',
         data: { limit: n_posts },
         success: function (result) {
-            let container = document.querySelector('.post-container');
+            let container = document.querySelector(".post-container");
             container.innerHTML = "";
 
             result = JSON.parse(result);
-            /*if (result.length != n_posts) {
-                loadM.style.visibility = 'hidden';
-            }*/
+            if (result.length != n_posts) {
+                loadMore.remove();
+            }
 
             for (let i = 0; i < result.length; i++) {
                 $.ajax({
@@ -24,7 +24,7 @@ function update_posts(n_posts, loadM) {
                         container.innerHTML += `
                             <div class="post">
                                 <a href="personal_page.html?#1">
-                                    <p class="post-creator">` + result[i][1] +`</p>
+                                    <p class="post-creator">`+ result[i][6] + ` #` + result[i][1] +`</p>
                                 </a>
                                 ` + image +`
                                 <div class="icons">
@@ -38,7 +38,9 @@ function update_posts(n_posts, loadM) {
                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADTUlEQVR4nO2a/WtOYRjHP4wxw2aSKMS8DaGIElLKH4DGzOYn5SWNyMuI+E2iRfwkWVqIhkXyMpGXKHkfm9cotlh+MbaRTXd9T53WeR7P9jznOfep51OnVtd9rvt7P+d+ue7rGqRIkSJZDAeWAPuAc8BT4B3QqMf8/QSoVJt8YBiWMBrYA7wA2iM8P/REsj8DdgO5QQxgDnAZ+OsSZH7tg0AhMB3I8XgvR7blwCF9Ned94+sSMCsZA8hVZ07n74FtwMg4fI4CSoEPLr9VcfqMSDdgPfBTHdVpPXRPYB/GVwHwWn00AesS6J++wBk5b9YX6IF/9AS2Ay3q8xSQGa9TM6fvy6H5pSaRPCYDb9T3PSC7q476AY/k6CaQRfLJBm5Jw0PNjk6Rpl3JOLgKZBAcfYBqabkobTGzQy+a7bE/wZMFPJemrbG+NAX4rUNsDPYwTrtma6xr9bpGvgb7KJG2K/9rOE8Na3zeYuPZml9J49xoDSvVyIQZtlIsjaejbXVmbXwF0rGXXoqmWyNtRPka6THs57i0LvYylsm4FPtZJq0HvIzOoZOH/UyU1mtexjoZbV4fDr2ltRYPGoBfhIdmoN7LUK/QOSy0AF+8DDX6XCZIC/XUqpbRxDShXux7ZSzCfgqjbb8LZTyK/ZRL6yIvY6Yu/N8VBti8Phq12M0t1pOKEASNK6TxZLRG04A2HY62hvG1Gsjs/zU+r4bmEmMbG6TN5BNiyvw16ZQfjz3kSVOLtt+YWKuRm+T0AIIn23Vgb+5sirTcldMK8rTPlAaj5UJX0rTprtPeZPoGEsyXuC0ND+JJnWYoKeakTE1JIFlMBd6q7zuJyHSaLe+wHJo7/Rb8JR3Y6UpiVyQiie2mQI5NcsIPzLlVpBKdU+la5VeRx5mriS7fmRTtJ/lvUw1yBD5HnEci2EtVTlsJzAAGe8Rsg2Qr1nSt6VB6qwJm4jNOyW2Bx5RwMjBeT7MO2Ej2x8Auv0ptHRkC/AE+dkjrjwVuSFCDynHmwDoB3AVe6gr9TXPf1FvO6u5jQvChJJkyiV3tmiL7le1rVz7WpnDGkwkSbKbHRgWVzgCccDrivcAW0nQYec1tUxKbT0go0Y3xs/5DwcQ6m0KSjUxBkPwDzwIGrMKmHgUAAAAASUVORK5CYII="
                                             alt="comment"></span>
                                 </div>
-                                <p class="post-description">` + result[i][2] +`</p>
+                                <div class="post-description">
+                                    <p>` + result[i][2] +`</p>
+                                </div>
                             </div>`;
                     },
                 }).done(() => {
@@ -63,13 +65,24 @@ function update_posts(n_posts, loadM) {
 document.addEventListener('DOMContentLoaded', (event) => {
 
     let n_posts = 4;
-    //const loadM = document.querySelector('.button-load-more > button');
 
-    update_posts(n_posts);
+    const loadMore = document.querySelector(".loadMoreText");
+    const posts = document.getElementsByTagName("main")[0];
+    let loadingMore = true;
 
-    /*loadM.addEventListener('click', () => {
-        n_posts += 4;
-        update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadM)
-    });*/
+    update_posts(n_posts, loadMore);
+
+    posts.addEventListener("scroll" , () => {
+        if(loadMore.offsetTop >= posts.scrollTop + 1 && 
+                loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight && 
+                loadingMore){
+            loadingMore = false;
+            n_posts += 4;
+            update_posts(n_posts, loadMore);
+            setTimeout(() => {
+                loadingMore = true;
+            }, 1500);
+        }
+    });
 
 });

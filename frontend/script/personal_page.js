@@ -3,7 +3,7 @@ import { dislike } from './interaction-manager.js';
 import { showComment } from './interaction-manager.js';
 import { addComment } from './interaction-manager.js';
 
-function update_posts(user_id, n_posts, loadM) {
+function update_posts(user_id, n_posts, loadMore) {
     const username = document.getElementById('username').innerHTML;
 
     $.ajax({
@@ -16,8 +16,9 @@ function update_posts(user_id, n_posts, loadM) {
             container.innerHTML = "";
 
             result = JSON.parse(result);
+
             if (result.length != n_posts) {
-                loadM.style.visibility = 'hidden';
+                loadMore.remove();
             }
 
             for (let i = 0; i < result.length; i++) {
@@ -98,12 +99,22 @@ function update_posts(user_id, n_posts, loadM) {
 
 document.addEventListener("DOMContentLoaded", () => {
     let n_posts = 4;
-    const loadM = document.querySelector('.button-load-more > button');
+    const loadMore = document.querySelector(".loadMoreText");
+    const posts = document.querySelector(".post-container");
+    let loadingMore = true;
 
-    update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadM);
+    update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
 
-    loadM.addEventListener('click', () => {
-        n_posts += 4;
-        update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadM)
+    posts.addEventListener("scroll" , () => {
+        if(loadMore.offsetTop >= posts.scrollTop + 1 && 
+                loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight && 
+                loadingMore){
+            loadingMore = false;
+            n_posts += 4;
+            update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
+            setTimeout(() => {
+                loadingMore = true;
+            }, 1500);
+        }
     });
 });
