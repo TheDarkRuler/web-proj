@@ -65,10 +65,12 @@ class Post {
         return $result;
     }
 
-    private function update_opposite($type, $user_id, $post_id) {
-        if ($type == 'like' && $this->check_like($user_id, $post_id)) {
+    function update_opposite($type, $user_id, $post_id) {
+        if ($type == 'like' && $this->check_dislike($user_id, $post_id)) {
+            $this->dislike_post($post_id, $user_id, -1);
         }
-        if ($type == 'dislike') {
+        if ($type == 'dislike' && $this->check_like($user_id, $post_id)) {
+            $this->like_post($post_id, $user_id, -1);
         }
     }
 
