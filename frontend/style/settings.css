@@ -1,12 +1,12 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #fff;
+    background-color: #f7f7ff;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
 }
 
-body > header {
+body>header {
     text-align: center;
 }
 
@@ -26,10 +26,8 @@ body>header>a>img {
 }
 
 .form-container {
-    /* justify-content: space-between; */
     padding: 30px;
     overflow-x: hidden;
-    /* flex-wrap: wrap; */
 }
 
 .form-container form {
@@ -75,7 +73,7 @@ input {
     height: 300px;
     margin-top: 20px;
     border-radius: 50%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(92, 143, 214, 0.1);
 }
 
 .save-container {
@@ -87,16 +85,16 @@ input {
 .save-button {
     padding: 15px 30px;
     font-size: 18px;
-    background-color: #222;
+    background-color: #007ea7;
     color: #fff;
-    border: 1px solid #555;
+    border: 1px solid #172758;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .save-button:hover {
-    background-color: #444;
+    background-color: #06d6a0;
 }
 
 @media screen and (max-width: 768px) {
