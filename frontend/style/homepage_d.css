@@ -4,6 +4,7 @@ body {
     width: 100%;
     margin: 0;
     overflow: hidden;
+    background-color: #f7f7ff;
 }
 
 .left-content,
@@ -16,9 +17,9 @@ main,
 
 .left-content,
 .right-content {
-    background-color: #b1b1b1;
     text-align: center;
-    width: 24%;
+    width: 24vw;
+    margin: 0;
 }
 
 .right-content {
@@ -56,7 +57,8 @@ main,
 }
 
 main {
-    width: 49%;
+    width: 49vw;
+    margin: 0 0;
     padding: 0 1%;
     overflow-y: scroll;
 }
@@ -113,10 +115,12 @@ main>header>a>img {
     max-height: 100%;
 }
 
-.chat {
+.direct-container {
     font-weight: bold;
     font-size: large;
-    padding-top: 20%;
+    padding-top: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
 }
 
 .direct>img,
@@ -136,19 +140,17 @@ main>header>a>img {
     margin-top: 5%;
 }
 
-.button-view-more {
-    height: 20vh;
-}
-
 .button-view-more button {
-    background-color: #000000;
+    border-radius: 50px;
+    background-color: #007ea7;
     color: white;
     padding: 3% 15%;
     text-align: center;
-    font-size: medium;
+    font-size: large;
     cursor: pointer;
+    margin-bottom: 12vh;
 }
 
 .button-view-more button:hover {
-    background-color: #373737;
+    background-color: #06d6a0;
 }

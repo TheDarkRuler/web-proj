@@ -8,11 +8,12 @@
 }
 
 .post {
+    border-top: 5px solid #007ea7;
+    border-radius: 5px;
     width: 100%;
-    margin-top: 2%;
 }
 
-.post > a {
+.post>a {
     text-decoration: none;
     color: black;
 }
@@ -23,12 +24,12 @@
 
 .post-creator {
     margin: 2px 0 0 2px;
-    font-size: medium;
-    font-weight: bold;
+    font-size: large;
 }
 
 .post-image {
-    padding-top: 1%;
+    padding-top: 0;
+    margin-top: -10px;
     width: 100%;
 }
 
@@ -37,13 +38,13 @@
     overflow-y: scroll;
 }
 
-.post-description > p {
+.post-description>p {
     margin: 0 1% 1% 1%;
     padding: 1%;
 }
 
 .icons span {
-    display: inline-block; 
+    display: inline-block;
     margin: 0 10px 0 5px;
 }
 
