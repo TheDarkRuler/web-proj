@@ -3,29 +3,27 @@ document.addEventListener("DOMContentLoaded", function () {
     let unfollow_but = document.getElementById('unfollow-button');
 
     if (follow_but != null) {
-
-        follow_but.addEventListener('click', () => {
-
+        follow_but.addEventListener('click', (event) => {
+            event.stopImmediatePropagation();
             let user_id = document.getElementById('user_id');
             let ref_userid = document.getElementById('ref_userid');
             $.ajax({
                 url: '../../backend/follower_manager.php',
                 type: 'POST',
-                data: { follower: user_id.innerHTML, following: ref_userid.innerHTML, type: 'follow' }
+                data: { follower: parseInt(user_id.innerHTML), following: parseInt(ref_userid.innerHTML), type: 'follow' },
             });
         });
     }
 
     if (unfollow_but != null) {
-
-        unfollow_but.addEventListener('click', () => {
-            console.log("ciao");
+        unfollow_but.addEventListener('click', (event) => {
+            event.stopImmediatePropagation();
             let user_id = document.getElementById('user_id');
             let ref_userid = document.getElementById('ref_userid');
             $.ajax({
                 url: '../../backend/follower_manager.php',
                 type: 'POST',
-                data: { follower: user_id.innerHTML, following: ref_userid.innerHTML, type: 'unfollow' }
+                data: { follower: parseInt(user_id.innerHTML), following: parseInt(ref_userid.innerHTML), type: 'unfollow' },
             });
         })
     }

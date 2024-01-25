@@ -223,8 +223,7 @@ class User {
     function new_follow($user_id, $follow_id) {
         global $db;
 
-        $query = 'INSERT INTO Follows (id1, id2) 
-                VALUES (?, ?)';
+        $query = 'INSERT INTO Follows (id1, id2) VALUES (?, ?)';
 
         $statement = $db->prepare($query);
         $statement->bind_param('ii', $user_id, $follow_id);

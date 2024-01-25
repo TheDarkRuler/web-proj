@@ -9,4 +9,3 @@ if ($_POST['type'] == 'follow') {
 } else {
     $u->remove_follow($_POST['follower'], $_POST['following']);
 }
-

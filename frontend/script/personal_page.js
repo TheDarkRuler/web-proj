@@ -105,10 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
 
-    posts.addEventListener("scroll" , () => {
-        if(loadMore.offsetTop >= posts.scrollTop + 1 && 
-                loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight && 
-                loadingMore){
+    posts.addEventListener("scroll", () => {
+        if (loadMore.offsetTop >= posts.scrollTop + 1 &&
+            loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight &&
+            loadingMore) {
             loadingMore = false;
             n_posts += 4;
             update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
