@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background: #ccc;
+    background: #f7f7ff;
 }
 
 .main-container {
@@ -333,11 +333,11 @@ img {
     border-radius: 50%;
 }
 
-.message-button span{
+.message-button span {
     cursor: pointer;
 }
 
-.message-button span img{
+.message-button span img {
     width: 25px;
     padding-top: 10%;
 }
@@ -414,7 +414,7 @@ img {
         cursor: pointer;
     }
 
-    .message-button span img{
+    .message-button span img {
         width: 20px;
         padding-top: 10px;
     }

@@ -9,9 +9,7 @@ body>header {
     top: 0;
     left: 0;
     max-height: 10%;
-    /* background-color: rgb(188, 188, 188);
-     */
-    background-color: #007EA7;
+    background-color: #ededed;
     transition: top 0.2s ease-in-out;
 }
 
@@ -49,8 +47,7 @@ main {
 
 footer {
     height: 6vh;
-    /* background-color: rgb(188, 188, 188); */
-    background-color: #007EA7;
+    background-color: #ededed;
     width: 100%;
     text-align: center;
     position: fixed;
