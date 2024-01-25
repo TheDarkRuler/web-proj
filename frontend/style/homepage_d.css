@@ -81,6 +81,7 @@ main>header>a>img {
 
 .messages-container {
     height: 60vh;
+    margin-top: 0;
 }
 
 .notification-popup {
@@ -103,9 +104,13 @@ main>header>a>img {
 }
 
 .notification-icon {
-    height: 5vh;
+    height: 6vh;
     margin-top: 25px;
     display: inline-block;
+}
+
+.notification-icon img {
+    max-height: 100%;
 }
 
 .chat {
