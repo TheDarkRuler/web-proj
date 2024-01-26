@@ -14,6 +14,14 @@ class Post {
         $statement->execute();
         $result = $statement->get_result();
 
+        $query = 'UPDATE `Users`
+            SET n_post = n_post + 1
+            WHERE id = ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $user_id);
+        $statement->execute();
+
         return $result;
     }
 

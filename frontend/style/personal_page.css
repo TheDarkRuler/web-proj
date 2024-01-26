@@ -6,6 +6,7 @@ body {
     flex-direction: row;
     margin: 0;
     overflow-y: hidden;
+    background-color: #f7f7ff;
 }
 
 p {
@@ -29,9 +30,7 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 1%;
-    background-color: aliceblue;
 }
-
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .post-container::-webkit-scrollbar,
