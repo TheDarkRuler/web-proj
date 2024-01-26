@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let rightContainer = document.querySelector('.right-container');
     let user_id = document.getElementById('user_id');
 
-    setInterval(update_messages(), 5000);
+    setInterval(update_messages, 5000);
 
     for (let i = 0; i < chats.length; i++) {
         let userStr = chats[i].children[1].children[0].children[0].innerHTML;
@@ -112,35 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             update_messages();
 
-            // $.ajax({
-            //     url: '../../backend/load_head.php',
-            //     type: 'post',
-            //     data: { user_id: rec_id },
-            //     success: function (result) {
-            //         let container = document.querySelector('.user-img');
-            //         container.innerHTML = '';
-            //         container.innerHTML += result;
-            //     },
-            //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //         alert("Status: " + textStatus + " - Error: " + errorThrown);
-            //     }
-            // });
-
-            // $.ajax({
-            //     url: '../../backend/load_user.php',
-            //     type: 'post',
-            //     data: { user_id: rec_id },
-            //     success: function (result) {
-            //         let container = document.getElementById('receiver_username');
-            //         container.innerHTML = '';
-            //         container.innerHTML += result;
-            //     },
-            //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //         alert("Status: " + textStatus + " - Error: " + errorThrown);
-            //     },
-            //     dataType: 'json'
-            // });
-
             loadHeader(rec_id);
 
             let chatForm = document.querySelector('.chatbox-input');
@@ -184,7 +155,5 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
-
 
 });

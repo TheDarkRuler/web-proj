@@ -182,4 +182,17 @@ class Post {
 
         return count($result->fetch_all()) > 0;
     }
+
+    function get_stats($post_id) {
+        global $db;
+
+        $query = "SELECT n_like, n_dislike FROM Posts WHERE id = ?";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all();
+    }
 }
