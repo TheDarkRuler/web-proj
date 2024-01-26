@@ -94,14 +94,15 @@ body {
     color: #6c6c6c;
 }
 
-.icon span figcaption {
+.icons span figcaption {
     display: inline-block;
-    margin-left: 5px;
+    text-align: center;
 }
 
 .icons span {
     display: inline-block;
-    margin: 0 10px 5px 5px;
+    margin: 0 0 5px 5px;
+    width: 29%;
 }
 
 .icons span img {
