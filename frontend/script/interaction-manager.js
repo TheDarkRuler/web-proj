@@ -64,7 +64,7 @@ export function showComment(button) {
         success: function (result) {
             commentList.innerHTML = '';
             for (let i = 0; i < result.length; i++) {
-                commentList.innerHTML += `<div class='comment'><p class='comment-content'>` + result[i][2] + `</p></div>`;
+                commentList.innerHTML += `<p class='comment'>` + result[i][2] + `</p>`;
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {

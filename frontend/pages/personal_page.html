@@ -113,13 +113,18 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
             <p>loading more images...</p>
         </div>
         <div id="comment-section" class="comment-section">
-            <div id="comment-list" class="comment-list"></div>
-            <!-- Comment form and comments go here -->
+            <div class="comment-header">
+                <span>Comments</span>
+                <button class="close-btn">X</button>
+            </div>
+            <div id="comment-list" class="comment-list">
+            </div>
             <div id="comment-input" class="comment-input">
-                <input type="text" class="comment-text" placeholder="Write your comment" />
+                <input type="text" class="comment-text" id="comment-text" placeholder="Write your comment" />
                 <button class="comment-send">Send</button>
             </div>
         </div>
+
     </div>
 </body>
 

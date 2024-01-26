@@ -70,13 +70,20 @@ function update_posts(user_id, n_posts, loadMore) {
                     let commentButtons = document.querySelectorAll('.comment-icon');
 
                     likeButtons.forEach(btn => {
-                        btn.addEventListener('click', function () { like(btn); });
+                        btn.addEventListener('click', (event) => {
+                            event.stopImmediatePropagation();
+                            like(btn);
+                        });
                     });
                     dislikeButtons.forEach(btn => {
-                        btn.addEventListener('click', function () { dislike(btn); });
+                        btn.addEventListener('click', (event) => {
+                            event.stopImmediatePropagation();
+                            dislike(btn);
+                        });
                     });
                     commentButtons.forEach(btn => {
-                        btn.addEventListener('click', function () {
+                        btn.addEventListener('click', (event) => {
+                            event.stopImmediatePropagation();
                             const commentSection = document.getElementById('comment-section');
                             commentSection.style.display = 'block';
 
@@ -145,6 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 loadingMore = true;
             }, 1500);
         }
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        let commentSection = document.getElementById("comment-section");
+        commentSection.style.display = "none";
     });
 
     setInterval(updatePostsStats, 5000);
