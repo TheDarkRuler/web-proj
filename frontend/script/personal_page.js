@@ -57,6 +57,18 @@ function update_posts(user_id, n_posts, loadMore) {
                                                  <figcaption></figcaption>
                                          </span>
                                      </div>
+                                     <div id="comment-section" class="comment-section">
+                                        <div class="comment-header">
+                                            <span>Comments</span>
+                                            <button class="close-btn">X</button>
+                                        </div>
+                                        <div id="comment-list" class="comment-list">
+                                        </div>
+                                        <div id="comment-input" class="comment-input">
+                                            <input type="text" class="comment-text" id="comment-text" placeholder="Write your comment" />
+                                            <button class="comment-send">Send</button>
+                                        </div>
+                                    </div>
                                  </div>
                                  <div class="description-section">
                                      <p>
@@ -65,9 +77,12 @@ function update_posts(user_id, n_posts, loadMore) {
                                  </div>
                              </div>`;
 
-                    let likeButtons = document.querySelectorAll('.like-icon');
-                    let dislikeButtons = document.querySelectorAll('.dislike-icon');
-                    let commentButtons = document.querySelectorAll('.comment-icon');
+                    const likeButtons = document.querySelectorAll('.like-icon');
+                    const dislikeButtons = document.querySelectorAll('.dislike-icon');
+                    const commentButtons = document.querySelectorAll('.comment-icon');
+                    const commentSection = document.querySelectorAll('.comment-section');
+                    const commentsClose = document.querySelectorAll('.close-btn');
+                    const commentButton = document.querySelectorAll('.comment-send');
 
                     likeButtons.forEach(btn => {
                         btn.addEventListener('click', (event) => {
@@ -81,23 +96,32 @@ function update_posts(user_id, n_posts, loadMore) {
                             dislike(btn);
                         });
                     });
-                    commentButtons.forEach(btn => {
-                        btn.addEventListener('click', (event) => {
-                            event.stopImmediatePropagation();
-                            const commentSection = document.getElementById('comment-section');
-                            commentSection.style.display = 'block';
 
-                            let commentButton = document.querySelector('.comment-send');
-                            commentButton.addEventListener('click', () => {
-                                let text = document.querySelector('.comment-text').value;
-                                addComment(text, btn);
-                                showComment(btn);
+                    for (let i = 0; i < commentButtons.length; i++) {
+                        commentButtons[i].addEventListener('click', (event) => {
+                            event.stopImmediatePropagation();
+
+                            commentSection.forEach((temp) => {
+                                temp.style.display = "none";
+                            })
+
+                            commentSection[i].style.display = 'block';
+
+                            commentsClose[i].addEventListener('click', () => {
+                                
+                                commentSection[i].style.display = "none";
+                            });
+
+                            commentButton[i].addEventListener('click', () => {
+                                let text = document.querySelectorAll('.comment-text');
+                                addComment(text[i].value, commentButtons[i]);
+                                showComment(commentButtons[i], i);
                                 document.querySelector('.comment-text').value = '';
                             });
 
-                            showComment(btn);
+                            showComment(commentButtons[i], i);
                         });
-                    });
+                    }
                 });
             }
         },
@@ -154,9 +178,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    document.querySelector('.close-btn').addEventListener('click', () => {
-        let commentSection = document.getElementById("comment-section");
-        commentSection.style.display = "none";
+    document.addEventListener('click', (event) => {
+        const commentSection = document.querySelectorAll('.comment-section');
+        const commentButtons = document.querySelectorAll('.comment-icon');
+        for (let i = 0; i < commentButtons.length; i++) {
+            let isInside = false;
+            commentSection[i].childNodes.forEach((e) => {
+                if (e == event.target.parentElement) {
+                    isInside = true;
+                }
+            });
+            if (commentSection[i].style.display === 'block' && event.target.parentElement !== commentSection[i] && !isInside) {
+                commentSection[i].style.display = 'none';
+            }
+        }
     });
 
     setInterval(updatePostsStats, 5000);

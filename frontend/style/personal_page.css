@@ -177,6 +177,7 @@ body {
     width: 32px;
     background-color: #bbb;
     border-radius: 50%;
+    cursor: pointer;
     margin-left: 8%;
 }
 
