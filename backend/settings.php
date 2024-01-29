@@ -36,4 +36,4 @@ if (isset($_POST['new_password']) && isset($_POST['password']) && !empty($_POST[
     }
 }
 
-header('Location: ../frontend/pages/settings.html');
+header('Location: ../frontend/pages/personal_page.html?ref_username=' . $_SESSION['username'] . '&ref_id=' . $_SESSION['user_id']);
