@@ -18,6 +18,7 @@ $q = new Quote();
     <link rel="stylesheet" type="text/css" href="../style/comment.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../script/hp-header-up.js"></script>
+    <script src="../script/notification.js"></script>
     <script type="module" src="../script/homepage-feed.js"></script>
 </head>
 
@@ -27,11 +28,16 @@ $q = new Quote();
             <img src="../img/logo.png" alt="logo" />
         </a>
         <?php $quote = $q->get_random_quote(); ?>
-        <?php if(count($quote) > 0): ?>
         <p>
+            <?php if(count($quote) > 0): ?>
             <?php echo $quote[0][1] . ' - ' . $quote[0][3]; ?>
+            <?php endif; ?>
         </p>
-        <?php endif; ?>
+        <span class="notification-icon">
+            <img src="../images/notification-bell.svg" alt="notification">
+        </span>
+        <div id="notification-popup" class="notification-popup">
+        </div>
     </header>
     <main>
         <div class="post-container">
