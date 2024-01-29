@@ -95,5 +95,6 @@ CREATE TABLE Interactions (
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (post_id) REFERENCES Posts(id),
     interaction VARCHAR(10) NOT NULL,
-    tp TIMESTAMP DEFAULT NOW()
+    tp TIMESTAMP DEFAULT NOW(),
+    seen BOOL DEFAULT 0
 );
