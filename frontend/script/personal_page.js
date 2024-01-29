@@ -122,6 +122,7 @@ function update_posts(user_id, n_posts, loadMore) {
                             showComment(commentButtons[i], i);
                         });
                     }
+                    updatePostsStats();
                 });
             }
         },
@@ -161,14 +162,18 @@ document.addEventListener("DOMContentLoaded", () => {
     let n_posts = 4;
     const loadMore = document.querySelector(".loadMoreText");
     const posts = document.querySelector(".post-container");
+    const containerHeader = document.querySelector(".container");
     let loadingMore = true;
     updatePostsStats();
     update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
+    let haederHeight = (( window.innerWidth <= 600 )) ? containerHeader.clientHeight : 0;
+
 
     posts.addEventListener("scroll", () => {
+        console.log(haederHeight);
         if (loadMore.offsetTop >= posts.scrollTop + 1 &&
-            loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight &&
-            loadingMore) {
+                loadMore.offsetTop + loadMore.clientHeight + 2 - haederHeight <= posts.scrollTop + posts.clientHeight &&
+                loadingMore) {
             loadingMore = false;
             n_posts += 4;
             update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);

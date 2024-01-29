@@ -76,7 +76,6 @@ export function showComment(button, j) {
 
 export function addComment(content, button) {
     let postId = button.parentElement.children[0].innerHTML;
-
     $.ajax({
         url: '../../backend/comment_manager.php',
         type: 'POST',
