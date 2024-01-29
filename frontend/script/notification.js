@@ -20,6 +20,7 @@ function manageTimout(notifications) {
 document.addEventListener('DOMContentLoaded', () => {
     const openNotificationsBtn = document.querySelector('.notification-icon');
     const notificationPopup = document.getElementById('notification-popup');
+    const redNotification = `<span class='red-dot'></span>`;
     let notificationOpen = false;
 
     document.addEventListener('click', (event) => {
@@ -44,7 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     notificationSection.innerHTML = '';
                     for (let i = 0; i < result.length; i++) {
                         notifications.push(result[i]);
-                        notificationSection.innerHTML += `<p class="notification">` + result[i][0] + ` has ` + result[i][1] + `d your post</p>`;
+                        notificationSection.innerHTML += `<p class="notification">`;
+                        if (result[i][4] < 1) {
+                            notificationSection.innerHTML += redNotification;
+                        }
+                        notificationSection.innerHTML += result[i][0] + ` has ` + result[i][1] + `d your post</p>`;
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
