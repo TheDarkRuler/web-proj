@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             $.ajax({
                 url: '../../backend/follower_manager.php',
                 type: 'POST',
-                data: { follower: parseInt(user_id.innerHTML), following: parseInt(ref_userid.innerHTML), type: 'follow' },
+                data: { follower: parseInt(user_id.innerHTML), following: parseInt(ref_userid.innerHTML), type: 'follow' }
             });
         });
     }

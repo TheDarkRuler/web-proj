@@ -6,12 +6,13 @@ class Interaction {
     function get_notifications($user_id) {
         global $db;
 
-        $query = "SELECT Users.username, Interactions.interaction, Interactions.tp, Interactions.id, Interactions.seen 
-            FROM Interactions 
-            INNER JOIN Posts ON Posts.id = Interactions.post_id 
-            INNER JOIN Users ON Users.id = Interactions.user_id 
-            WHERE Posts.user_id = ? 
-            ORDER BY Interactions.tp DESC";
+        $query = "SELECT U2.username, I.interaction, I.tp, I.id, I.seen 
+            FROM Interactions I
+            LEFT JOIN Posts P ON P.id = I.post_id 
+            LEFT JOIN Users U1 ON U1.id = I.rec_user_id
+            INNER JOIN Users U2 ON U2.id = I.user_id 
+            WHERE U1.id = ? 
+            ORDER BY I.tp DESC";
 
         $statement = $db->prepare($query);
         $statement->bind_param('i', $user_id);

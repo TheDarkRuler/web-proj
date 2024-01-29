@@ -91,9 +91,11 @@ DROP TABLE IF EXISTS Interactions;
 CREATE TABLE Interactions (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
-    post_id INT NOT NULL,
+    post_id INT DEFAULT NULL,
+    rec_user_id INT DEFAULT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (post_id) REFERENCES Posts(id),
+    FOREIGN KEY (rec_user_id) REFERENCES Users(id),
     interaction VARCHAR(10) NOT NULL,
     tp TIMESTAMP DEFAULT NOW(),
     seen BOOL DEFAULT 0

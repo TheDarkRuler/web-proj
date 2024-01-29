@@ -244,6 +244,12 @@ class User {
         $statement = $db->prepare($query);
         $statement->bind_param('i', $follow_id);
         $statement->execute();
+
+        $query = "INSERT INTO Interactions (user_id, rec_user_id, interaction) VALUES (?, ?, 'follow')";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $follow_id);
+        $statement->execute();
     }
 
     function remove_follow($user_id, $follow_id) {

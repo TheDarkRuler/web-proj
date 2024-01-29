@@ -49,7 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (result[i][4] < 1) {
                             notificationSection.innerHTML += redNotification;
                         }
-                        notificationSection.innerHTML += result[i][0] + ` has ` + result[i][1] + `d your post</p>`;
+                        notificationSection.innerHTML += result[i][0] + ` has ` + result[i][1];
+                        if (result[i][1] == 'follow') {
+                            notificationSection.innerHTML += `ed you</p>`;
+                        } else {
+                            notificationSection.innerHTML += `d your post</p>`;
+                        }
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
