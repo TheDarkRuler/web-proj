@@ -1,5 +1,5 @@
 function manageTimout(notifications) {
-    setTimeout(() => {
+    let temp = setTimeout(() => {
         for (let i = 0; i < notifications.length; i++) {
             $.ajax({
                 url: '../../backend/manage_notification.php',
@@ -11,7 +11,8 @@ function manageTimout(notifications) {
                 dataType: 'json'
             });
         }
-    }, 3000);
+    }, 2000);
+    clearTimeout(temp);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
