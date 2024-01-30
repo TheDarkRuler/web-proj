@@ -11,7 +11,7 @@ function update_posts(n_posts, loadMore) {
         datatype: 'json',
         data: { limit: n_posts },
         success: function (result) {
-            let container = document.querySelector(".post-container");
+            const container = document.querySelector(".post-container");
             container.innerHTML = "";
 
             result = JSON.parse(result);
@@ -69,8 +69,8 @@ function update_posts(n_posts, loadMore) {
                             </div>`;
                     },
                 }).done(() => {
-                    let likeButtons = document.querySelectorAll('.like-icon');
-                    let dislikeButtons = document.querySelectorAll('.dislike-icon');
+                    const likeButtons = document.querySelectorAll('.like-icon');
+                    const dislikeButtons = document.querySelectorAll('.dislike-icon');
                     const commentButtons = document.querySelectorAll('.comment-icon');
                     const commentSection = document.querySelectorAll('.comment-section');
                     const commentsClose = document.querySelectorAll('.close-btn');

@@ -15,6 +15,13 @@ body>header>a>img {
     padding-top: 1%;
 }
 
+body>header>span {
+    margin: 4% 0 0 4%;
+    cursor: pointer;
+    float: left;
+    width: 0%;
+}
+
 .settings-container {
     width: 100%;
     max-width: 1200px;
@@ -103,6 +110,12 @@ input {
     .form-right {
         flex-basis: 100%;
         padding: 0;
+    }
+
+    
+    body>header>a>img {
+        width: 40%;
+        padding-top: 1%;
     }
 
     .form-container form {

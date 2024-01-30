@@ -7,6 +7,13 @@ header > a > img {
     width: 25%;
 }
 
+body>header>span {
+    margin: 4% 0 0 4%;
+    cursor: pointer;
+    float: left;
+    width: 0%;
+}
+
 .search-container {
     height: 10vh;
 }
@@ -22,7 +29,7 @@ header > a > img {
 }
 
 .search-container .search-bar input {
-    width: 85%;
+    width: 80%;
     border: none;   
     background-color: #ebeaea;
     height: 35px;
@@ -48,18 +55,27 @@ header > a > img {
 
 .users-container .user {
     padding: 2%;
-    background-color: rgb(138, 138, 138);
     text-align: center;
 }
 
 .users-container .user img {
     border-radius: 100%;
-    width: 100%;
+    width: 70%;
 }
 
 .users-container .user a {
     text-decoration: none;
     color: black;
+}
+
+.loadMoreText {
+    text-align: center;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.loadMoreText>p {
+    color: #6c6c6c;
 }
 
 @media screen and (min-width: 600px) { 

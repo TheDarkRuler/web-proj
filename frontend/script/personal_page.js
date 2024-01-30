@@ -12,7 +12,7 @@ function update_posts(user_id, n_posts, loadMore) {
         datatype: 'json',
         data: { id: user_id.trim(), limit: n_posts },
         success: function (result) {
-            let container = document.querySelector('.posts-list');
+            const container = document.querySelector('.posts-list');
             container.innerHTML = "";
 
             result = JSON.parse(result);

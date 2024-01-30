@@ -160,6 +160,41 @@ class User {
         return $verify;
     }
 
+    function getAllFollower($u_id, $limit) {
+        global $db;
+
+        $query = 'SELECT Follows.id2, Users.username
+                    FROM Users 
+                    INNER JOIN Follows ON Users.id = Follows.id2
+                    WHERE Follows.id1 = ?
+                    ORDER BY Follows.id2 ASC LIMIT ?';
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $u_id, $limit);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $posts = $result->fetch_all();
+        return $posts;
+    }
+
+    function getAllUserByUsername($limit, $filter) {
+        global $db;
+
+        $query = "SELECT id, username
+                    FROM Users 
+                    WHERE LOWER(username) LIKE LOWER('%$filter%')
+                    ORDER BY id ASC LIMIT ?";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('i', $limit);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        $posts = $result->fetch_all();
+        return $posts;
+    }
+
     function getProfileImg($u_id) {
         global $db;
         $query = 'SELECT `profile_picture` FROM Users WHERE id LIKE ?';
@@ -177,7 +212,7 @@ class User {
             imagejpeg($image, null, 80);
             $data = ob_get_contents();
             ob_end_clean();
-            echo '<img src="data:image/jpeg;base64,' . base64_encode($data) . '"/>';
+            echo '<img src="data:image/jpeg;base64,' . base64_encode($data) . '" alt="profile-image"/>';
         }
     }
 
