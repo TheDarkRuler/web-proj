@@ -66,6 +66,7 @@ export function showComment(button, j) {
             for (let i = 0; i < result.length; i++) {
                 commentList[j].innerHTML += `<p class='comment'>` + result[i][2] + `</p>`;
             }
+            commentList[j].scrollTop = commentList[j].scrollHeight;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);

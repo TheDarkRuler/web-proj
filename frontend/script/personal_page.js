@@ -170,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     posts.addEventListener("scroll", () => {
-        console.log(haederHeight);
         if (loadMore.offsetTop >= posts.scrollTop + 1 &&
                 loadMore.offsetTop + loadMore.clientHeight + 2 - haederHeight <= posts.scrollTop + posts.clientHeight &&
                 loadingMore) {
