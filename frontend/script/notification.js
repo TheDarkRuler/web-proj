@@ -5,9 +5,6 @@ function manageTimout(notifications) {
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
                 data: { type: 'set', notification: notifications[i][3] },
-                success: function (result) {
-                    console.log(result);
-                },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Status: " + textStatus + " - Error: " + errorThrown);
                 },
