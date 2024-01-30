@@ -28,6 +28,30 @@ function update_messages() {
     }
 }
 
+function attachSendHandler(rec_id) {
+    let sendBtn = document.getElementById('send-button');
+
+    sendBtn.addEventListener('click', function (event) {
+        let message = document.getElementById('message-i');
+        let current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
+
+        if (message.value != '' && parseInt(rec_id) == parseInt(current_rec)) {
+            $.ajax({
+                url: '../../backend/send_message.php',
+                type: 'post',
+                data: { receiver: rec_id, message: message.value },
+                success: function () {
+                    message.value = '';
+                    update_messages();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus + " - Error: " + errorThrown);
+                }
+            });
+        }
+    });
+}
+
 function loadHeader(rec_id) {
     $.ajax({
         url: '../../backend/load_head.php',
@@ -89,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 update_messages();
                 loadHeader(activeId);
+                attachSendHandler(activeId);
             }
         });
 
@@ -120,28 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 chatForm.classList.remove('hidden');
             }
 
-            let sendBtn = document.getElementById('send-button');
-
-            sendBtn.addEventListener('click', function (event) {
-                let message = document.getElementById('message-i');
-                let current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
-
-                if ((!event.detail || event.detail == 1) && message.value != '' && rec_id == current_rec) {
-                    last_message = message.value;
-                    $.ajax({
-                        url: '../../backend/send_message.php',
-                        type: 'post',
-                        data: { receiver: rec_id, message: message.value },
-                        success: function () {
-                            message.value = '';
-                            update_messages();
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert("Status: " + textStatus + " - Error: " + errorThrown);
-                        }
-                    });
-                }
-            });
+            attachSendHandler(rec_id);
         });
     }
 
