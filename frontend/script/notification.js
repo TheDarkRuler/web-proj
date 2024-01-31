@@ -16,6 +16,7 @@ function manageTimout(notifications) {
             });
         }
     }, 2000);
+    clearTimeout(temp);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
