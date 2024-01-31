@@ -108,7 +108,7 @@ function update_posts(user_id, n_posts, loadMore) {
                             commentSection[i].style.display = 'block';
 
                             commentsClose[i].addEventListener('click', () => {
-                                
+
                                 commentSection[i].style.display = "none";
                             });
 
@@ -166,13 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let loadingMore = true;
     updatePostsStats();
     update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
-    let haederHeight = (( window.innerWidth <= 600 )) ? containerHeader.clientHeight : 0;
+    let haederHeight = ((window.innerWidth <= 600)) ? containerHeader.clientHeight : 0;
 
 
     posts.addEventListener("scroll", () => {
         if (loadMore.offsetTop >= posts.scrollTop + 1 &&
-                loadMore.offsetTop + loadMore.clientHeight + 2 - haederHeight <= posts.scrollTop + posts.clientHeight &&
-                loadingMore) {
+            loadMore.offsetTop + loadMore.clientHeight + 2 - haederHeight <= posts.scrollTop + posts.clientHeight &&
+            loadingMore) {
             loadingMore = false;
             n_posts += 4;
             update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);

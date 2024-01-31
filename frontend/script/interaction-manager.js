@@ -24,7 +24,6 @@ export function like(button) {
             }
         });
     });
-
 }
 
 export function dislike(button) {

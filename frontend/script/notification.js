@@ -5,6 +5,10 @@ function manageTimout(notifications) {
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
                 data: { type: 'set', notification: notifications[i][3] },
+                success: () => {
+                    let redNotification = document.querySelector('.red-dot');
+                    redNotification.style.display = 'none';
+                },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Status: " + textStatus + " - Error: " + errorThrown);
                 },
@@ -12,7 +16,6 @@ function manageTimout(notifications) {
             });
         }
     }, 2000);
-    clearTimeout(temp);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
