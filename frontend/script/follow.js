@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (follow_but != null) {
         follow_but.addEventListener('click', (event) => {
             event.stopImmediatePropagation();
-            let user_id = document.getElementById('user_id');
-            let ref_userid = document.getElementById('ref_userid');
+            const user_id = document.getElementById('user_id');
+            const ref_userid = document.getElementById('ref_userid');
             $.ajax({
                 url: '../../backend/follower_manager.php',
                 type: 'POST',
@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (unfollow_but != null) {
         unfollow_but.addEventListener('click', (event) => {
             event.stopImmediatePropagation();
-            let user_id = document.getElementById('user_id');
-            let ref_userid = document.getElementById('ref_userid');
+            const user_id = document.getElementById('user_id');
+            const ref_userid = document.getElementById('ref_userid');
             $.ajax({
                 url: '../../backend/follower_manager.php',
                 type: 'POST',

@@ -233,6 +233,10 @@ async function waitUntil(condition, time = 100) {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    document.getElementById("goBack").addEventListener('click', () => {
+        history.back();
+    });
+
     //loadChat on left container
     let n_users = 8;
 
@@ -267,10 +271,6 @@ document.addEventListener("DOMContentLoaded", function () {
             timeOut = true;
         });
     }
-
-    searchInput.addEventListener("input", async () => {
-        
-    });
 
     //setup before functions
     let typingTimer;                //timer identifier

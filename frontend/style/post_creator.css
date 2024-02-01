@@ -15,6 +15,7 @@ header {
 
 header img {
     height: 10vh;
+    margin-left: -2%;
 }
 
 body>header>span {

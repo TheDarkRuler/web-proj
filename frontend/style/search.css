@@ -4,6 +4,7 @@ header {
 }
 
 header > a > img {
+    margin-left: -4%;
     width: 25%;
 }
 

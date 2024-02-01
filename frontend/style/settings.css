@@ -12,6 +12,7 @@ body>header {
 
 body>header>a>img {
     width: 20%;
+    margin-left: -4%;
     padding-top: 1%;
 }
 

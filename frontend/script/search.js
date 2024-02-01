@@ -43,6 +43,10 @@ async function waitUntil(condition, time = 100) {
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
+    document.getElementById("goBack").addEventListener('click', () => {
+        history.back();
+    });
+
     let n_users = 8;
 
     const loadMore = document.querySelector(".loadMoreText");
@@ -72,7 +76,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    searchInput.addEventListener("input", async () => {
+    //setup before functions
+    let typingTimer;                //timer identifier
+    const doneTypingInterval = 200;  //time in ms (0.2 seconds)
+
+    //on keyup, start the countdown
+    searchInput.addEventListener('keyup', () => {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    //user is "finished typing,"
+    async function doneTyping () {
         filter = searchInput.value;
         if (timeOut) {
             callUpdateUser();
@@ -80,6 +95,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             await waitUntil(() => timeOut === true);
             callUpdateUser();
         }
-    });
+    } 
 
 });
