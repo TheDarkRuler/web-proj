@@ -1,3 +1,7 @@
+/**
+ * Function to manage the click on the chat icon in the homepage
+ * @param btn element which generated the click
+ */
 function chatClick(btn) {
     const chatUser = btn.children[1];
 
@@ -15,6 +19,9 @@ function chatClick(btn) {
     }
 }
 
+/**
+ * Function to manage the click on the message icon in the profile page
+ */
 function messageClick() {
     $.ajax({
         url: '../../backend/chat_redirect.php',

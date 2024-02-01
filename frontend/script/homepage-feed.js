@@ -1,21 +1,18 @@
-import { like } from './interaction-manager.js';
-import { dislike } from './interaction-manager.js';
-import { showComment } from './interaction-manager.js';
-import { addComment } from './interaction-manager.js';
+import {addComment, dislike, like, showComment} from './interaction-manager.js';
+import {updatePostsStats} from './post.js';
 
 function update_posts(n_posts, loadMore) {
-
     $.ajax({
         url: '../../backend/post_load.php',
         type: 'POST',
         datatype: 'json',
-        data: { limit: n_posts },
-        success: function (result) {
+        data: {limit: n_posts},
+        success: result => {
             const container = document.querySelector(".post-container");
             container.innerHTML = "";
 
             result = JSON.parse(result);
-            if (result.length != n_posts) {
+            if (result.length !== parseInt(n_posts)) {
                 loadMore.remove();
             }
 
@@ -24,14 +21,14 @@ function update_posts(n_posts, loadMore) {
                     url: '../../backend/post_load.php',
                     async: false,
                     type: 'POST',
-                    data: { id: result[i][0], func: 'get-image' },
+                    data: {id: result[i][0], func: 'get-image'},
                     success: function (image) {
                         container.innerHTML += `
                             <div class="post">
-                                <a href="personal_page.html?ref_username=`+ result[i][6] + `&ref_id=` + result[i][1] +`"
-                                    <p class="post-creator">`+ result[i][6] + ` #` + result[i][1] +`</p>
+                                <a href="personal_page.html?ref_username=` + result[i][6] + `&ref_id=` + result[i][1] + `"
+                                    <p class="post-creator">` + result[i][6] + ` #` + result[i][1] + `</p>
                                 </a>
-                                ` + image +`
+                                ` + image + `
                                 <div class="icons">
                                     <p class='hidden-id' hidden>` + result[i][0] + `</p>
                                     <span class="like-icon"> <img
@@ -64,7 +61,7 @@ function update_posts(n_posts, loadMore) {
                                     </div>
                                 </div>
                                 <div class="post-description">
-                                    <p>` + result[i][2] +`</p>
+                                    <p>` + result[i][2] + `</p>
                                 </div>
                             </div>`;
                     },
@@ -77,10 +74,14 @@ function update_posts(n_posts, loadMore) {
                     const commentButton = document.querySelectorAll('.comment-send');
 
                     likeButtons.forEach(btn => {
-                        btn.addEventListener('click', function () { like(btn); });
+                        btn.addEventListener('click', function () {
+                            like(btn);
+                        });
                     });
                     dislikeButtons.forEach(btn => {
-                        btn.addEventListener('click', function () { dislike(btn); });
+                        btn.addEventListener('click', function () {
+                            dislike(btn);
+                        });
                     });
 
                     for (let i = 0; i < commentButtons.length; i++) {
@@ -92,9 +93,7 @@ function update_posts(n_posts, loadMore) {
                             })
 
                             commentSection[i].style.display = 'block';
-
                             commentsClose[i].addEventListener('click', () => {
-                                
                                 commentSection[i].style.display = "none";
                             });
 
@@ -118,45 +117,17 @@ function update_posts(n_posts, loadMore) {
     });
 }
 
-function updatePostsStats() {
-    let stats = document.querySelectorAll('.hidden-id');
-
-    stats.forEach(s => {
-        let post = s.parentElement;
-        let text = post.children;
-
-        $.ajax({
-            url: '../../backend/post_stats.php',
-            type: 'POST',
-            dataType: 'json',
-            async: false,
-            data: { postId: parseInt(s.innerHTML) },
-            success: (result) => {
-                for (let i = 1; i < 3; i++) {
-                    text[i].children[1].innerHTML = result[i - 1];
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("Status: " + textStatus + " - Error: " + errorThrown);
-            }
-        });
-    });
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-
-    let n_posts = 4;
-
+document.addEventListener('DOMContentLoaded', event => {
     const loadMore = document.querySelector(".loadMoreText");
     const posts = document.getElementsByTagName("main")[0];
+    let n_posts = 4;
     let loadingMore = true;
 
     update_posts(n_posts, loadMore);
-
-    posts.addEventListener("scroll" , () => {
-        if(loadMore.offsetTop >= posts.scrollTop + 1 && 
-                loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight && 
-                loadingMore){
+    posts.addEventListener("scroll", () => {
+        if (loadMore.offsetTop >= posts.scrollTop + 1 &&
+            loadMore.offsetTop + loadMore.clientHeight + 2 <= posts.scrollTop + posts.clientHeight &&
+            loadingMore) {
             loadingMore = false;
             n_posts += 4;
             update_posts(n_posts, loadMore);
@@ -166,7 +137,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-    document.addEventListener('click', (event) => {
+    document.addEventListener('click', event => {
         const commentSection = document.querySelectorAll('.comment-section');
         const commentButtons = document.querySelectorAll('.comment-icon');
         for (let i = 0; i < commentButtons.length; i++) {
@@ -181,7 +152,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         }
     });
-
     setInterval(updatePostsStats, 5000);
-
 });
