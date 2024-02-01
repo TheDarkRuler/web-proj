@@ -1,7 +1,5 @@
-import { like } from './interaction-manager.js';
-import { dislike } from './interaction-manager.js';
-import { showComment } from './interaction-manager.js';
-import { addComment } from './interaction-manager.js';
+import {addComment, dislike, like, showComment} from './interaction-manager.js';
+import {updatePostsStats} from "./post";
 
 // function to update the posts in the personal page 
 function update_posts(user_id, n_posts, loadMore) {
@@ -11,7 +9,7 @@ function update_posts(user_id, n_posts, loadMore) {
         url: '../../backend/post-get-limit.php',
         type: 'POST',
         datatype: 'json',
-        data: { id: user_id.trim(), limit: n_posts },
+        data: {id: user_id.trim(), limit: n_posts},
         success: function (result) {
             const container = document.querySelector('.posts-list');
             container.innerHTML = "";
@@ -28,7 +26,7 @@ function update_posts(user_id, n_posts, loadMore) {
                     url: '../../backend/post-get-limit.php',
                     async: false,
                     type: 'POST',
-                    data: { id: result[i][0], func: 'get-image' },
+                    data: {id: result[i][0], func: 'get-image'},
                     success: function (image) {
                         resultImage = image;
                     },
@@ -134,32 +132,6 @@ function update_posts(user_id, n_posts, loadMore) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);
         }
     });
-}
-
-function updatePostsStats() {
-    let stats = document.querySelectorAll('.hidden-id');
-
-    stats.forEach(s => {
-        let post = s.parentElement;
-        let text = post.children;
-
-        $.ajax({
-            url: '../../backend/post_stats.php',
-            type: 'POST',
-            dataType: 'json',
-            async: false,
-            data: { postId: parseInt(s.innerHTML) },
-            success: (result) => {
-                for (let i = 1; i < 3; i++) {
-                    text[i].children[1].innerHTML = result[i - 1];
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("Status: " + textStatus + " - Error: " + errorThrown);
-            }
-        });
-    });
-
 }
 
 document.addEventListener("DOMContentLoaded", () => {
