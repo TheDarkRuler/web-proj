@@ -15,7 +15,7 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
 <html lang="en">
 
 <head>
-    <title>Artify Profile</title>
+    <title>Artify</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/scrollbar_set.css" />
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
@@ -100,7 +100,9 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
             <?php endif; ?>
         </div>
         <div class="log-out">
-            <span>
+            <span <?php if ($_SESSION['ref_userid'] != $_SESSION['user_id']): ?>
+                hidden
+                <?php endif; ?>>
                 <a href="../index.html">
                     logOut
                 </a>

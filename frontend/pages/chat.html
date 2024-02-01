@@ -11,6 +11,7 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
 <html lang="en">
 
 <head>
+    <title>Artify</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,6 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
     <link rel="stylesheet" href="../style/chat.css">
     <link rel="stylesheet" href="../style/scrollbar_set.css">
     <script type="text/javascript" src="../script/chat_behaviour.js"></script>
-    <title>Artify chat</title>
 </head>
 
 <body>
@@ -45,43 +45,45 @@ $chats = $c->get_chat_list_limited($_SESSION['user_id'], 8);
                 <div class="input">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAChklEQVR4nO2Zu24TQRSGPxeElgYbEVIYHoECCJdXQAIH+YKECA+AxEVESAl0wAsgUUEKpCiiIDFKDYGGS96AhhZSBZGQ2MFwpH+lKQxi8czYu+wnjbTy5f/3jPecOTOGgoKR5AAwDcwDa8A6sKPxBfig9y4DFUaQM0Ab6AC9vxz22WXgNCPAEWDFubku8Aq4BhwDysAeDbs+DlwHVvXZ5HsvgMPDCqIFfNWNfAPuAftTfN8Cuw9sSmMDaBCZOWc2F4DxAbQOAYuO3iyRuCvDH7ouedK9CuzGCqYlIzOsBdCfcoKpEzCxk5y4FcoEmHFyphrCYMXJiZCUnJxph1gneqowE4RnXJWwB5zyKdyWqJXYWFhpNs8ln21HRwtYmnViUGyd6aq9seuBuaKZeUl8Xsv7kg+xeYlZ2xGbG/J+7ENsTWLWO8VmUt7vfIitSyxmfiRU5P3Zh9i2xMaIz155f89LIBt5ebQ++kx22xTF5qS8rQznovw+8iE2LTHbnsbmjbzP+XpOkxbFS6uQskXpAPt8iS5rZqyRi8UDeVpL740TEt0aQht/1Ld425khX/v0fpj2M3k9D2FQ1cLU03Y0FLflYSeTB0OZNJzDBzso8M0F5/DhLIGZdYKZ8fSYlfRLJEHs6sSGWMEkOWOHbP/KhJMT7rDS2yQCdSdnNlWa06wzZZXYLacx7PYJpkEEqk41S4xX1VpMajEd06jotZvqndybXlBiN4cZDDqyWUr5t4JtD572aUZ/F0ydiJR1UPAEeK8Suq3F7RPwFniom/rTtqAxCsH4wsp7p08wF8lRMC0yyFSegqn9D8E0yWgwO0UwGSkAc2SU885jdoeMU4v5d3ZBwa8Z+Ak4rhMJLuUtjQAAAABJRU5ErkJggg=="
                         alt="search-glass">
-                    <input type="text" placeholder="Search or start new chat   ">
+                    <input id="search-input" type="text" placeholder="Search or start new chat   ">
                 </div>
             </div>
 
             <!--chats -->
-            <div class="chat-list">
-                <?php foreach($chats as $chat): ?>
-                <div class="chat-box">
-                    <!-- add profile image -->
-                    <span class="img-box">
-                        <?php $profileP = $user->getProfileImg($chat[0]);?>
-                    </span>
-                    <div class="chat-details">
-                        <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id']); ?>
-                        <div class="text-head">
-                            <p id="chat-user">
-                                <?php echo $chat[1] . ' #' . $chat[0]; ?>
-                            </p>
+            <div class="left-chat-container">
+                <div class="chat-list">
+                    <!--<?php foreach($chats as $chat): ?>
+                    <div class="chat-box">
+                        <span class="img-box">
+                            <?php $profileP = $user->getProfileImg($chat[0]);?>
+                        </span>
+                        <div class="chat-details">
+                            <?php $prev = $c->get_last_message($chat[0], $_SESSION['user_id']); ?>
+                            <div class="text-head">
+                                <p id="chat-user">
+                                    <?php echo $chat[1] . ' #' . $chat[0]; ?>
+                                </p>
+                                <?php if(count($prev) > 0): ?>
+                                <?php $x = date_parse($prev[0][1]); ?>
+                                <p class="time">
+                                    <?php echo $x['hour'] . ':' . $x['minute']; ?>
+                                </p>
+                                <?php endif; ?>
+                            </div>
                             <?php if(count($prev) > 0): ?>
-                            <?php $x = date_parse($prev[0][1]); ?>
-                            <p class="time">
-                                <?php echo $x['hour'] . ':' . $x['minute']; ?>
-                            </p>
+                            <div class="text-message">
+                                <p>
+                                    <?php echo substr($prev[0][0], 0, 22); ?>
+                                </p>
+                            </div>
                             <?php endif; ?>
-                            <!-- <b class="unread"></b> -->
                         </div>
-                        <?php if(count($prev) > 0): ?>
-                        <div class="text-message">
-                            <p>
-                                <?php echo substr($prev[0][0], 0, 22); ?>
-                            </p>
-                            <!-- <b></b> -->
-                        </div>
-                        <?php endif; ?>
                     </div>
+                    <?php endforeach; ?>-->
                 </div>
-                <?php endforeach; ?>
+                <div class="loadMoreText">
+                    <p>click to load more chats...</p>
+                </div>
             </div>
 
         </div>

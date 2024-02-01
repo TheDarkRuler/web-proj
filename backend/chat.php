@@ -43,6 +43,23 @@ class Chat {
         return $result->fetch_all();
     }
 
+    function get_chat_list_limited_filter($user_id, $limit, $filter) {
+        global $db;
+
+        $query = "SELECT id, username 
+                    FROM Users 
+                    INNER JOIN Follows ON Users.id = Follows.id2 
+                    WHERE Follows.id1 = ? AND LOWER(username) LIKE LOWER('%$filter%')
+                    LIMIT ?";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $limit);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all();
+    }
+
     function get_last_message($sender, $receiver) {
         global $db;
 

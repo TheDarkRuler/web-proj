@@ -175,7 +175,7 @@ class User {
         $query = "SELECT id, username
                     FROM Users 
                     WHERE LOWER(username) LIKE LOWER('%$filter%')
-                    ORDER BY id ASC LIMIT ?";
+                    LIMIT ?";
 
         $statement = $db->prepare($query);
         $statement->bind_param('i', $limit);

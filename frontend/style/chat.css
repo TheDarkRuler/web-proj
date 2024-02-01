@@ -209,6 +209,17 @@ img {
     color: #06e744;
 }
 
+.loadMoreText {
+    text-align: center;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.loadMoreText>p {
+    color: #6c6c6c;
+}
+
+
 .right-container .header {
     display: flex;
     justify-content: space-between;
