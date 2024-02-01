@@ -1,5 +1,5 @@
-function update_users(n_users, loadMore, search_in) {
-    $.ajax({
+async function update_users(n_users, loadMore, search_in) {
+    await $.ajax({
         url: '../../backend/search_redirect.php',
         type: 'POST',
         datatype: 'json',
@@ -35,6 +35,12 @@ function update_users(n_users, loadMore, search_in) {
     });
 }
 
+async function waitUntil(condition, time = 100) {
+    while (!condition()) {
+        await new Promise((resolve) => setTimeout(resolve, time));
+    }
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
     let n_users = 8;
@@ -57,14 +63,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     const searchInput = document.getElementById("search-input");
+    let timeOut = true;
 
-    searchInput.addEventListener("input", () => {
+    callUpdateUser = () => {
+        timeOut = false;
+        update_users(n_users, loadMore, filter).then(() => {
+            timeOut = true;
+        });
+    }
+
+    searchInput.addEventListener("input", async () => {
         filter = searchInput.value;
-        (filter == "") ?
-            setTimeout(() => {
-                update_users(n_users, loadMore, filter);
-            }, 500) :
-            update_users(n_users, loadMore, filter);
-    }) 
+        if (timeOut) {
+            callUpdateUser();
+        } else {
+            await waitUntil(() => timeOut === true);
+            callUpdateUser();
+        }
+    });
 
 });
