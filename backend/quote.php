@@ -12,9 +12,7 @@ class Quote {
         $statement = $db->prepare($query);
         $statement->bind_param('sss', $content, $day, $author);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function get_daily_quote() {
@@ -27,9 +25,7 @@ class Quote {
         $statement->bind_param('s', $today);
         $statement->execute();
         $result = $statement->get_result();
-        $posts = $result->fetch_all();
-
-        return $posts;
+        return $result->fetch_all();
     }
 
     function get_random_quote() {

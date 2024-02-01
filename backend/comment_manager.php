@@ -14,5 +14,5 @@ if ($_POST['type'] == 'show') {
 if ($_POST['type'] == 'insert') {
     $result = $c->post_comment($_POST['postId'], $_SESSION['user_id'], $_POST['content']);
 
-    echo $result == false ? 0 : 1;
+    echo !$result ? 0 : 1;
 }

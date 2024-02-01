@@ -12,9 +12,7 @@ class Comment {
         $statement = $db->prepare($query);
         $statement->bind_param('issi', $post_id, $content, date('Y-m-d H:i:s'), $user_id);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function comment_comment($reference_comment, $comment_id) {
@@ -26,8 +24,7 @@ class Comment {
         $statement->bind_param('ii', $reference_comment, $comment_id);
         $statement->execute();
 
-        $result = $statement->get_result();
-        return $result;
+        return $statement->get_result();
     }
 
     function get_all_by_post($post_id) {
@@ -39,8 +36,6 @@ class Comment {
         $statement->bind_param('i', $post_id);
         $statement->execute();
         $result = $statement->get_result();
-        $posts = $result->fetch_all();
-
-        return $posts;
+        return $result->fetch_all();
     }
 }

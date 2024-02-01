@@ -66,7 +66,7 @@ class User {
         $statement->bind_param('ss', date('Y-m-d H:i:s'), $mail);
         $statement->execute();
 
-        return $verify == true ? $this->return_info_user($email) : array();
+        return $verify ? $this->return_info_user($email) : array();
     }
 
     function increase_field($field, $mail) {
@@ -77,9 +77,7 @@ class User {
         $statement = $db->prepare($query);
         $statement->bind_param('sss', $field, $field, $mail);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function update_pic($data, $user_id) {
@@ -90,9 +88,7 @@ class User {
         $statement = $db->prepare($query);
         $statement->bind_param('si', $data, $user_id);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function update_description($description, $mail) {
@@ -103,9 +99,7 @@ class User {
         $statement = $db->prepare($query);
         $statement->bind_param('ss', $description, $mail);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function update_username($value, $user_id) {
@@ -117,7 +111,7 @@ class User {
         $statement->bind_param('si', $value, $user_id);
         $statement->execute();
 
-        return $statement->error ? false : true;
+        return !$statement->error;
     }
 
     function update_email($value, $user_id) {
@@ -129,7 +123,7 @@ class User {
         $statement->bind_param('si', $value, $user_id);
         $statement->execute();
 
-        return $statement->error ? false : true;
+        return !$statement->error;
     }
 
     function update_password($value, $user_id) {
@@ -141,7 +135,7 @@ class User {
         $statement->bind_param('si', $value, $user_id);
         $statement->execute();
 
-        return $statement->error ? false : true;
+        return !$statement->error;
     }
 
     function validate_password($user_id, $check_password) {
@@ -155,9 +149,7 @@ class User {
         $result = $statement->get_result();
         $fetch = $result->fetch_all()[0][0];
 
-        $verify = password_verify($check_password, $fetch);
-
-        return $verify;
+        return password_verify($check_password, $fetch);
     }
 
     function getAllFollower($u_id, $limit) {
@@ -174,8 +166,7 @@ class User {
         $statement->execute();
         $result = $statement->get_result();
 
-        $posts = $result->fetch_all();
-        return $posts;
+        return $result->fetch_all();
     }
 
     function getAllUserByUsername($limit, $filter) {
@@ -191,8 +182,7 @@ class User {
         $statement->execute();
         $result = $statement->get_result();
 
-        $posts = $result->fetch_all();
-        return $posts;
+        return $result->fetch_all();
     }
 
     function getProfileImg($u_id) {
@@ -325,6 +315,6 @@ class User {
 
         $result = $statement->get_result();
 
-        return  isset($result->fetch_all()[0][0]);
+        return isset($result->fetch_all()[0][0]);
     }
 }

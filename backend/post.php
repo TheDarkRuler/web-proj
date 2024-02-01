@@ -44,9 +44,7 @@ class Post {
         $statement = $db->prepare($query);
         $statement->bind_param('ii', $user_id, $post_id);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function dislike_post($post_id, $user_id, $value) {
@@ -68,9 +66,7 @@ class Post {
         $statement = $db->prepare($query);
         $statement->bind_param('ii', $user_id, $post_id);
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function update_opposite($type, $user_id, $post_id) {
@@ -91,9 +87,7 @@ class Post {
         $statement->bind_param('i', $user_id);
         $statement->execute();
         $result = $statement->get_result();
-        $posts = $result->fetch_all();
-
-        return $posts;
+        return $result->fetch_all();
     }
 
     function get_post_image($post_id) {
@@ -127,9 +121,7 @@ class Post {
         $statement->bind_param('ii', $user_id, $limit);
         $statement->execute();
         $result = $statement->get_result();
-        $posts = $result->fetch_all();
-
-        return $posts;
+        return $result->fetch_all();
     }
 
     function get_all_following($user_id, $limit) {
@@ -146,15 +138,7 @@ class Post {
         $statement->execute();
         $result = $statement->get_result();
 
-        $posts = $result->fetch_all();
-        return $posts;
-    }
-
-    function get_3_post_format($user_id) {
-        $posts = $this->get_all_following($user_id, 3);
-
-        // print_r($posts);
-        // die();
+        return $result->fetch_all();
     }
 
     function check_like($user_id, $post_id) {

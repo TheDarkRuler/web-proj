@@ -12,9 +12,7 @@ class Message {
         $statement = $db->prepare($query);
         $statement->bind_param('iiss', $sender_id, $receiver_id, $content, date('Y-m-d H:i:s'));
         $statement->execute();
-        $result = $statement->get_result();
-
-        return $result;
+        return $statement->get_result();
     }
 
     function get_all_by_sender($user_id, $receiver_id) {
@@ -26,8 +24,6 @@ class Message {
         $statement->bind_param('ii', $user_id, $receiver_id);
         $statement->execute();
         $result = $statement->get_result();
-        $posts = $result->fetch_all();
-
-        return $posts;
+        return $result->fetch_all();
     }
 }

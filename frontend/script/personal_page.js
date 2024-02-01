@@ -3,6 +3,7 @@ import { dislike } from './interaction-manager.js';
 import { showComment } from './interaction-manager.js';
 import { addComment } from './interaction-manager.js';
 
+// function to update the posts in the personal page 
 function update_posts(user_id, n_posts, loadMore) {
     const username = document.getElementById('username').innerHTML;
 
@@ -84,12 +85,14 @@ function update_posts(user_id, n_posts, loadMore) {
                     const commentsClose = document.querySelectorAll('.close-btn');
                     const commentButton = document.querySelectorAll('.comment-send');
 
+                    // adding the handler for the like button
                     likeButtons.forEach(btn => {
                         btn.addEventListener('click', (event) => {
                             event.stopImmediatePropagation();
                             like(btn);
                         });
                     });
+                    // adding handler for the dislike button
                     dislikeButtons.forEach(btn => {
                         btn.addEventListener('click', (event) => {
                             event.stopImmediatePropagation();
@@ -97,6 +100,7 @@ function update_posts(user_id, n_posts, loadMore) {
                         });
                     });
 
+                    // adding handlers for comments buttons
                     for (let i = 0; i < commentButtons.length; i++) {
                         commentButtons[i].addEventListener('click', (event) => {
                             event.stopImmediatePropagation();
@@ -108,10 +112,10 @@ function update_posts(user_id, n_posts, loadMore) {
                             commentSection[i].style.display = 'block';
 
                             commentsClose[i].addEventListener('click', () => {
-
                                 commentSection[i].style.display = "none";
                             });
 
+                            // adding and updating the comments on send click
                             commentButton[i].addEventListener('click', () => {
                                 let text = document.querySelectorAll('.comment-text');
                                 addComment(text[i].value, commentButtons[i]);
