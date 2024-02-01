@@ -1,10 +1,8 @@
-console.log("Js connected properly!");
-
 document.addEventListener('DOMContentLoaded', function () {
-    var popupForm = document.getElementById('popupForm');
-    var scrollPositionToShowForm = 10;
+    const popupForm = document.getElementById('popupForm');
+    let scrollPositionToShowForm = 10;
 
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
         if (document.body.scrollTop > scrollPositionToShowForm
             || document.documentElement.scrollTop > scrollPositionToShowForm) {
             popupForm.style.display = 'block';

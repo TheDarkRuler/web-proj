@@ -10,7 +10,7 @@ function update_posts(user_id, n_posts, loadMore) {
         type: 'POST',
         datatype: 'json',
         data: {id: user_id.trim(), limit: n_posts},
-        success: function (result) {
+        success: result => {
             const container = document.querySelector('.posts-list');
             container.innerHTML = "";
 
@@ -27,7 +27,7 @@ function update_posts(user_id, n_posts, loadMore) {
                     async: false,
                     type: 'POST',
                     data: {id: result[i][0], func: 'get-image'},
-                    success: function (image) {
+                    success: image => {
                         resultImage = image;
                     },
                 }).done(() => {

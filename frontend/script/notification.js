@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let notificationOpen = false;
 
     // listener to remove the notification pop-up on the click of the page 
-    document.addEventListener('click', (event) => {
+    document.addEventListener('click', event => {
         if (event.target !== notificationPopup.firstChild && event.target !== openNotificationsBtn.firstElementChild) {
             notificationOpen = false;
             notificationPopup.style.display = 'none';
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // listener to open the pop-up on the notification's icon click 
-    openNotificationsBtn.addEventListener('click', function () {
+    openNotificationsBtn.addEventListener('click', () => {
         const notificationSection = document.getElementById('notification-popup');
         notificationOpen = !notificationOpen;
         notificationPopup.style.display = notificationOpen ? 'block' : 'none';
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
                 data: {type: 'get'},
-                success: function (result) {
+                success: result => {
                     // adding all the notification in the notification pop-up
                     notificationSection.innerHTML = '';
                     for (let i = 0; i < result.length; i++) {
