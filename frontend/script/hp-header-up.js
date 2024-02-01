@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var header = document.getElementById('header');
-    var scrollDown = 0;
-    var scrollDirection = false; // true == down | false == top
-    var scrollPositionToShow = 10;
+    const header = document.getElementById('header');
     const posts = document.getElementsByTagName("main")[0];
+    let scrollDown = 0;
+    let scrollDirection = false; // true == down | false == top
+    let scrollPositionToShow = 10;
 
 
-    posts.addEventListener('scroll', function () {
+    posts.addEventListener('scroll', () => {
         if (scrollDown > scrollPositionToShow + 10) {
             header.style.top = '-10%';
         } else {
