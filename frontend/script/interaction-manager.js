@@ -1,13 +1,17 @@
+/**
+ * Function to like a post
+ * @param button like button
+ */
 export function like(button) {
-    let postId = button.parentElement.children[0].innerHTML;
+    const postId = button.parentElement.children[0].innerHTML;
     let val = 1;
 
     $.ajax({
         url: '../../backend/check_interaction.php',
         type: 'POST',
-        data: { column: 'n_like', postId: postId },
-        success: function (result) {
-            val *= result == 0 ? 1 : -1;
+        data: {column: 'n_like', postId: postId},
+        success: result => {
+            val *= parseInt(result) === 0 ? 1 : -1;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);
@@ -16,8 +20,8 @@ export function like(button) {
         $.ajax({
             url: '../../backend/post_interaction.php',
             type: 'POST',
-            data: { column: 'n_like', postId: postId, value: val },
-            success: function () {
+            data: {column: 'n_like', postId: postId, value: val},
+            success: () => {
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Status: " + textStatus + " - Error: " + errorThrown);
@@ -26,16 +30,20 @@ export function like(button) {
     });
 }
 
+/**
+ * Function to dislike a post
+ * @param button dislike button
+ */
 export function dislike(button) {
-    let postId = button.parentElement.children[0].innerHTML;
+    const postId = button.parentElement.children[0].innerHTML;
     let val = 1;
 
     $.ajax({
         url: '../../backend/check_interaction.php',
         type: 'POST',
-        data: { column: 'n_dislike', postId: postId },
-        success: function (result) {
-            val *= result == 0 ? 1 : -1;
+        data: {column: 'n_dislike', postId: postId},
+        success: result => {
+            val *= parseInt(result) === 0 ? 1 : -1;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);
@@ -44,23 +52,28 @@ export function dislike(button) {
         $.ajax({
             url: '../../backend/post_interaction.php',
             type: 'POST',
-            data: { column: 'n_dislike', postId: postId, value: val },
-            success: function (result) {
+            data: {column: 'n_dislike', postId: postId, value: val},
+            success: result => {
             },
             dataType: 'json'
         });
     });
 }
 
+/**
+ * Show comment function
+ * @param button comment button
+ * @param j html item's index
+ */
 export function showComment(button, j) {
-    let postId = button.parentElement.children[0].innerHTML;
-    let commentList = document.querySelectorAll('.comment-list');
+    const postId = button.parentElement.children[0].innerHTML;
+    const commentList = document.querySelectorAll('.comment-list');
 
     $.ajax({
         url: '../../backend/comment_manager.php',
         type: 'POST',
-        data: { type: 'show', postId: postId },
-        success: function (result) {
+        data: {type: 'show', postId: postId},
+        success: result => {
             commentList[j].innerHTML = '';
             for (let i = 0; i < result.length; i++) {
                 commentList[j].innerHTML += `<p class='comment'>` + result[i][2] + `</p>`;
@@ -74,13 +87,18 @@ export function showComment(button, j) {
     });
 }
 
+/**
+ * Function to add a comment in a post
+ * @param content content of the comment
+ * @param button comment button
+ */
 export function addComment(content, button) {
-    let postId = button.parentElement.children[0].innerHTML;
+    const postId = button.parentElement.children[0].innerHTML;
     $.ajax({
         url: '../../backend/comment_manager.php',
         type: 'POST',
-        data: { type: 'insert', postId: postId, content: content },
-        success: function (result) {
+        data: {type: 'insert', postId: postId, content: content},
+        success: result => {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);

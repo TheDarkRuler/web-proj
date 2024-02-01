@@ -1,11 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var popupForm = document.getElementById('container');
-    var scrollDownMess = document.getElementById('scrollDown');
-    var scrollPositionToShowForm = 10; // Adjust this value as needed
+document.addEventListener('DOMContentLoaded', () => {
+    const popupForm = document.getElementById('container');
+    const scrollDownMess = document.getElementById('scrollDown');
+    const scrollPositionToShowForm = 10; // Adjust this value as needed
     let switched = false;
 
-    var upsize = document.getElementById('upsize');
-    var insize = document.getElementById('insize');
+    const upsize = document.getElementById('upsize');
+    const insize = document.getElementById('insize');
 
     upsize.value = screen.width;
     insize.value = screen.width;
@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', function () {
         container.classList.remove("right-panel-active");
     });
 
-    let alertBtn = document.querySelector('.closebtn');
+    const alertBtn = document.querySelector('.closebtn');
 
     alertBtn.addEventListener('click', () => {
-        let alert = document.querySelector('.alert');
+        const alert = document.querySelector('.alert');
         alert.style.display = 'none';
     })
 });

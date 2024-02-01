@@ -1,5 +1,5 @@
 import {addComment, dislike, like, showComment} from './interaction-manager.js';
-import {updatePostsStats} from "./post";
+import {updatePostsStats} from "./post.js";
 
 // function to update the posts in the personal page 
 function update_posts(user_id, n_posts, loadMore) {

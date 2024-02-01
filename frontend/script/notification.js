@@ -1,18 +1,26 @@
+/**
+ * Function to wait some time
+ * @param ms millisecond to wait
+ * @returns {Promise<unknown>}
+ */
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// function to remove the 'red dot' on the notifications after 2 secs
+/**
+ * function to remove the 'red dot' on the notifications after 2 secs
+ * @param notifications list of all notifications
+ */
 function manageTimout(notifications) {
     sleep(2000).then(() => {
         for (let i = 0; i < notifications.length; i++) {
             $.ajax({
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
-                data: { type: 'set', notification: notifications[i][3] },
+                data: {type: 'set', notification: notifications[i][3]},
                 success: () => {
                     // taking the span and removing if present
-                    let redNotification = document.querySelector('.red-dot');
+                    const redNotification = document.querySelector('.red-dot');
                     if (redNotification != null) {
                         redNotification.style.display = 'none';
                     }
@@ -51,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             $.ajax({
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
-                data: { type: 'get' },
+                data: {type: 'get'},
                 success: function (result) {
                     // adding all the notification in the notification pop-up
                     notificationSection.innerHTML = '';
