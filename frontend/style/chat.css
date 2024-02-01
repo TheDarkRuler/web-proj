@@ -244,15 +244,12 @@ img {
     cursor: pointer;
 }
 
-.right-container .header .img-text p {
+.right-container .header .img-text p a {
+    text-decoration: none;
+    color: black;
     font-weight: 500;
     line-height: 1.2em;
     margin-left: 15px;
-}
-
-.right-container .header .img-text p span {
-    font-size: 0.8em;
-    color: #555;
 }
 
 .chat-container {

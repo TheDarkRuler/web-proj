@@ -60,7 +60,7 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
                 <?php echo $description; ?>
             </p>
         </div>
-        <div class="button-container">
+        <div class="button-container" id="button-container">
             <?php if ($_SESSION['ref_userid'] == $_SESSION['user_id']): ?>
             <span class="little-dot">
                 <a href="settings.html">

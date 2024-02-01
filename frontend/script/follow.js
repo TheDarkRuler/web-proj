@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (follow_but != null) {
         follow_but.addEventListener('click', event => {
-            event.stopImmediatePropagation();
+            event.stopPropagation();
             const user_id = document.getElementById('user_id');
             const ref_userid = document.getElementById('ref_userid');
             $.ajax({
@@ -14,14 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     follower: parseInt(user_id.innerHTML),
                     following: parseInt(ref_userid.innerHTML),
                     type: 'follow'
-                }
+                },
+            }).done(() => {
+                location.reload();
             });
-        });
+        }, { once: true });
     }
 
     if (unfollow_but != null) {
         unfollow_but.addEventListener('click', event => {
-            event.stopImmediatePropagation();
+            event.stopPropagation();
             const user_id = document.getElementById('user_id');
             const ref_userid = document.getElementById('ref_userid');
             $.ajax({
@@ -32,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     following: parseInt(ref_userid.innerHTML),
                     type: 'unfollow'
                 },
+            }).done(() => {
+                location.reload();
             });
-        })
+        }, { once: true })
     }
 });

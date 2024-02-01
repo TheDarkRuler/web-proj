@@ -126,7 +126,11 @@ function loadHeader(rec_id) {
         success: function (result) {
             const container = document.getElementById('receiver_username');
             container.innerHTML = '';
-            container.innerHTML += result;
+            container.innerHTML += `
+                <a href="personal_page.html?ref_username=` + result + `&ref_id=` + rec_id + `">
+                    ` + result + `
+                </a> 
+            `;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus + " - Error: " + errorThrown);
