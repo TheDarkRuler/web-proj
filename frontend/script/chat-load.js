@@ -11,12 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 $.ajax({
                     url: '../../backend/load_head.php',
                     type: 'POST',
-                    data: { user_id: result[i][0] },
+                    data: {user_id: result[i][0]},
                     success: function (new_res) {
                         image = new_res;
                     },
                 }).done(() => {
-                    container.innerHTML += `<div class="direct" onclick="chatClick()">` + image + `<p class='direct-user'>` + result[i][1] + `#` + result[i][0] + `</p></div>`;
+                    const div = document.createElement('div');
+                    div.classList.add('direct');
+                    div.innerHTML = image + `<p class='direct-user'>` + result[i][1] + `#` + result[i][0] + `</p>`;
+                    container.appendChild(div);
+                    div.addEventListener('click', () => {
+                        chatClick(div);
+                    })
                 });
             }
         },

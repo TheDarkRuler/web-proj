@@ -1,26 +1,51 @@
+/**
+ * Function to update all messages in the chat with a specific user (receiver)
+ */
 function update_messages() {
+    // if currently there is an active chat, the function will load all the messages
     if (document.querySelector('.active') != null) {
-        let rec_id = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
+        // getting the receiver id (the id of the one who will receive the messages)
+        const rec_id = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
 
         $.ajax({
             url: '../../backend/chat_switch.php',
             type: 'POST',
-            data: { receiver: rec_id },
-            success: function (result) {
+            data: {receiver: rec_id},
+            /**
+             * @param result array containing all the messages between the user and the receiver
+             */
+            success: result => {
                 let container = document.querySelector('.chat-container');
                 container.innerHTML = "";
                 for (let i = 0; i < result.length; i++) {
-                    let date = new Date(result[result.length - 1 - i][4]);
-                    let minutes = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
+                    // getting the hour and minute of the message
+                    const date = new Date(result[result.length - 1 - i][4]);
+                    const minutes = date.getMinutes() > 10 ? date.getMinutes() : date.getMinutes();
+                    // creating the paragraph containing the message and the time of it
+                    const paragraph = document.createElement('p');
+                    paragraph.innerHTML = result[result.length - 1 - i][3] + `<br><span>` + date.getHours() + `:` + minutes + `</span>`;
+                    // creating div containing the paragraph if the id of the receiver of the message is different from
+                    // the current receiver id it means it is his message, otherwise is mine
+                    const div = document.createElement('div');
+                    div.classList.add('message-box');
+                    if (result[result.length - 1 - i][2] !== parseInt(rec_id)) {
+                        div.classList.add('friend-message');
+                    } else {
+                        div.classList.add('my-message');
+                    }
+                    div.appendChild(paragraph);
+                    container.appendChild(div);
+                    /*
                     container.innerHTML += `<div class='message-box ` + ((result[result.length - 1 - i][2] != rec_id) ? `friend-message` : `my-message`) + `'>
                     <p>
                     ` + result[result.length - 1 - i][3] + `<br><span>` + date.getHours() + `:` + minutes + `</span>
                     </p>
                     </div >`;
+                    */
                 }
                 container.scrollTop = container.scrollHeight;
             },
-            error: function () {
+            error: () => {
                 console.log('error');
             },
             dataType: 'json'
@@ -31,30 +56,33 @@ function update_messages() {
 function recreateNode(el, withChildren) {
     if (withChildren) {
         el.parentNode.replaceChild(el.cloneNode(true), el);
-    }
-    else {
-        var newEl = el.cloneNode(false);
+    } else {
+        let newEl = el.cloneNode(false);
         while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
         el.parentNode.replaceChild(newEl, el);
     }
 }
 
+/**
+ * Function to attach a handler to send messages on the input field of a chat
+ * @param rec_id id of the user that should receive the message
+ */
 function attachSendHandler(rec_id) {
-
     recreateNode(document.getElementById('send-button'));
     const sendBtn = document.getElementById('send-button');
 
-    sendBtn.addEventListener('click', function (event) {
+    sendBtn.addEventListener('click', event => {
         event.stopImmediatePropagation();
+        const current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
         let message = document.getElementById('message-i');
-        let current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
 
-        if (message.value != '' && parseInt(rec_id) == parseInt(current_rec)) {
+        // sending the message
+        if (message.value !== '' && parseInt(rec_id) === parseInt(current_rec)) {
             $.ajax({
                 url: '../../backend/send_message.php',
                 type: 'post',
-                data: { receiver: rec_id, message: message.value },
-                success: function () {
+                data: {receiver: rec_id, message: message.value},
+                success: () => {
                     message.value = '';
                     update_messages();
                 },
@@ -66,13 +94,20 @@ function attachSendHandler(rec_id) {
     });
 }
 
+/**
+ * Function to load the header of the chat (basically the profile picture and the username)
+ * @param rec_id id of the user that should receive the message
+ */
 function loadHeader(rec_id) {
     $.ajax({
         url: '../../backend/load_head.php',
         type: 'post',
-        data: { user_id: rec_id },
-        success: function (result) {
-            let container = document.querySelector('.user-img');
+        data: {user_id: rec_id},
+        /**
+         * @param result contains piece of HTML to show the profile image
+         */
+        success: result => {
+            const container = document.querySelector('.user-img');
             container.innerHTML = '';
             container.innerHTML += result;
         },
@@ -84,9 +119,12 @@ function loadHeader(rec_id) {
     $.ajax({
         url: '../../backend/load_user.php',
         type: 'post',
-        data: { user_id: rec_id },
+        data: {user_id: rec_id},
+        /**
+         * @param result contains the username of the re
+         */
         success: function (result) {
-            let container = document.getElementById('receiver_username');
+            const container = document.getElementById('receiver_username');
             container.innerHTML = '';
             container.innerHTML += result;
         },
@@ -102,7 +140,7 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
         url: '../../backend/chat_load_redirect.php',
         type: 'POST',
         datatype: 'json',
-        data: { limit: n_users, filter: search_in },
+        data: {limit: n_users, filter: search_in},
         success: function (result) {
             const container = document.querySelector(".chat-list");
             result = JSON.parse(result);
@@ -115,10 +153,10 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
                     url: '../../backend/chat_load_redirect.php',
                     type: 'POST',
                     async: false,
-                    data: { id: result[i][0], func: 'get-image' },
+                    data: {id: result[i][0], func: 'get-image'},
                     success: function (image) {
-                        result[i][2] == null ? 
-                        container.innerHTML += `
+                        result[i][2] == null ?
+                            container.innerHTML += `
                             <div class="chat-box">
                                 <span class="img-box">
                                     ` + image + `
@@ -126,12 +164,12 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
                                 <div class="chat-details">
                                     <div class="text-head">
                                         <p id="chat-user">
-                                            ` +  result[i][1] + ` #` + result[i][0] + `
+                                            ` + result[i][1] + ` #` + result[i][0] + `
                                         </p> 
                                     </div>
                                 </div>
                             </div>` :
-                        container.innerHTML += `
+                            container.innerHTML += `
                         <div class="chat-box">
                             <span class="img-box">
                                 ` + image + `
@@ -139,7 +177,7 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
                             <div class="chat-details">
                                 <div class="text-head">
                                     <p id="chat-user">
-                                        ` +  result[i][1] + ` #` + result[i][0] + `
+                                        ` + result[i][1] + ` #` + result[i][0] + `
                                     </p> 
                                     <p class="time">
                                         ` + result[i][2][0][1] + `
@@ -163,25 +201,26 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
 }
 
 const chat_box_lis = () => {
-
     const chats = document.querySelectorAll('.chat-box');
 
     for (let i = 0; i < chats.length; i++) {
-        let userStr = chats[i].children[1].children[0].children[0].innerHTML;
-        let userId = userStr.split('#')[1];
+        const userStr = chats[i].children[1].children[0].children[0].innerHTML;
+        const userId = userStr.split('#')[1];
         let activeId = -1;
 
+        // Ajax call to get the chat should be active currently
         $.ajax({
             url: '../../backend/chat_redirect.php',
             type: 'POST',
             data: {},
-            success: function (result) {
+            success: result => {
                 activeId = result;
             },
         }).done(() => {
-            if (parseInt(userId) == parseInt(activeId)) {
+            // if it matches with the current id
+            if (parseInt(userId) === parseInt(activeId)) {
                 chats[i].classList.add('active');
-                let chatForm = document.querySelector('.chatbox-input');
+                const chatForm = document.querySelector('.chatbox-input');
 
                 if (chatForm.classList.contains('hidden')) {
                     chatForm.classList.remove('hidden');
@@ -211,7 +250,6 @@ const chat_box_lis = () => {
             let rec_id = chats[i].children[1].children[0].children[0].innerHTML.split('#')[1];
 
             update_messages();
-
             loadHeader(rec_id);
 
             let chatForm = document.querySelector('.chatbox-input');
@@ -219,7 +257,6 @@ const chat_box_lis = () => {
             if (chatForm.classList.contains('hidden')) {
                 chatForm.classList.remove('hidden');
             }
-
             attachSendHandler(rec_id);
         });
     }
@@ -248,8 +285,8 @@ document.addEventListener("DOMContentLoaded", function () {
         chat_box_lis();
     });
 
-    loadMore.addEventListener("click" , () => {
-        if(loadingMore) {
+    loadMore.addEventListener("click", () => {
+        if (loadingMore) {
             loadingMore = false;
             n_users += 8;
             chatsLoad(n_users, loadMore, filter).then(() => {
@@ -283,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     //user is "finished typing,"
-    async function doneTyping () {
+    async function doneTyping() {
         filter = searchInput.value;
         if (timeOut) {
             callUpdateUser();
@@ -291,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
             await waitUntil(() => timeOut === true);
             callUpdateUser();
         }
-    } 
+    }
 
     let leftContainer = document.querySelector('.left-container');
     let rightContainer = document.querySelector('.right-container');
