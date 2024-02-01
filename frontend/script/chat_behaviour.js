@@ -45,6 +45,7 @@ function attachSendHandler(rec_id) {
     const sendBtn = document.getElementById('send-button');
 
     sendBtn.addEventListener('click', function (event) {
+        event.stopImmediatePropagation();
         let message = document.getElementById('message-i');
         let current_rec = document.querySelector('.active').children[1].children[0].children[0].innerHTML.split('#')[1];
 

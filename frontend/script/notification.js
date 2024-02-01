@@ -1,18 +1,27 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function manageTimout(notifications) {
-    let temp = setTimeout(() => {
+    sleep(2000).then(() => {
         for (let i = 0; i < notifications.length; i++) {
             $.ajax({
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
                 data: { type: 'set', notification: notifications[i][3] },
+                success: () => {
+                    let redNotification = document.querySelector('.red-dot');
+                    if (redNotification != null) {
+                        redNotification.style.display = 'none';
+                    }
+                },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Status: " + textStatus + " - Error: " + errorThrown);
                 },
                 dataType: 'json'
             });
         }
-    }, 2000);
-    clearTimeout(temp);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
