@@ -6,7 +6,7 @@
 
 body {
     background: #f6f5f7;
-    background-image: url('../img/first.png');
+    background-image: url('../img/loginBG.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     /* overflow-x: hidden; */
@@ -49,8 +49,8 @@ a {
 
 button {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    border: 1px solid #6E2594;
+    background-color: #6E2594;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -168,9 +168,7 @@ input {
 }
 
 .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background: #6E2594;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -221,7 +219,7 @@ input {
 
 .alert {
     padding: 20px;
-    background-color: #f44336;
+    background-color: #6E2594;
     color: white;
 }
 

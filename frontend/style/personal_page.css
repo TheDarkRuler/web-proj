@@ -108,6 +108,7 @@ body {
 
 .icons span img {
     width: 24px;
+    cursor: pointer;
     height: 24px;
 }
 
