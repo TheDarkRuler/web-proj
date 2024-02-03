@@ -65,5 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
     alertBtn.addEventListener('click', () => {
         const alert = document.querySelector('.alert');
         alert.style.display = 'none';
-    })
+    });
 });

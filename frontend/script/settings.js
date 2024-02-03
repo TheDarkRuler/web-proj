@@ -8,4 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     settingsButton.addEventListener('click', () => {
         document.getElementById('update-form').submit();
     });
+
+    const alertBtn = document.querySelector('.closebtn');
+
+    alertBtn.addEventListener('click', () => {
+        const alert = document.querySelector('.alert');
+        alert.style.display = 'none';
+    })
 });

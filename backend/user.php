@@ -317,4 +317,17 @@ class User {
 
         return isset($result->fetch_all()[0][0]);
     }
+
+    function check_existing_mail($mail) {
+        global $db;
+
+        $query = "SELECT COUNT(*) FROM Users WHERE mail = ?";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('s', $mail);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all()[0][0];
+    }
 }

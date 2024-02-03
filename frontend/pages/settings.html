@@ -16,9 +16,16 @@ session_start();
 
 <body>
     <header>
+        <?php if(isset($_SESSION['error'])): ?>
+        <div class="alert">
+            <span class="closebtn">&times;</span>
+            <?php echo $_SESSION['error']; ?>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
         <span id="goBack">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAiklEQVR4nO3WsQ0CMQxA0b+BMwKrMwMlVEdDQFQMwChck+soERdb/0np82UrCkiSJEl/FMAJOJI8ogMf4EHiiNuIeAMHEooqEd2ICbQKk2hVIu5GTKBVmcRzROx5rlVCll9NJf1qlXp2N8bMKiqtWVT4vm+MmVVUW7M+Yl4kF8AZuOx9EUmSJIlvVlJ6fkh04wrSAAAAAElFTkSuQmCC"
-            alt="goBack arrow">
+                alt="goBack arrow">
         </span>
         <a href="<?php echo $_SESSION['device']; ?>">
             <img src="../img/logo.png" alt="logo" />

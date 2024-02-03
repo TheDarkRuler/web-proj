@@ -24,8 +24,13 @@ if (isset($_POST['username']) && !empty($_POST['username'])) {
 
 if (isset($_POST['email']) && !empty($_POST['email'])) {
     $mail = $_POST['email'];
-    $user->update_email($mail, $_SESSION['user_id']);
-    $_SESSION['mail'] = $mail;
+    $count = $user->check_existing_mail($mail);
+    if ($count == 0) {
+        $user->update_email($mail, $_SESSION['user_id']);
+        $_SESSION['mail'] = $mail;
+    } else {
+        $_SESSION['error'] = 'The email is already taken!';
+    }
 }
 
 if (isset($_POST['new_password']) && isset($_POST['password']) && !empty($_POST['new_password']) && !empty($_POST['password'])) {
@@ -36,4 +41,8 @@ if (isset($_POST['new_password']) && isset($_POST['password']) && !empty($_POST[
     }
 }
 
-header('Location: ../frontend/pages/personal_page.html?ref_username=' . $_SESSION['username'] . '&ref_id=' . $_SESSION['user_id']);
+if (isset($_SESSION['error'])) {
+    header('Location: ../frontend/pages/settings.html');
+} else {
+    header('Location: ../frontend/pages/personal_page.html?ref_username=' . $_SESSION['username'] . '&ref_id=' . $_SESSION['user_id']);
+}
