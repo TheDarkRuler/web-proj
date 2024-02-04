@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f7f7ff;
+    background-image: radial-gradient(circle, #EFF9F0, #db85ef);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -93,16 +93,16 @@ input {
 .save-button {
     padding: 15px 30px;
     font-size: 18px;
-    background-color: #007ea7;
+    background-color: #6E2594;
     color: #fff;
-    border: 1px solid #172758;
+    border: 1px solid #EFF9F0;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .save-button:hover {
-    background-color: #06d6a0;
+    background-color: #EF9CDA;
 }
 
 @media screen and (max-width: 768px) {
@@ -113,7 +113,7 @@ input {
         padding: 0;
     }
 
-    
+
     body>header>a>img {
         width: 40%;
         padding-top: 1%;
