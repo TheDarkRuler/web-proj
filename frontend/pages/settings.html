@@ -1,5 +1,9 @@
 <?php
+require_once '../../backend/user.php';
+
 session_start();
+
+$user = new User();
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
     <link rel="stylesheet" type="text/css" href="../style/settings.css" />
+    <link rel="stylesheet" type="text/css" href="../style/scrollbar_set.css" />
     <script type="text/javascript" src="../script/settings.js"></script>
     <script type="text/javascript" src="../script/image_preview.js"></script>
 </head>
@@ -53,10 +58,10 @@ session_start();
                     <input id="description" type="text" name="description" placeholder="Write your Description">
                 </fieldset>
                 <fieldset class="image">
-                    <label for="upload-image">Update Profile Image:</label>
+                    <label for="upload-image">Click here to Update Profile Image:</label>
                     <input id="upload-image" type="file" name="profile-image" accept=".png,.jpg,.jpeg"
                         onchange="previewImage()">
-                    <img id="preview-image" class="profile-image" src="" alt="Profile image">
+                    <?php $user->getProfileImg($_SESSION['user_id']) ?>
                 </fieldset>
             </form>
         </div>

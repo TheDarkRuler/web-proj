@@ -6,7 +6,7 @@ body {
     flex-direction: row;
     margin: 0;
     overflow-y: hidden;
-    background-color: #f7f7ff;
+    background-color: #EFF9F0;
 }
 
 p {
@@ -30,7 +30,7 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 1%;
-    background-color: #bbb;
+    background-image: linear-gradient(to left, #EFF9F0, #db85ef);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -131,7 +131,7 @@ body {
 
 .log-out > span {
     cursor: pointer;
-    background-color: rgb(102, 101, 101);
+    background-color: #6E2594;
     border-radius: 10%;
     padding: 10%;
     border: solid 0.5px black;
@@ -139,11 +139,11 @@ body {
 
 .log-out > span > a {
     text-decoration: none;
-    color: black;
+    color: #EFF9F0;
 }
 
 .log-out > span:hover {
-    background-color: rgb(163, 163, 163);
+    background-color: #EF9CDA;
 }
 
 .dot {
@@ -201,7 +201,6 @@ body {
     display: inline-block;
     height: 32px;
     width: 32px;
-    background-color: #bbb;
     border-radius: 50%;
     cursor: pointer;
     margin-left: 8%;

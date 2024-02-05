@@ -72,6 +72,10 @@ input {
     background-color: #fff;
 }
 
+.image > label {
+    cursor: pointer;
+}
+
 #upload-image {
     display: none;
 }

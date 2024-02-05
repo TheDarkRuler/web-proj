@@ -202,7 +202,7 @@ class User {
             imagejpeg($image, null, 80);
             $data = ob_get_contents();
             ob_end_clean();
-            echo '<img src="data:image/jpeg;base64,' . base64_encode($data) . '" alt="profile-image"/>';
+            echo '<img id="preview-image" class="profile-image" src="data:image/jpeg;base64,' . base64_encode($data) . '" alt="profile-image"/>';
         }
     }
 

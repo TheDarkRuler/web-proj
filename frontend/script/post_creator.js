@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetButton.addEventListener('click', () => {
         const form = document.querySelector('.post-form');
+    
+        document.getElementById('preview-image').src = "";
         form.reset();
     });
 });

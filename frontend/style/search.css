@@ -1,3 +1,9 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, #EFF9F0, #db85ef);
+}
+
 header {
     text-align: center;
     height: 10vh;
@@ -61,6 +67,7 @@ body>header>span {
 
 .users-container .user img {
     border-radius: 100%;
+    aspect-ratio : 1 / 1;
     width: 70%;
 }
 

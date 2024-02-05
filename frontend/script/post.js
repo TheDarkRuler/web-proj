@@ -9,7 +9,6 @@ export function updatePostsStats() {
             url: '../../backend/post_stats.php',
             type: 'POST',
             dataType: 'json',
-            async: false,
             data: { postId: parseInt(s.innerHTML) },
             success: (result) => {
                 for (let i = 1; i < 3; i++) {
@@ -66,5 +65,7 @@ export function manageLikes(likeBtn, dislikeBtn) {
             }
         },
         dataType: 'json'
+    }).done(() => {
+        updatePostsStats();
     });
 }

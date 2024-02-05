@@ -126,7 +126,6 @@ function update_posts(user_id, n_posts, loadMore) {
                             showComment(commentButtons[i], i);
                         });
                     }
-                    updatePostsStats();
                 });
             }
         },
@@ -142,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const posts = document.querySelector(".post-container");
     const containerHeader = document.querySelector(".container");
     let loadingMore = true;
-    updatePostsStats();
     update_posts(document.getElementById("ref_userid").innerHTML, n_posts, loadMore);
     let haederHeight = ((window.innerWidth <= 600)) ? containerHeader.clientHeight : 0;
 

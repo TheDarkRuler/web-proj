@@ -206,6 +206,8 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
 
 const chat_box_lis = () => {
     const chats = document.querySelectorAll('.chat-box');
+    const leftContainer = document.querySelector('.left-container');
+    const rightContainer = document.querySelector('.right-container');
 
     for (let i = 0; i < chats.length; i++) {
         const userStr = chats[i].children[1].children[0].children[0].innerHTML;
@@ -334,9 +336,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    let leftContainer = document.querySelector('.left-container');
-    let rightContainer = document.querySelector('.right-container');
-    let user_id = document.getElementById('user_id');
+    const leftContainer = document.querySelector('.left-container');
+    const rightContainer = document.querySelector('.right-container');
 
     setInterval(update_messages, 5000);
 

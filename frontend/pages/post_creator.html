@@ -26,11 +26,15 @@ session_start();
     </header>
     <div class="post-box">
         <form action="../../backend/post_creator.php" method="post" enctype="multipart/form-data" class="post-form">
-            <input id="upload-image" type="file" name="post-image" accept=".png,.jpg,.jpeg"
-                onchange="previewImage()">
-            <img id="preview-image" class="post-image" src="" alt="post image">
-            <textarea name="description" class="description" placeholder="Write your description here..."
-                rows="3"></textarea>
+            <div class="image-section">
+                <label hidden for="upload-image">Image:</label>
+                <input id="upload-image" type="file" name="post-image" accept=".png,.jpg,.jpeg"
+                    onchange="previewImage()">
+                <img id="preview-image" class="post-image" src="" alt="post image">
+            </div>
+            <label hidden for="description-text">Description:</label>
+            <textarea id="description-text" name="description" class="description" placeholder="Write your description here..."
+                rows="10" cols="10"></textarea>
         </form>
     </div>
     <div class="buttons">
