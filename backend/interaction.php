@@ -33,4 +33,30 @@ class Interaction {
 
         return $statement->get_result() == false ? false : true;
     }
+
+    function check_like($user_id, $post_id) {
+        global $db;
+
+        $query = "SELECT COUNT(*) AS count FROM Interactions WHERE user_id = ? AND post_id = ? AND interaction LIKE 'like'";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all()[0][0] > 0;
+    }
+
+    function check_dislike($user_id, $post_id) {
+        global $db;
+
+        $query = "SELECT COUNT(*) FROM Interactions WHERE user_id = ? AND post_id = ? AND interaction LIKE 'dislike'";
+
+        $statement = $db->prepare($query);
+        $statement->bind_param('ii', $user_id, $post_id);
+        $statement->execute();
+        $result = $statement->get_result();
+
+        return $result->fetch_all()[0][0] > 0;
+    }
 }

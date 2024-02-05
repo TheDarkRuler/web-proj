@@ -1,3 +1,5 @@
+import { manageLikes } from "./post.js";
+
 /**
  * Function to like a post
  * @param button like button
@@ -9,7 +11,7 @@ export function like(button) {
     $.ajax({
         url: '../../backend/check_interaction.php',
         type: 'POST',
-        data: {column: 'n_like', postId: postId},
+        data: { column: 'n_like', postId: postId },
         success: result => {
             val *= parseInt(result) === 0 ? 1 : -1;
         },
@@ -20,12 +22,14 @@ export function like(button) {
         $.ajax({
             url: '../../backend/post_interaction.php',
             type: 'POST',
-            data: {column: 'n_like', postId: postId, value: val},
+            data: { column: 'n_like', postId: postId, value: val },
             success: () => {
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Status: " + textStatus + " - Error: " + errorThrown);
             }
+        }).done(() => {
+            manageLikes(button, button.parentElement.children[2]);
         });
     });
 }
@@ -41,7 +45,7 @@ export function dislike(button) {
     $.ajax({
         url: '../../backend/check_interaction.php',
         type: 'POST',
-        data: {column: 'n_dislike', postId: postId},
+        data: { column: 'n_dislike', postId: postId },
         success: result => {
             val *= parseInt(result) === 0 ? 1 : -1;
         },
@@ -52,10 +56,12 @@ export function dislike(button) {
         $.ajax({
             url: '../../backend/post_interaction.php',
             type: 'POST',
-            data: {column: 'n_dislike', postId: postId, value: val},
+            data: { column: 'n_dislike', postId: postId, value: val },
             success: result => {
             },
             dataType: 'json'
+        }).done(() => {
+            manageLikes(button.parentElement.children[1], button);
         });
     });
 }
@@ -72,7 +78,7 @@ export function showComment(button, j) {
     $.ajax({
         url: '../../backend/comment_manager.php',
         type: 'POST',
-        data: {type: 'show', postId: postId},
+        data: { type: 'show', postId: postId },
         success: result => {
             commentList[j].innerHTML = '';
             for (let i = 0; i < result.length; i++) {
@@ -97,7 +103,7 @@ export function addComment(content, button) {
     $.ajax({
         url: '../../backend/comment_manager.php',
         type: 'POST',
-        data: {type: 'insert', postId: postId, content: content},
+        data: { type: 'insert', postId: postId, content: content },
         success: result => {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {

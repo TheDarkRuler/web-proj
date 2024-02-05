@@ -1,12 +1,12 @@
-import {addComment, dislike, like, showComment} from './interaction-manager.js';
-import {updatePostsStats} from './post.js';
+import { addComment, dislike, like, showComment } from './interaction-manager.js';
+import { manageAllLikes, updatePostsStats } from './post.js';
 
 function update_posts(n_posts, loadMore) {
     $.ajax({
         url: '../../backend/post_load.php',
         type: 'POST',
         datatype: 'json',
-        data: {limit: n_posts},
+        data: { limit: n_posts },
         success: result => {
             const container = document.querySelector(".post-container");
             container.innerHTML = "";
@@ -21,7 +21,7 @@ function update_posts(n_posts, loadMore) {
                     url: '../../backend/post_load.php',
                     async: false,
                     type: 'POST',
-                    data: {id: result[i][0], func: 'get-image'},
+                    data: { id: result[i][0], func: 'get-image' },
                     success: function (image) {
                         container.innerHTML += `
                             <div class="post">
@@ -66,6 +66,9 @@ function update_posts(n_posts, loadMore) {
                             </div>`;
                     },
                 }).done(() => {
+
+                    manageAllLikes();
+
                     const likeButtons = document.querySelectorAll('.like-icon');
                     const dislikeButtons = document.querySelectorAll('.dislike-icon');
                     const commentButtons = document.querySelectorAll('.comment-icon');
@@ -74,12 +77,12 @@ function update_posts(n_posts, loadMore) {
                     const commentButton = document.querySelectorAll('.comment-send');
 
                     likeButtons.forEach(btn => {
-                        btn.addEventListener('click', function () {
+                        btn.addEventListener('click', () => {
                             like(btn);
                         });
                     });
                     dislikeButtons.forEach(btn => {
-                        btn.addEventListener('click', function () {
+                        btn.addEventListener('click', () => {
                             dislike(btn);
                         });
                     });

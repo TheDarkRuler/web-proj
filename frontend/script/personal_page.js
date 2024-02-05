@@ -1,5 +1,5 @@
-import {addComment, dislike, like, showComment} from './interaction-manager.js';
-import {updatePostsStats} from "./post.js";
+import { addComment, dislike, like, showComment } from './interaction-manager.js';
+import { updatePostsStats, manageAllLikes } from "./post.js";
 
 // function to update the posts in the personal page 
 function update_posts(user_id, n_posts, loadMore) {
@@ -9,7 +9,7 @@ function update_posts(user_id, n_posts, loadMore) {
         url: '../../backend/post-get-limit.php',
         type: 'POST',
         datatype: 'json',
-        data: {id: user_id.trim(), limit: n_posts},
+        data: { id: user_id.trim(), limit: n_posts },
         success: result => {
             const container = document.querySelector('.posts-list');
             container.innerHTML = "";
@@ -26,7 +26,7 @@ function update_posts(user_id, n_posts, loadMore) {
                     url: '../../backend/post-get-limit.php',
                     async: false,
                     type: 'POST',
-                    data: {id: result[i][0], func: 'get-image'},
+                    data: { id: result[i][0], func: 'get-image' },
                     success: image => {
                         resultImage = image;
                     },
@@ -75,6 +75,8 @@ function update_posts(user_id, n_posts, loadMore) {
                                      </p>
                                  </div>
                              </div>`;
+
+                    manageAllLikes();
 
                     const likeButtons = document.querySelectorAll('.like-icon');
                     const dislikeButtons = document.querySelectorAll('.dislike-icon');
