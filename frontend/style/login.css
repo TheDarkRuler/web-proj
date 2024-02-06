@@ -59,6 +59,7 @@ button {
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 button:active {
