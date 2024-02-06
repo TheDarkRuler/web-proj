@@ -17,20 +17,21 @@ function manageTimout(notifications) {
             $.ajax({
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
-                data: {type: 'set', notification: notifications[i][3]},
-                success: () => {
-                    // taking the span and removing if present
-                    const redNotification = document.querySelector('.red-dot');
-                    if (redNotification != null) {
-                        redNotification.style.display = 'none';
-                    }
-                },
+                data: { type: 'set', notification: notifications[i][3] },
+                success: () => { },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Status: " + textStatus + " - Error: " + errorThrown);
                 },
                 dataType: 'json'
             });
         }
+
+        const redNotifications = document.querySelectorAll('.red-dot');
+        redNotifications.forEach(not => {
+            if (not != null) {
+                not.style.display = 'none';
+            }
+        });
     });
 }
 
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             $.ajax({
                 url: '../../backend/manage_notification.php',
                 type: 'POST',
-                data: {type: 'get'},
+                data: { type: 'get' },
                 success: result => {
                     // adding all the notification in the notification pop-up
                     notificationSection.innerHTML = '';
