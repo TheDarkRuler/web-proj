@@ -125,24 +125,25 @@ body {
 
 .log-out {
     order: 3;
+    width: 10%;
     padding-right: 5%;
     margin: 2% 2% 0 0;
 }
 
-.log-out > span {
+.log-out>span {
     cursor: pointer;
     background-color: #6E2594;
     border-radius: 10%;
-    padding: 15%;
+    padding: 10%;
     border: solid 0.5px black;
 }
 
-.log-out > span > a {
+.log-out>span>a {
     text-decoration: none;
     color: #EFF9F0;
 }
 
-.log-out > span:hover {
+.log-out>span:hover {
     background-color: #EF9CDA;
 }
 
@@ -330,7 +331,7 @@ body {
         height: 5%;
     }
 
-    .log-out > span {
+    .log-out>span {
         padding: 2%;
     }
 
