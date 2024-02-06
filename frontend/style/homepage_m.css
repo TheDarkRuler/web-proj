@@ -9,7 +9,7 @@ body>header {
     position: fixed;
     top: 0;
     left: 0;
-    max-height: 10%;
+    max-height: 10vh;
     background-color: #c051fc;
     transition: top 0.2s ease-in-out;
 }
@@ -29,6 +29,7 @@ header>p {
     order: 2;
     text-align: center;
     width: 65vw;
+    max-height: 7vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -74,11 +75,12 @@ footer>span:not(:first-child) {
 .notification-popup {
     display: none;
     position: fixed;
-    width: 100vw;
+    text-align: center;
+    width: 98%;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    margin: 10% 0 0 1%;
+    margin: 15% 1% 0 1%;
     border-radius: 5px;
     word-wrap: break-word;
 }

@@ -1,3 +1,21 @@
+fieldset {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+}
+
+fieldset > legend {
+    color: #6E2594;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+fieldset > legend > a {
+    color: #6E2594;
+    text-decoration: noneR;
+}
+
+
 .comment-section {
     display: none;
     position: relative;
@@ -9,7 +27,7 @@
 
 .comment-header {
     padding: 10px;
-    background-color: #007ea7;
+    background-color: #6E2594;
     color: white;
     border-radius: 8px 8px 0 0;
     display: flex;
@@ -24,9 +42,8 @@
 }
 
 .comment {
-    background-color: #f2f2f2;
     padding: 8px;
-    margin-bottom: 4px;
+    margin: 0;
     border-radius: 4px;
     font-size: small;
 }
@@ -46,7 +63,7 @@
 }
 
 .comment-send {
-    background-color: #007ea7;
+    background-color: #6E2594;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -55,7 +72,7 @@
 }
 
 .comment-send:hover {
-    background-color: #06d6a0;
+    background-color: #EF9CDA;
 }
 
 .close-btn {

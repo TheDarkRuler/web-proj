@@ -38,7 +38,7 @@ $description = $user->get_user_description($_SESSION['ref_userid'])[0];
     <div class="container">
         <div class="logo-container">
             <span class="dot">
-                <?php $profileP = $user->getProfileImg($_SESSION['user_id']);?>
+                <?php $profileP = $user->getProfileImg($_SESSION['ref_userid']);?>
             </span>
             <p class="username" id="username">
                 <?php echo $_SESSION['ref_user']; ?>

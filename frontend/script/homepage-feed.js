@@ -1,6 +1,16 @@
 import { addComment, dislike, like, showComment } from './interaction-manager.js';
 import { manageAllLikes, updatePostsStats } from './post.js';
 
+function recreateNode(el, withChildren) {
+    if (withChildren) {
+        el.parentNode.replaceChild(el.cloneNode(true), el);
+    } else {
+        let newEl = el.cloneNode(false);
+        while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
+        el.parentNode.replaceChild(newEl, el);
+    }
+}
+
 function update_posts(n_posts, loadMore) {
     $.ajax({
         url: '../../backend/post_load.php',
@@ -74,7 +84,6 @@ function update_posts(n_posts, loadMore) {
                     const commentButtons = document.querySelectorAll('.comment-icon');
                     const commentSection = document.querySelectorAll('.comment-section');
                     const commentsClose = document.querySelectorAll('.close-btn');
-                    const commentButton = document.querySelectorAll('.comment-send');
 
                     likeButtons.forEach(btn => {
                         btn.addEventListener('click', () => {
@@ -88,6 +97,7 @@ function update_posts(n_posts, loadMore) {
                     });
 
                     for (let i = 0; i < commentButtons.length; i++) {
+                        
                         commentButtons[i].addEventListener('click', (event) => {
                             event.stopImmediatePropagation();
 
@@ -99,12 +109,14 @@ function update_posts(n_posts, loadMore) {
                             commentsClose[i].addEventListener('click', () => {
                                 commentSection[i].style.display = "none";
                             });
-
-                            commentButton[i].addEventListener('click', () => {
+                            recreateNode(document.querySelectorAll('.comment-send')[i]);
+                            const commentButton = document.querySelectorAll('.comment-send')[i];
+                            // adding and updating the comments on send click
+                            commentButton.addEventListener('click', () => {
                                 let text = document.querySelectorAll('.comment-text');
                                 addComment(text[i].value, commentButtons[i]);
                                 showComment(commentButtons[i], i);
-                                document.querySelector('.comment-text').value = '';
+                                text[i].value = '';
                             });
 
                             showComment(commentButtons[i], i);

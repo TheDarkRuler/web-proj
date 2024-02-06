@@ -82,7 +82,15 @@ export function showComment(button, j) {
         success: result => {
             commentList[j].innerHTML = '';
             for (let i = 0; i < result.length; i++) {
-                commentList[j].innerHTML += `<p class='comment'>` + result[i][2] + `</p>`;
+                commentList[j].innerHTML += `
+                    <fieldset>
+                        <legend>
+                            <a href="personal_page.html?ref_username=` + result[i][1] + `&ref_id=` + result[i][2] + `">
+                                ` + result[i][1] + `
+                            </a>
+                        </legend>
+                        <p class='comment'>` + result[i][0] + `</p>
+                    </fieldset>`;
             }
             commentList[j].scrollTop = commentList[j].scrollHeight;
         },

@@ -30,7 +30,9 @@ class Comment {
     function get_all_by_post($post_id) {
         global $db;
 
-        $query = 'SELECT * FROM Comments WHERE post_id = ?';
+        $query = 'SELECT Comments.content, Users.username, Users.id FROM Comments 
+                INNER JOIN Users ON Users.id = Comments.user_id
+                WHERE post_id = ?';
 
         $statement = $db->prepare($query);
         $statement->bind_param('i', $post_id);

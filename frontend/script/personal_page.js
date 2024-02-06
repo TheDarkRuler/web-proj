@@ -1,6 +1,16 @@
 import { addComment, dislike, like, showComment } from './interaction-manager.js';
 import { updatePostsStats, manageAllLikes } from "./post.js";
 
+function recreateNode(el, withChildren) {
+    if (withChildren) {
+        el.parentNode.replaceChild(el.cloneNode(true), el);
+    } else {
+        let newEl = el.cloneNode(false);
+        while (el.hasChildNodes()) newEl.appendChild(el.firstChild);
+        el.parentNode.replaceChild(newEl, el);
+    }
+}
+
 // function to update the posts in the personal page 
 function update_posts(user_id, n_posts, loadMore) {
     const username = document.getElementById('username').innerHTML;
@@ -83,7 +93,6 @@ function update_posts(user_id, n_posts, loadMore) {
                     const commentButtons = document.querySelectorAll('.comment-icon');
                     const commentSection = document.querySelectorAll('.comment-section');
                     const commentsClose = document.querySelectorAll('.close-btn');
-                    const commentButton = document.querySelectorAll('.comment-send');
 
                     // adding the handler for the like button
                     likeButtons.forEach(btn => {
@@ -114,13 +123,14 @@ function update_posts(user_id, n_posts, loadMore) {
                             commentsClose[i].addEventListener('click', () => {
                                 commentSection[i].style.display = "none";
                             });
-
+                            recreateNode(document.querySelectorAll('.comment-send')[i]);
+                            const commentButton = document.querySelectorAll('.comment-send')[i];
                             // adding and updating the comments on send click
-                            commentButton[i].addEventListener('click', () => {
+                            commentButton.addEventListener('click', () => {
                                 let text = document.querySelectorAll('.comment-text');
                                 addComment(text[i].value, commentButtons[i]);
                                 showComment(commentButtons[i], i);
-                                document.querySelector('.comment-text').value = '';
+                                text[i].value = '';
                             });
 
                             showComment(commentButtons[i], i);
