@@ -10,7 +10,7 @@ function update_messages() {
         $.ajax({
             url: '../../backend/chat_switch.php',
             type: 'POST',
-            data: {receiver: rec_id},
+            data: { receiver: rec_id },
             /**
              * @param result array containing all the messages between the user and the receiver
              */
@@ -81,7 +81,7 @@ function attachSendHandler(rec_id) {
             $.ajax({
                 url: '../../backend/send_message.php',
                 type: 'post',
-                data: {receiver: rec_id, message: message.value},
+                data: { receiver: rec_id, message: message.value },
                 success: () => {
                     message.value = '';
                     update_messages();
@@ -102,7 +102,7 @@ function loadHeader(rec_id) {
     $.ajax({
         url: '../../backend/load_head.php',
         type: 'post',
-        data: {user_id: rec_id},
+        data: { user_id: rec_id },
         /**
          * @param result contains piece of HTML to show the profile image
          */
@@ -119,7 +119,7 @@ function loadHeader(rec_id) {
     $.ajax({
         url: '../../backend/load_user.php',
         type: 'post',
-        data: {user_id: rec_id},
+        data: { user_id: rec_id },
         /**
          * @param result contains the username of the re
          */
@@ -144,7 +144,7 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
         url: '../../backend/chat_load_redirect.php',
         type: 'POST',
         datatype: 'json',
-        data: {limit: n_users, filter: search_in},
+        data: { limit: n_users, filter: search_in },
         success: function (result) {
             const container = document.querySelector(".chat-list");
             result = JSON.parse(result);
@@ -157,7 +157,7 @@ const chatsLoad = async (n_users, loadMore, search_in) => {
                     url: '../../backend/chat_load_redirect.php',
                     type: 'POST',
                     async: false,
-                    data: {id: result[i][0], func: 'get-image'},
+                    data: { id: result[i][0], func: 'get-image' },
                     success: function (image) {
                         result[i][2] == null ?
                             container.innerHTML += `
